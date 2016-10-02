@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void ReadInData (ifstream *sentFile);
+void ReadInData (ifstream *sentFile, int* arrayStart);
 
 int main (int argc, char *argv[])
 {
@@ -16,7 +16,7 @@ int main (int argc, char *argv[])
 	int kSmall_val = 0;		//Populate using your algorithm implementation
 	int pivot;		        //Pivot position in array
 
-	int *values = new int[1];
+	int *values;
 
 	//User Input DO NOT MODIFY
 	cout << "(A data file not named \"data2.txt\" can be opened as a command-line argument)" << endl;
@@ -27,6 +27,24 @@ int main (int argc, char *argv[])
 	//File Read code (insert) - This code should be able to parse the data in a text file similar to the provided one and store values in an array for processing.
 	ifstream dataFile;
 
+
+	//If the user gave a different file name through the command line, open it, otherwise, open the default name
+	if (argc > 1)
+	{
+		cout << "Argument: " << argv[1] << endl;
+
+		dataFile.open(argv[1]);
+
+	} else
+	{
+		dataFile.open("data2.txt");
+
+	}
+
+	int entries = GetDataAmount(&dataFile);
+
+
+	//If the user gave a different file name through the command line, open it, otherwise, open the default name
 	if (argc > 1)
 	{
 		cout << "Argument: " << argv[1] << endl;
@@ -60,12 +78,60 @@ int main (int argc, char *argv[])
 
 void ReadInData (ifstream *sentFile, int *arrayStart)
 {
+	bool continueRead = true;
 
+	while (continueRead)
+	{
+		int temp;
+
+		(*sentFile) >> temp;
+
+		if ((*sentFile).eof())
+		{
+			continueRead = false;
+
+		} else
+		{
+
+
+		}
+
+	}
 
 
 	(*sentFile).close();
 
 	return;
+
+}
+
+int GetDataAmount (ifstream *sentFile)
+{
+	int count = 0;
+
+	bool continueRead = true;
+
+	while (continueRead)
+	{
+		int temp;
+
+		(*sentFile) >> temp;
+
+		if ((*sentFile).eof())
+		{
+			continueRead = false;
+
+		} else
+		{
+			count++;
+
+		}
+
+	}
+
+	(*sentFile).close();
+
+	return count;
 
 }
 
