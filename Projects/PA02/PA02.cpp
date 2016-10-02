@@ -6,9 +6,7 @@
 
 using namespace std;
 
-void ReadInData (int *data);
-void ReadInData	(int *data, char *fileName); //Used if a file name is passed in as a command-line argument
-
+void ReadInData (ifstream *sentFile);
 
 int main (int argc, char *argv[])
 {
@@ -18,23 +16,30 @@ int main (int argc, char *argv[])
 	int kSmall_val = 0;		//Populate using your algorithm implementation
 	int pivot;		        //Pivot position in array
 
-	int *values;
+	int *values = new int[1];
 
 	//User Input DO NOT MODIFY
+	cout << "(A data file not named \"data2.txt\" can be opened as a command-line argument)" << endl;
 	cout << "Please enter required kth smallest value:";
 	cin >> kSmall_pos;
 
 	
 	//File Read code (insert) - This code should be able to parse the data in a text file similar to the provided one and store values in an array for processing.
+	ifstream dataFile;
+
 	if (argc > 1)
 	{
 		cout << "Argument: " << argv[1] << endl;
 
-		ReadInData (values, argv[1]);
+		dataFile.open(argv[1]);
+
+		ReadInData(&dataFile, values);
 
 	} else
 	{
-		ReadInData (values);
+		dataFile.open("data2.txt");
+
+		ReadInData(&dataFile, values);
 
 	}
 
@@ -53,17 +58,14 @@ int main (int argc, char *argv[])
 	return 0;
 }
 
-void ReadInData (int *data)
+void ReadInData (ifstream *sentFile, int *arrayStart)
 {
 
 
 
-}
-
-void ReadInData	(int *data, char *fileName)
-{
-	cout << fileName << endl;
+	(*sentFile).close();
 
 	return;
 
 }
+
