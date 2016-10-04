@@ -9,6 +9,7 @@ using namespace std;
 void ReadInData (ifstream *sentFile, int* arrayStart);
 int GetDataAmount (ifstream *sentFile);
 void PrintValues (int *arrayStart, int size);
+void PrintValues (int *arrayStart, int from, int to, int pivotIndex);
 int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos);
 
 int main (int argc, char *argv[])
@@ -50,6 +51,18 @@ int main (int argc, char *argv[])
 
 	values = new int[entries];
 
+	if (kSmall_pos < 1 || kSmall_pos > entries)
+	{
+		cout << "Error: kSmall_pos out of valid range. Must be a value from 1-" << entries << endl;
+
+		dataFile.close();
+
+		delete values;
+		values = NULL;
+
+		return 0;
+
+	}
 
 	//If the user gave a different file name through the command line, open it, otherwise, open the default name
 	if (argc > 1)
@@ -192,121 +205,194 @@ void PrintValues (int *arrayStart, int size)
 
 }
 
-int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos)
-{
-	cout << "Starting new run..." << endl;
-	cout << "Sent First: " << firstPos << " Sent Last: " << lastPos << endl;
+void PrintValues (int *arrayStart, int from, int to, int pivotIndex)
+{	
+	int *arrayTrav = arrayStart;
 
-	int *first = arrayStart;
-	int *last = arrayStart;
-
-	for (int i = 0; i < firstPos; i++)
+	for (int i = 0; i < from; i++)
 	{
-		first++;
+		arrayTrav++;
 
 	}
 
-
-	for (int i = 0; i < lastPos; i++)
+	for (int i = 0; i < (to - from + 1); i++)
 	{
-		last++;
-
-	}
-
-	int pivot = *first;
-	int pivotIndex = firstPos;
-
-	//first++;
-	//pivotIndex++;
-
-	int *firstTrav = first + 1;
-	int *lastTrav = last;
-
-	int firstIndex = firstPos;
-
-
-	cout << "Pivot is: " << pivot << endl;
-
-	//Partition the values
-	while (firstTrav != lastTrav && firstIndex < lastPos)
-	{
-		//cout << "help " << endl;
-
-		if (*firstTrav >= pivot)
+		//cout << i << "i ";
+		if (i == (to - from))
 		{
-			cout << "Value is >=P" << endl;
+			cout << "(" << i + from << ") " << *arrayTrav;
 
-			if (*lastTrav < pivot)
+			if (i == pivotIndex - from)
 			{
-				cout << "Swapping " << *firstTrav << " and " << *lastTrav << endl;
-
-				int temp = *lastTrav;
-
-				*lastTrav = *firstTrav;
-
-				*firstTrav = temp;
-
-				firstTrav++;
-				firstIndex++;
-				lastTrav--;
-
-			} else
-			{
-				cout << "Last is >P" << endl;
-
-				lastTrav--;
+				cout << "<P>";
 
 			}
 
-		} else if (*firstTrav < pivot)
+		} else
 		{
-			firstTrav++;
-			firstIndex++;
+			cout << "(" << i + from << ") "<< *arrayTrav;
+
+			if (i == pivotIndex - from)
+			{
+				cout << "<P>";
+
+			}
+
+			cout  << ", ";
+
+		}
+
+
+
+		arrayTrav++;
+
+	}
+
+	arrayTrav = NULL;
+
+	return;
+
+}
+
+int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos)
+{
+	//cout << "Press enter to start run...";
+
+	//int dummy;
+
+	//cin >> dummy;
+
+	cout << "Starting new run..." << endl;
+	cout << "Sent First: " << firstPos << " Sent Last: " << lastPos << endl;
+
+	int *firstPtr = arrayStart; //Scans from the left in
+	int *lastPtr = arrayStart;	//Scans from the right in
+
+	//After the loops before these should equal firstPos and lastPos respectively, but these values can be modified
+	int firstPtrIndex = 0;
+	int lastPtrIndex = 0;
+
+	for (int i = 0; i < firstPos; i++)
+	{
+		firstPtr++;
+		firstPtrIndex++;
+
+	}
+
+	for (int i = 0; i < lastPos; i++)
+	{
+		lastPtr++;
+		lastPtrIndex++;
+
+	}
+
+	//Set the pivot to the left-most value
+	int pivot = *firstPtr;
+	int *pivotPtr = firstPtr;
+	int pivotIndex;
+
+	if ((lastPos - firstPos) > 0)
+	{
+		pivotIndex = firstPtrIndex + 1;
+
+	} else
+	{
+		pivotIndex = firstPtrIndex;
+
+	}
+
+	//firstPos++;
+	if ((lastPos - firstPos) > 2)
+	{
+		firstPtr++;			//Now move the first pointer to the value after the pivot
+		firstPtrIndex++;	//Update index accordingly
+
+	}
+	
+
+	//Used after the partitioning loop
+	int *partitionTrav = firstPtr;
+	//int hiddenPivotIndex = firstPtrIndex;
+
+	cout << "Values In Scope before Partitioning: <";
+
+	PrintValues(arrayStart, firstPos, lastPos, pivotIndex - 1);
+
+	cout << ">" << endl << endl;
+
+	if (firstPtr == lastPtr)
+	{
+		cout << "EXCEPTION: First and Last are the same, skipping partion loop..." << endl;
+
+	}
+
+	while (firstPtr != lastPtr && firstPtrIndex <= lastPos && lastPtrIndex >= firstPos)
+	{
+		if (*firstPtr >= pivot)
+		{
+			int temp = *lastPtr;
+
+			*lastPtr = *firstPtr;
+
+			*firstPtr = temp;
+
+			lastPtr--;
+			lastPtrIndex--;
+
+		} else if (*firstPtr < pivot)
+		{
+			firstPtr++;
+			firstPtrIndex++;
 
 		}
 
 	}
 
-	cout << "Sorting done..." << endl;
+	//int *firstSwapPtr = partitionTrav;
+	if ((lastPos - firstPos) > 0)
+	{
+		//Now find the index of the last number in the left partition S1
+		while (*(partitionTrav + 1) < pivot)
+		{
+			partitionTrav++;
+			pivotIndex++;	//Should be the index of the mid point of the two partitions
 
-	//Find the pivot's middle spot
-	int *arrayTrav = first + 1;
+		}
 
+		int swapDump = *partitionTrav;
 
-	cout << "While AT (" << *arrayTrav << ") < Pivot (" << pivot << ")" << endl;
-
-	while (*arrayTrav < pivot)
-	{ 
-		arrayTrav++;
-		pivotIndex++;
+		*partitionTrav = pivot;
+		*pivotPtr = swapDump;
 
 	}
+	
 
-	//arrayTrav--;
-	//pivot = *arrayTrav;
+	
 
-	//pivotIndex;
 
-	//*first = *arrayTrav;
-	//*arrayTrav = pivot;
 	cout << "Stats of last run:" << endl;
 	cout << "Kth: " << kth;
 	cout << " Pivot Index: " << pivotIndex;
-	cout << " Pivot Value: " << pivot;
+	cout << " Used Pivot Value: " << pivot;
+	//cout << " Left Partion End: " << hiddenPivotIndex;
 	cout << " First Index: " << firstPos;
-	cout << " Last Index: " << lastPos << endl;
+	cout << " Last Index: " << lastPos << endl << endl;
 
-	PrintValues(arrayStart, 99);
+	//PrintValues(arrayStart, 99);
 
-	//I need to move the pivot index to the middle
+	cout << "Values In Scope After Partitioning: <";
 
-	if (kth < pivotIndex - (firstPos) + 1)
+	PrintValues(arrayStart, firstPos, lastPos, pivotIndex);
+
+	cout << ">" << endl << endl;
+
+	if (kth < (pivotIndex - firstPos + 1))
 	{
 		cout << "A" << endl;
 
-		return FindKthValue(kth, arrayStart, firstPos + 1, pivotIndex); //Check S1
+		return FindKthValue(kth, arrayStart, firstPos, pivotIndex - 1); //Check S1
 
-	} else if (kth == pivotIndex - (firstPos) + 1)
+	} else if (kth == (pivotIndex - firstPos + 1))
 	{
 		cout << "B" << endl;
 
@@ -317,10 +403,7 @@ int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos)
 	{
 		cout << "C" << endl;
 
-		return FindKthValue(kth - (pivotIndex - (firstPos) + 1), arrayStart, pivotIndex + 1, lastPos); //Check S2
+		return FindKthValue(kth - (pivotIndex - firstPos + 1), arrayStart, pivotIndex + 1, lastPos); //Check S2
 
 	}
-
-	//return 1;
-
 }
