@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -11,6 +12,11 @@ int GetDataAmount (ifstream *sentFile);
 void PrintValues (int *arrayStart, int size);
 void PrintValues (int *arrayStart, int from, int to, int pivotIndex);
 int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos);
+void OutputToLog (int kth, int firstPos, int lastPos, int pivotIndex, int pivot);
+void OutputToLog (string sentString);
+
+//Global Variables
+ofstream logFile; //Made global so that the output functions can access it without needing it as an argument
 
 int main (int argc, char *argv[])
 {
@@ -23,13 +29,27 @@ int main (int argc, char *argv[])
 	int *values;
 
 	//User Input DO NOT MODIFY
-	//cout << "(A data file not named \"data2.txt\" can be opened as a command-line argument)" << endl;
+	cout << "(A data file not named \"data2.txt\" can be opened as a command-line argument)" << endl;
 	cout << "Please enter required kth smallest value:";
 	cin >> kSmall_pos;
 
 	
 	//File Read code (insert) - This code should be able to parse the data in a text file similar to the provided one and store values in an array for processing.
 	ifstream dataFile;
+	
+	logFile.open("log.txt", ios::app);
+
+	if (!logFile.is_open())
+	{
+		cout << "There was an error in opening the log file, ending program." << endl;
+
+		return 0;
+
+	}
+
+	OutputToLog("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+	OutputToLog("\t\t\tBEGINNING NEW PROGRAM RUN");
+	OutputToLog("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 
 
 	//If the user gave a different file name through the command line, open it, otherwise, open the default name
@@ -45,9 +65,17 @@ int main (int argc, char *argv[])
 
 	}
 
+	if (!dataFile.is_open())
+	{
+		cout << "There was an error in opening the data file, perhaps the name is misspelled, ending program." << endl;
+
+		return 0;
+
+	}
+
 	int entries = GetDataAmount(&dataFile);
 
-	cout << "Entries Found: " << entries << endl;
+	logFile << "Entries Found: " << entries << endl;
 
 	values = new int[entries];
 
@@ -67,7 +95,7 @@ int main (int argc, char *argv[])
 	//If the user gave a different file name through the command line, open it, otherwise, open the default name
 	if (argc > 1)
 	{
-		cout << "Argument: " << argv[1] << endl;
+		//cout << "Argument: " << argv[1] << endl;
 
 		dataFile.open(argv[1]);
 
@@ -93,7 +121,7 @@ int main (int argc, char *argv[])
 
 	}
 
-	cout << endl << "Begining Algorithm..." << endl << endl;
+	logFile << endl << "Begining Algorithm..." << endl << endl;
 
 	kSmall_val = FindKthValue(kSmall_pos, values, 0, entries - 1);
 
@@ -189,11 +217,11 @@ void PrintValues (int *arrayStart, int size)
 	{
 		if (i == size - 1)
 		{
-			cout << "(" << i << ") " << *arrayTrav << endl;
+			logFile << "(" << i << ") " << *arrayTrav << endl;
 
 		} else
 		{
-			cout << "(" << i << ") "<< *arrayTrav << ", ";
+			logFile << "(" << i << ") "<< *arrayTrav << ", ";
 
 		}
 
@@ -205,7 +233,7 @@ void PrintValues (int *arrayStart, int size)
 
 }
 
-void PrintValues (int *arrayStart, int from, int to, int pivotIndex)
+void PrintValues (int *arrayStart, int from, int to, int pivotIndex) //Prints the values within a scope
 {	
 	int *arrayTrav = arrayStart;
 
@@ -220,25 +248,25 @@ void PrintValues (int *arrayStart, int from, int to, int pivotIndex)
 		//cout << i << "i ";
 		if (i == (to - from))
 		{
-			cout << "(" << i + from << ") " << *arrayTrav;
+			logFile << "(" << i + from << ") " << *arrayTrav;
 
 			if (i == pivotIndex - from)
 			{
-				cout << "<P>";
+				logFile << "<P>";
 
 			}
 
 		} else
 		{
-			cout << "(" << i + from << ") "<< *arrayTrav;
+			logFile << "(" << i + from << ") "<< *arrayTrav;
 
 			if (i == pivotIndex - from)
 			{
-				cout << "<P>";
+				logFile << "<P>";
 
 			}
 
-			cout  << ", ";
+			logFile  << ", ";
 
 		}
 
@@ -256,14 +284,17 @@ void PrintValues (int *arrayStart, int from, int to, int pivotIndex)
 
 int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos)
 {
-	//cout << "Press enter to start run...";
+	/*
+		//Used for debug purposes to prevent an infinite from filling the console with output data
+		cout << "Press enter to start run...";
 
-	//int dummy;
+		int dummy;
 
-	//cin >> dummy;
+		cin >> dummy;
+	*/
 
-	cout << "Starting new run..." << endl;
-	cout << "Sent First: " << firstPos << " Sent Last: " << lastPos << endl;
+	logFile << "Starting new run..." << endl;
+	logFile << "Sent First: " << firstPos << " Sent Last: " << lastPos << endl;
 
 	int *leftPtr = arrayStart;
 	int leftPtrPos = firstPos;
@@ -291,9 +322,9 @@ int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos)
 	leftPtr++;		//Moves to the value after the pivot;
 	leftPtrPos++;	//Moves the position too
 
-	cout << "Values in scope before partition: (";
+	logFile << "Values in scope before partition: (";
 	PrintValues(arrayStart, firstPos, lastPos, pivotIndex);
-	cout << ")" << endl;
+	logFile << ")" << endl;
 
 	while (leftPtr != rightPtr && leftPtrPos < rightPtrPos)
 	{
@@ -333,34 +364,51 @@ int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos)
 	*partitionTrav = pivot;
 	*pivotPtr = swapDump;
 
-	cout << "Values in scope after partition: (";
+	logFile << "Values in scope after partition: (";
 	PrintValues(arrayStart, firstPos, lastPos, pivotIndex);
-	cout << ")" << endl;
+	logFile << ")" << endl;
 
-	cout << "\tK = " << kth << endl;
-	cout << "\tPivot Index = " << pivotIndex << endl;
-	cout << "\tFirst Pos = " << firstPos << endl;
-	cout << "\tPivot Value = " << pivot << endl;
+	OutputToLog(kth, firstPos, lastPos, pivotIndex, pivot);
 
 
 	if (kth < (pivotIndex - firstPos + 1))
 	{
-		cout << "A" << endl;
+		OutputToLog("Kth value is in the left partition.");
 
 		return FindKthValue(kth, arrayStart, firstPos, pivotIndex - 1); //Check S1
 
 	} else if (kth == (pivotIndex - firstPos + 1))
 	{
-		cout << "B" << endl;
+		OutputToLog("Kth value is the pivot.");
 
 
 		return pivot;
 
 	} else
 	{
-		cout << "C" << endl;
+		OutputToLog("Kth value is in the right partition.");
 
 		return FindKthValue(kth - (pivotIndex - firstPos + 1), arrayStart, pivotIndex + 1, lastPos); //Check S2
 
 	}
+}
+
+void OutputToLog (int kth, int firstPos, int lastPos, int pivotIndex, int pivot)
+{
+	logFile << "K = " << kth << endl;
+	logFile << "Pivot Index = " << pivotIndex << endl;
+	logFile << "First Pos = " << firstPos << endl;
+	logFile << "Last Pos = " << lastPos << endl;
+	logFile << "Pivot Value = " << pivot << endl;
+
+	return;
+
+}
+
+void OutputToLog (string sentString)
+{
+	logFile << sentString << endl;
+
+	return;
+
 }
