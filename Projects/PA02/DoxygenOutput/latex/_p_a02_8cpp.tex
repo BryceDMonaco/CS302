@@ -1,0 +1,290 @@
+\hypertarget{_p_a02_8cpp}{}\subsection{C\+S302/\+Projects/\+P\+A02/\+P\+A02.cpp File Reference}
+\label{_p_a02_8cpp}\index{C\+S302/\+Projects/\+P\+A02/\+P\+A02.\+cpp@{C\+S302/\+Projects/\+P\+A02/\+P\+A02.\+cpp}}
+
+
+This file contains the code for Programming Assignment 2, finding the kth smallest value in a set of data.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_p_a02_8cpp_a59107c77c1736b3d284292eda6c581d7}{Read\+In\+Data} (ifstream $\ast$sent\+File, int $\ast$array\+Start)
+\begin{DoxyCompactList}\small\item\em This function is used to read in the data from the given data file. \end{DoxyCompactList}\item 
+int \hyperlink{_p_a02_8cpp_a9b7127964a680b64ad03a08c5c399691}{Get\+Data\+Amount} (ifstream $\ast$sent\+File)
+\begin{DoxyCompactList}\small\item\em This function is used to scan through the data file to see the amount of values within the file. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a02_8cpp_ad4a764ae5baae5a361ee25907e6599ec}{Print\+Values} (int $\ast$array\+Start, int size)
+\begin{DoxyCompactList}\small\item\em This function is used to print every value within the array. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a02_8cpp_ab9276c8876e5ac151339352033d688a1}{Print\+Values} (int $\ast$array\+Start, int from, int to, int pivot\+Index)
+\begin{DoxyCompactList}\small\item\em This function is used to print the data within a given scope of the values array. \end{DoxyCompactList}\item 
+int \hyperlink{_p_a02_8cpp_a45f963749d19d05f27da24ccddd4d5e4}{Find\+Kth\+Value} (int kth, int $\ast$array\+Start, int first\+Pos, int last\+Pos)
+\begin{DoxyCompactList}\small\item\em This function is used to find the kth smallest value within an array of values. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a02_8cpp_a09735ff6e0ae0a092f39d327e8a89daa}{Output\+To\+Log} (int kth, int first\+Pos, int last\+Pos, int pivot\+Index, int pivot)
+\begin{DoxyCompactList}\small\item\em This function is used to print various values that are important for debugging the partitioning algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a02_8cpp_a4b1d3b986401744d34d3b1be01974f7e}{Output\+To\+Log} (string sent\+String)
+\begin{DoxyCompactList}\small\item\em This function simply prints a given string to the output file. \end{DoxyCompactList}\item 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})\hypertarget{_p_a02_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\label{_p_a02_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+ofstream {\bfseries log\+File}\hypertarget{_p_a02_8cpp_af6fd65a690619ab800f6ddc3ff64eebb}{}\label{_p_a02_8cpp_af6fd65a690619ab800f6ddc3ff64eebb}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+This file contains the code for Programming Assignment 2, finding the kth smallest value in a set of data. 
+
+\begin{DoxyAuthor}{Author}
+Bryce Monaco (base file by Shehryar Khattak)
+\end{DoxyAuthor}
+This file contains the code for all functions used in the P\+A02 assignment. The user inputs a value k and the program returns the kth smallest value in given data.
+
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+The program assumes that the data file is named \char`\"{}data02.\+txt\char`\"{}, if it is not a new file name can be given as a command line argument 
+\end{DoxyNote}
+
+
+\subsubsection{Function Documentation}
+\index{P\+A02.\+cpp@{P\+A02.\+cpp}!Find\+Kth\+Value@{Find\+Kth\+Value}}
+\index{Find\+Kth\+Value@{Find\+Kth\+Value}!P\+A02.\+cpp@{P\+A02.\+cpp}}
+\paragraph[{\texorpdfstring{Find\+Kth\+Value(int kth, int $\ast$array\+Start, int first\+Pos, int last\+Pos)}{FindKthValue(int kth, int *arrayStart, int firstPos, int lastPos)}}]{\setlength{\rightskip}{0pt plus 5cm}int Find\+Kth\+Value (
+\begin{DoxyParamCaption}
+\item[{int}]{kth, }
+\item[{int $\ast$}]{array\+Start, }
+\item[{int}]{first\+Pos, }
+\item[{int}]{last\+Pos}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a02_8cpp_a45f963749d19d05f27da24ccddd4d5e4}{}\label{_p_a02_8cpp_a45f963749d19d05f27da24ccddd4d5e4}
+
+
+This function is used to find the kth smallest value within an array of values. 
+
+This function is used to find the kth smalles value with in an array of values. It recursively calls itself and sends a partition of the previously scanned array until it finds the value.
+
+\begin{DoxyParagraph}{Algorithm The main algorithm of this function is the partitioning algorithm which puts values less than the pivot value to the left (left partition) and values greater than the pivot to the right (right partition). It then determines if the value it is searching for is the pivot, is in the left partition, or is in the right partion. If the value is in the left or right partition it makes a recursive call, sending it the scope of the respective partition that it wants to search, if the value it is searching for is in the pivot then the pivot value is returned and the recursion ends.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em kth} & The value to search for.\\
+\hline
+\mbox{\tt in}  & {\em array\+Start} & The pointer to the start of the array to store the values in.\\
+\hline
+\mbox{\tt in}  & {\em first\+Pos} & The index value of the array to start the scope at.\\
+\hline
+\mbox{\tt in}  & {\em last\+Pos} & The index value of the array to end the scope at.\\
+\hline
+\mbox{\tt out}  & {\em pivot} & Returns pivot if it is the kth smallest value in the array\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of pivot is returned if it is the kth smalles value within the given array, otherwise the function makes a recursive call.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A02.\+cpp@{P\+A02.\+cpp}!Get\+Data\+Amount@{Get\+Data\+Amount}}
+\index{Get\+Data\+Amount@{Get\+Data\+Amount}!P\+A02.\+cpp@{P\+A02.\+cpp}}
+\paragraph[{\texorpdfstring{Get\+Data\+Amount(ifstream $\ast$sent\+File)}{GetDataAmount(ifstream *sentFile)}}]{\setlength{\rightskip}{0pt plus 5cm}int Get\+Data\+Amount (
+\begin{DoxyParamCaption}
+\item[{ifstream $\ast$}]{sent\+File}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a02_8cpp_a9b7127964a680b64ad03a08c5c399691}{}\label{_p_a02_8cpp_a9b7127964a680b64ad03a08c5c399691}
+
+
+This function is used to scan through the data file to see the amount of values within the file. 
+
+The function continuously reads through the data file to count the number of values within it. The number found is used to dynamically size the values array in main().
+
+\begin{DoxyParagraph}{Algorithm Continuously reads through the file checking if it has reached the end of the file. It increments an integer to keep count of the values and returns it at the end of the file.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+File} & The data file opened in main(), contains the data to be read in.\\
+\hline
+\mbox{\tt out}  & {\em count} & The number of values within the data file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the amount of valid values within the data file.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A02.\+cpp@{P\+A02.\+cpp}!Output\+To\+Log@{Output\+To\+Log}}
+\index{Output\+To\+Log@{Output\+To\+Log}!P\+A02.\+cpp@{P\+A02.\+cpp}}
+\paragraph[{\texorpdfstring{Output\+To\+Log(int kth, int first\+Pos, int last\+Pos, int pivot\+Index, int pivot)}{OutputToLog(int kth, int firstPos, int lastPos, int pivotIndex, int pivot)}}]{\setlength{\rightskip}{0pt plus 5cm}void Output\+To\+Log (
+\begin{DoxyParamCaption}
+\item[{int}]{kth, }
+\item[{int}]{first\+Pos, }
+\item[{int}]{last\+Pos, }
+\item[{int}]{pivot\+Index, }
+\item[{int}]{pivot}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a02_8cpp_a09735ff6e0ae0a092f39d327e8a89daa}{}\label{_p_a02_8cpp_a09735ff6e0ae0a092f39d327e8a89daa}
+
+
+This function is used to print various values that are important for debugging the partitioning algorithm. 
+
+This function simply formats and prints the values sent to it from the current run of the Find\+Kth\+Value function.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em kth} & The value to search for.\\
+\hline
+\mbox{\tt in}  & {\em first\+Pos} & The index value of the array to start the scope at.\\
+\hline
+\mbox{\tt in}  & {\em last\+Pos} & The index value of the array to end the scope at.\\
+\hline
+\mbox{\tt in}  & {\em pivot\+Index} & The index value of the pivot, used to print which value is the pivot.\\
+\hline
+\mbox{\tt in}  & {\em pivot} & The value of the pivot.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A02.\+cpp@{P\+A02.\+cpp}!Output\+To\+Log@{Output\+To\+Log}}
+\index{Output\+To\+Log@{Output\+To\+Log}!P\+A02.\+cpp@{P\+A02.\+cpp}}
+\paragraph[{\texorpdfstring{Output\+To\+Log(string sent\+String)}{OutputToLog(string sentString)}}]{\setlength{\rightskip}{0pt plus 5cm}void Output\+To\+Log (
+\begin{DoxyParamCaption}
+\item[{string}]{sent\+String}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a02_8cpp_a4b1d3b986401744d34d3b1be01974f7e}{}\label{_p_a02_8cpp_a4b1d3b986401744d34d3b1be01974f7e}
+
+
+This function simply prints a given string to the output file. 
+
+This function simply prints a given string to the output file and then moves to the next line.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+String} & The string to be printed\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A02.\+cpp@{P\+A02.\+cpp}!Print\+Values@{Print\+Values}}
+\index{Print\+Values@{Print\+Values}!P\+A02.\+cpp@{P\+A02.\+cpp}}
+\paragraph[{\texorpdfstring{Print\+Values(int $\ast$array\+Start, int size)}{PrintValues(int *arrayStart, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}void Print\+Values (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{array\+Start, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a02_8cpp_ad4a764ae5baae5a361ee25907e6599ec}{}\label{_p_a02_8cpp_ad4a764ae5baae5a361ee25907e6599ec}
+
+
+This function is used to print every value within the array. 
+
+This function starts at the address pointed to by array\+Start and prints values until zie amount of values have been printed.
+
+\begin{DoxyParagraph}{Algorithm Prints each value within the array pointed to by array\+Start.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em array\+Start} & The pointer to the start of the array to store the values in.\\
+\hline
+\mbox{\tt in}  & {\em size} & The amount of values within the array, used to prevent the array\+Trav pointer from going out of bounds.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If size is incorrect then the entire array might not be printed or the array\+Trav will run out of bounds. Output is formatted as (index number) value. 
+\end{DoxyNote}
+\index{P\+A02.\+cpp@{P\+A02.\+cpp}!Print\+Values@{Print\+Values}}
+\index{Print\+Values@{Print\+Values}!P\+A02.\+cpp@{P\+A02.\+cpp}}
+\paragraph[{\texorpdfstring{Print\+Values(int $\ast$array\+Start, int from, int to, int pivot\+Index)}{PrintValues(int *arrayStart, int from, int to, int pivotIndex)}}]{\setlength{\rightskip}{0pt plus 5cm}void Print\+Values (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{array\+Start, }
+\item[{int}]{from, }
+\item[{int}]{to, }
+\item[{int}]{pivot\+Index}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a02_8cpp_ab9276c8876e5ac151339352033d688a1}{}\label{_p_a02_8cpp_ab9276c8876e5ac151339352033d688a1}
+
+
+This function is used to print the data within a given scope of the values array. 
+
+denotes that the value is the pivot.
+
+This function this function starts at the value within the array at index from and prints all values up to and including the value at index to. Used for printing partitions.
+
+\begin{DoxyParagraph}{Algorithm Moves the array\+Trav to the start of the scope, then prints all values starting from array\+Start\mbox{[}from\mbox{]} and ending with array\+Start\mbox{[}to\mbox{]}.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em array\+Start} & The pointer to the start of the array to store the values in.\\
+\hline
+\mbox{\tt in}  & {\em from} & The array index value of where to start printing.\\
+\hline
+\mbox{\tt in}  & {\em to} & The array index value of the end of the scope.\\
+\hline
+\mbox{\tt in}  & {\em pivot\+Index} & The index value of the pivot, used to print which value is the pivot.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Output is formatted as (index number) value. 
+\end{DoxyNote}
+to the right of a value denotes that it is the pivot. \index{P\+A02.\+cpp@{P\+A02.\+cpp}!Read\+In\+Data@{Read\+In\+Data}}
+\index{Read\+In\+Data@{Read\+In\+Data}!P\+A02.\+cpp@{P\+A02.\+cpp}}
+\paragraph[{\texorpdfstring{Read\+In\+Data(ifstream $\ast$sent\+File, int $\ast$array\+Start)}{ReadInData(ifstream *sentFile, int *arrayStart)}}]{\setlength{\rightskip}{0pt plus 5cm}void Read\+In\+Data (
+\begin{DoxyParamCaption}
+\item[{ifstream $\ast$}]{sent\+File, }
+\item[{int $\ast$}]{array\+Start}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a02_8cpp_a59107c77c1736b3d284292eda6c581d7}{}\label{_p_a02_8cpp_a59107c77c1736b3d284292eda6c581d7}
+
+
+This function is used to read in the data from the given data file. 
+
+The function continuously reads in data line by line until it reaches the end of the file. It stores the values in the array pointed to by array\+Start.
+
+\begin{DoxyParagraph}{Algorithm Continuously reads through the file checking if it has reached the end of the file. It reads in a new value and stores it in the current memory position in the array.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+File} & The data file opened in main(), contains the data to be read in.\\
+\hline
+\mbox{\tt in}  & {\em array\+Start} & The pointer to the start of the array to store the values in.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
