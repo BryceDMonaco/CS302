@@ -265,126 +265,83 @@ int FindKthValue (int kth, int *arrayStart, int firstPos, int lastPos)
 	cout << "Starting new run..." << endl;
 	cout << "Sent First: " << firstPos << " Sent Last: " << lastPos << endl;
 
-	int *firstPtr = arrayStart; //Scans from the left in
-	int *lastPtr = arrayStart;	//Scans from the right in
+	int *leftPtr = arrayStart;
+	int leftPtrPos = firstPos;
 
-	//After the loops before these should equal firstPos and lastPos respectively, but these values can be modified
-	int firstPtrIndex = 0;
-	int lastPtrIndex = 0;
+	int *rightPtr = arrayStart;
+	int rightPtrPos = lastPos;
 
 	for (int i = 0; i < firstPos; i++)
 	{
-		firstPtr++;
-		firstPtrIndex++;
+		leftPtr++;
 
 	}
 
 	for (int i = 0; i < lastPos; i++)
 	{
-		lastPtr++;
-		lastPtrIndex++;
+		rightPtr++;
 
 	}
 
-	//Set the pivot to the left-most value
-	int pivot = *firstPtr;
-	int *pivotPtr = firstPtr;
-	int pivotIndex;
+	int pivot = *leftPtr;
+	int pivotIndex = firstPos;
+	int *pivotPtr = leftPtr;
+	int *partitionTrav = leftPtr;
 
-	if ((lastPos - firstPos) > 0)
-	{
-		pivotIndex = firstPtrIndex + 1;
+	leftPtr++;		//Moves to the value after the pivot;
+	leftPtrPos++;	//Moves the position too
 
-	} else
-	{
-		pivotIndex = firstPtrIndex;
-
-	}
-
-	//firstPos++;
-	if ((lastPos - firstPos) > 2)
-	{
-		firstPtr++;			//Now move the first pointer to the value after the pivot
-		firstPtrIndex++;	//Update index accordingly
-
-	}
-	
-
-	//Used after the partitioning loop
-	int *partitionTrav = firstPtr;
-	//int hiddenPivotIndex = firstPtrIndex;
-
-	cout << "Values In Scope before Partitioning: <";
-
-	PrintValues(arrayStart, firstPos, lastPos, pivotIndex - 1);
-
-	cout << ">" << endl << endl;
-
-	if (firstPtr == lastPtr)
-	{
-		cout << "EXCEPTION: First and Last are the same, skipping partion loop..." << endl;
-
-	}
-
-	while (firstPtr != lastPtr && firstPtrIndex <= lastPos && lastPtrIndex >= firstPos)
-	{
-		if (*firstPtr >= pivot)
-		{
-			int temp = *lastPtr;
-
-			*lastPtr = *firstPtr;
-
-			*firstPtr = temp;
-
-			lastPtr--;
-			lastPtrIndex--;
-
-		} else if (*firstPtr < pivot)
-		{
-			firstPtr++;
-			firstPtrIndex++;
-
-		}
-
-	}
-
-	//int *firstSwapPtr = partitionTrav;
-	if ((lastPos - firstPos) > 0)
-	{
-		//Now find the index of the last number in the left partition S1
-		while (*(partitionTrav + 1) < pivot)
-		{
-			partitionTrav++;
-			pivotIndex++;	//Should be the index of the mid point of the two partitions
-
-		}
-
-		int swapDump = *partitionTrav;
-
-		*partitionTrav = pivot;
-		*pivotPtr = swapDump;
-
-	}
-	
-
-	
-
-
-	cout << "Stats of last run:" << endl;
-	cout << "Kth: " << kth;
-	cout << " Pivot Index: " << pivotIndex;
-	cout << " Used Pivot Value: " << pivot;
-	//cout << " Left Partion End: " << hiddenPivotIndex;
-	cout << " First Index: " << firstPos;
-	cout << " Last Index: " << lastPos << endl << endl;
-
-	//PrintValues(arrayStart, 99);
-
-	cout << "Values In Scope After Partitioning: <";
-
+	cout << "Values in scope before partition: (";
 	PrintValues(arrayStart, firstPos, lastPos, pivotIndex);
+	cout << ")" << endl;
 
-	cout << ">" << endl << endl;
+	while (leftPtr != rightPtr && leftPtrPos < rightPtrPos)
+	{
+		if (*leftPtr >= pivot)
+		{
+			if (*rightPtr < pivot)
+			{
+				int temp = *rightPtr;
+
+				*rightPtr = *leftPtr;
+				*leftPtr = temp;
+
+			} else if (*rightPtr >= pivot)
+			{
+				rightPtr--;
+				rightPtrPos--;
+
+			}
+
+		} else if (*leftPtr < pivot)
+		{
+			leftPtr++;
+			leftPtrPos++;
+
+		}
+	}
+
+	while (*(partitionTrav + 1) < pivot && pivotIndex < lastPos)
+	{
+		partitionTrav++;
+		pivotIndex++;
+
+	}
+
+	int swapDump = *partitionTrav;
+
+	*partitionTrav = pivot;
+	*pivotPtr = swapDump;
+
+	cout << "Values in scope after partition: (";
+	PrintValues(arrayStart, firstPos, lastPos, pivotIndex);
+	cout << ")" << endl;
+
+	cout << "\tK = " << kth << endl;
+	cout << "\tPivot Index = " << pivotIndex << endl;
+	cout << "\tFirst Pos = " << firstPos << endl;
+	cout << "\tPivot Value = " << pivot << endl;
+
 
 	if (kth < (pivotIndex - firstPos + 1))
 	{
