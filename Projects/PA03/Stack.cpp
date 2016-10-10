@@ -1,9 +1,16 @@
-/*
-	This is a modified Stack class. It is based off of a Stack class that
-	I had written for an assignment in CS202 during Spring 2016 (Project 8). It is missing
-	a few functions which I deemed nonessential for this project.
+/**
+*	@file Stack.cpp
+*
+*	@brief This file contains both the header and the implementation for the Stack class used in PA03.
+*
+*	@author Bryce Monaco (Originally for CS202)
+*
+*	@details This file contains the code for the Stack class used in PA03. This is a modified Stack class. It is based off of a Stack class that I had written for an assignment in CS202 during Spring 2016 (Project 8). It is missing a few functions which I deemed nonessential for this project.
+*
+*	@version 1.0
+*
+*	@note This code was put into one file instead of a .h and .cpp because of issues with templating. The header section of this code is the only part taken from the 202 code, I set it up to be templated (originally it only worked with chars) and completely rewrote the implementation.
 */
-
 
 #include <iostream>
 
@@ -82,6 +89,23 @@ Stack<itemType>::~Stack()
 }
 
 //Functions
+
+/**
+*	@brief This function pushes a value onto the stack if there is room
+*
+*	@details This function pushes a value on the stack if there is room for the value
+
+*	@par Algorithm If there is room, the traverser pointer is moved to the top of the stack and the value is inserted
+*
+*	@param[in] value The value to be inserted, must be the same type as the stack (i.e. a string can't be pushed into an int stack)
+*
+*	@param[out] None.
+*
+*	@return Returns true if a value was able to be pushed, returns false if the stack was full
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool Stack<itemType>::push (itemType value)
 {
@@ -110,6 +134,22 @@ bool Stack<itemType>::push (itemType value)
 	}
 }
 
+/**
+*	@brief This function is used to remove the value at the top of the stack.
+*
+*	@details This function removes the value from the top of the stack (if there is one) and returns it.
+*
+*	@par Algorithm Moves the pointer dataTrav to the top of the stack, removes it, and returns it.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns the value that was at the top of the stack. NULL if the stack is empty.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 itemType Stack<itemType>::pop ()
 {
@@ -127,9 +167,29 @@ itemType Stack<itemType>::pop ()
 
 		return *dataTrav;
 
+	} else
+	{
+		return NULL;
+
 	}
 }
 
+/**
+*	@brief This function checks if the stack has any values stored.
+*
+*	@details This function checks the value of top, which should be >=0 if there is any data inside.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns true if the stack is empty, false otherwise.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool Stack<itemType>::isEmpty () const
 {
@@ -144,6 +204,22 @@ bool Stack<itemType>::isEmpty () const
 	}
 }
 
+/**
+*	@brief This function checks if the stack is full
+*
+*	@details This function checks the value of top, which should be equal to max - 1 if it is full
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns true if the stack is full, false otherwise.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool Stack<itemType>::isFull () const
 {
@@ -158,6 +234,22 @@ bool Stack<itemType>::isFull () const
 	}
 }
 
+/**
+*	@brief This function deletes the data stored in the stack
+*
+*	@details This function deletes the data stored in the stack, and allocates a new set of memory to make a clean stack
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Should always return true.
+*
+*	@note Originally the function should return false if the stack is already empty, this behaviour was removed and it just wipes the stack no matter what
+*
+*/
 template<class itemType>
 bool Stack<itemType>::clear ()
 {
@@ -166,10 +258,28 @@ bool Stack<itemType>::clear ()
 
 	data = new itemType[max];
 
+	top = -1;
+
 	return true;
 
 }
 
+/**
+*	@brief This function prints all values stored in the stack
+*
+*	@details This function runs through the stack and prints all values inside. Top is marked.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void Stack<itemType>::print ()
 {
@@ -185,7 +295,7 @@ void Stack<itemType>::print ()
 		{
 			if (i == top)
 			{
-				cout << *dataTrav;
+				cout << *dataTrav << " (TOP)";
 
 			} else
 			{
