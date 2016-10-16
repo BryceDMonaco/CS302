@@ -17,9 +17,10 @@
 using namespace std;
 
 template<class itemType>
-class Stack {
+class Stack 
+{
 	public:
-		Stack(int size = 10); //size is the size of the stack, cannot be changed
+		Stack(int size = 10); //size is the size of the stack, cannot be changed after initialization
 		Stack(const Stack<itemType>&);
 		~Stack();
 
@@ -28,6 +29,7 @@ class Stack {
 		bool isEmpty() const; //Checks if empty
 		bool isFull() const; //Checks if full
 		bool clear(); //clears data
+		itemType peek();
 
 		void print();
 
@@ -265,6 +267,45 @@ bool Stack<itemType>::clear ()
 }
 
 /**
+*	@brief This function returns the value at the top of the stack
+*
+*	@details This function goes to the top of the stack and returns the value
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns the value at top if there is one
+*
+*	@note None.
+*
+*/
+template<class itemType>
+itemType Stack<itemType>::peek ()
+{
+	if (top == -1)
+	{
+		return NULL;
+
+	} else
+	{
+		itemType *dataTrav = data;
+
+		for (int i = 0; i < top; i++)
+		{
+			dataTrav++;
+
+		}
+
+		return *dataTrav;
+
+	}
+
+}
+
+/**
 *	@brief This function prints all values stored in the stack
 *
 *	@details This function runs through the stack and prints all values inside. Top is marked.
@@ -273,7 +314,7 @@ bool Stack<itemType>::clear ()
 *
 *	@param[in] None.
 *
-*	@param[out] None.
+*	@param[out] Outputs the contents of the stack to the console
 *
 *	@return None.
 *

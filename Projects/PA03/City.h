@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class City
+{
+	public:
+		City();
+		City(string name = "NO NAME ASSIGNED");
+		~City();
+
+		void SetVisitedState (bool state);
+		void AddDestination (string name, City* destinationPtr);	//Adds a destination name and address	
+
+		bool CheckIfDestination (string name);						//Used to see if this city goes to sent city
+		City* GetDestination (string name);							//Used to return the address of a destination city
+
+		void PrintCity ();											//Prints this city name and its destinations (if any)
+
+
+
+	private:
+		string thisCityName;
+
+		bool beenVisited; 					//Used to prevent a city being flown to again in a loop
+
+		vector<string> destinationNames; 	//Contains the names of cities that this city flies to
+		vector<City *> destinationPointers; 	//Pointers to the city objects that this city flies to
+
+		int destinations;
+
+};
