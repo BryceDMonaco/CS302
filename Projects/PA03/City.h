@@ -7,14 +7,16 @@ class City
 {
 	public:
 		City();
-		City(string name = "NO NAME ASSIGNED");
+		City(string name);
 		~City();
 
 		void SetVisitedState (bool state);
+		void SetCityName (string name);
 		void AddDestination (string name, City* destinationPtr);	//Adds a destination name and address	
 
 		bool CheckIfDestination (string name);						//Used to see if this city goes to sent city
 		City* GetDestination (string name);							//Used to return the address of a destination city
+		string GetCityName ();
 
 		void PrintCity ();											//Prints this city name and its destinations (if any)
 

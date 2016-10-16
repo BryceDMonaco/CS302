@@ -7,6 +7,7 @@ Class City
 		~City();
 
 		void SetVisitedState (bool state);
+		void SetCityName (string name);
 		void AddDestination (string name, City* destinationPtr);	//Adds a destination name and address	
 
 		bool CheckIfDestination (string name);						//Used to see if this city goes to sent city
@@ -65,6 +66,14 @@ void City::SetVisitedState (bool state)
 
 }
 
+void City::SetCityName (string name)
+{
+	thisCityName = name;
+
+	return;
+
+}
+
 void City::AddDestination (string name, City* destinationPtr)
 {
 	for (unsigned int i = 0; i < destinationNames.size(); i++) //vecotr.size() returns an unsigned int so i must be unsigned
@@ -111,6 +120,12 @@ City* City::GetDestination (string name)
 	}
 
 	return destinationPointers[position];
+
+}
+
+string City::GetCityName ()
+{
+	return thisCityName;
 
 }
 
