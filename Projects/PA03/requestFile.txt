@@ -6,3 +6,6 @@ Indianapolis, San Francisco
 San Francisco, Washington
 Boston, Columbia
 Miami, Denver
+Reno, Seattle
+Tokyo, Dallas
+Seattle, Tokyo

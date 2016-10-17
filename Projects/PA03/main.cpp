@@ -3,21 +3,27 @@
 #include <string>
 #include <vector>
 
-#include "Stack.cpp"
-#include "City.h"
+//#include "Stack.cpp"
+//#include "City.h"
+#include "FlightMapV1.h"
 
 using namespace std;
 
 int GetDataAmount (ifstream *sentFile);
 void DecodeLine (string sentLine, string* leftCity, string* rightCity);
 int FindCityIndex (string name, City* cityArray, int cityCount);
+bool CheckIfValidCity (string name, City* cities, int numCities);
 
 int main ()
 {
+
+	// Reading in from the input files
+
 	ifstream cityFile;
 	ifstream flightFile;
 	ifstream requestFile;
 
+	//Read in the city names
 	cityFile.open("cityFile.txt");
 
 	cout << "Opened..." << endl;
@@ -25,31 +31,7 @@ int main ()
 	int cityCount = GetDataAmount(&cityFile);
 
 	cout << "Counted..." << endl;
-/*
-	Stack<string> cityStack(cityCount);	
 
-	cityStack.print();
-
-	cityFile.open("cityFile.txt");
-
-
-	for (int i = 0; i < cityCount; i++)
-	{
-		string readString;
-
-		getline(cityFile, readString);
-
-		cityStack.push(readString);
-
-	}
-
-	cityStack.print();
-
-	cout << "Top is: " << cityStack.peek() << endl;
-
-	return 0;
-
-*/
 	City cities[cityCount];
 
 	cityFile.open("cityFile.txt");
@@ -72,6 +54,7 @@ int main ()
 
 	cityFile.close();
 
+	//Read in the flights
 	flightFile.open("flightFile2.txt");
 
 	int flightCount = GetDataAmount(&flightFile);
@@ -95,11 +78,11 @@ int main ()
 		string fromCity;
 		string toCity;
 
-		cout << "Decoding \"" << readString << "\"" << endl;
+		//cout << "Decoding \"" << readString << "\"" << endl;
 
 		DecodeLine(readString, &fromCity, &toCity);
 
-		cout << "Decoded from: " << fromCity << " Decoded to: " << toCity << "---" << endl;
+		//cout << "Decoded from: " << fromCity << " Decoded to: " << toCity << "---" << endl;
 
 		int fromCityIndex = FindCityIndex(fromCity, cities, cityCount);
 		int toCityIndex = FindCityIndex(toCity, cities, cityCount);
@@ -128,6 +111,87 @@ int main ()
 	for (int i = 0; i < cityCount; i++)
 	{
 		cities[i].PrintCity();
+
+	}
+
+	cout << endl;
+
+	FlightMapV1 map(cities, cityCount);
+
+	//Read in the requests
+	requestFile.open("requestFile.txt");
+
+	int requestCount = GetDataAmount(&requestFile);
+
+	if (requestCount <= 0)
+	{
+		cout << "Error: Empty or invalid request file" << endl;
+
+		return 0;
+
+	}
+
+	requestFile.open("requestFile.txt");
+
+	for (int i = 0; i < requestCount; i++)
+	{
+		string readString;
+
+		getline(requestFile, readString);
+
+		string fromCity;
+		string toCity;
+
+		//cout << "Decoding \"" << readString << "\"" << endl;
+
+		DecodeLine(readString, &fromCity, &toCity);
+
+		//cout << "Decoded from: " << fromCity << " Decoded to: " << toCity << "---" << endl;
+
+		if (!CheckIfValidCity(fromCity, cities, cityCount) && !CheckIfValidCity(toCity, cities, cityCount)) //Both cities are invalid
+		{
+			cout << "HPAir does not serve " << fromCity << " and " << toCity << "." << endl;
+
+			continue;
+
+		} else if (!CheckIfValidCity(fromCity, cities, cityCount)) //From city is invalid
+		{
+			cout << "HPAir does not serve " << fromCity << "." << endl;
+
+			continue;
+
+		} else if (!CheckIfValidCity(toCity, cities, cityCount))
+		{
+			cout << "HPAir does not serve " << toCity << "." << endl;
+
+			continue;
+
+		}
+
+		int fromCityIndex = FindCityIndex(fromCity, cities, cityCount);
+		int toCityIndex = FindCityIndex(toCity, cities, cityCount);
+
+		cout << "Request is " << fromCity << "(" << fromCityIndex << ") to " << toCity << "(" << toCityIndex << ")" << endl;
+
+		if (fromCityIndex >= 999999 || toCityIndex >= 999999)
+		{
+			cout << "Error: something very wrong has occurred, either you have >999999 cities or an index could not be found." << endl;
+
+			return 0;
+
+		}
+
+		if (map.IsPath (&cities[fromCityIndex], &cities[toCityIndex]))
+		{
+			cout << "Yes" << endl;
+
+		} else
+		{
+			cout << "No" << endl;
+
+		}
+
+		cout << endl;
 
 	}
 
@@ -197,7 +261,7 @@ void DecodeLine (string sentLine, string* leftCity, string* rightCity)
 	{
 		char readChar = sentLine.at(charIndex);
 
-		cout << "\tFound: " << readChar << endl;
+		//cout << "\tFound: " << readChar << endl;
 
 		if (readChar == ',' || readChar < 65 && readChar != ' ') //<65 means char is not possibly a letter
 		{
@@ -220,16 +284,17 @@ void DecodeLine (string sentLine, string* leftCity, string* rightCity)
 	charIndex++; //To skip the space after the comma
 	charIndex++;
 
+	//This loop will end, no matter what, when charIndex equals the length of sentLine, so the two null assignments technically are useless
 	for (charIndex; charIndex < 31 && charIndex < sentLine.length(); charIndex++) //Two 15 char cities plus a comma and space is 32 chars
 	{
 		char readChar = sentLine.at(charIndex);
 
-		cout << "\tFound: " << readChar << " @ " << charIndex;
+		//cout << "\tFound: " << readChar << " @ " << charIndex;
 
 
 		if ((readChar == ',' || readChar < 65 || readChar == '\n') && readChar != ' ') //<65 means char is not possibly a letter
 		{
-			cout << " Nulling..." << endl;
+			//cout << " Nulling..." << endl;
 
 
 			*charTrav = '\0';
@@ -238,7 +303,7 @@ void DecodeLine (string sentLine, string* leftCity, string* rightCity)
 
 		} else if ((readChar >= 65 && readChar <= 90) || (readChar >= 97 && readChar <= 122) || readChar == ' ')
 		{
-			cout << " Storing...";
+			//cout << " Storing...";
 
 			*charTrav = readChar;
 
@@ -246,7 +311,7 @@ void DecodeLine (string sentLine, string* leftCity, string* rightCity)
 
 		} else
 		{
-			cout << " Nulling..." << endl;
+			//cout << " Nulling..." << endl;
 
 
 			*charTrav = '\0';
@@ -255,15 +320,13 @@ void DecodeLine (string sentLine, string* leftCity, string* rightCity)
 
 		}
 
-		cout << endl;
+		//cout << endl;
 
 	}
 
-	*charTrav = '\0';
+	*charTrav = '\0'; //The for loop above ends at the last char of the line read in (no null at the end) so one must be manually added
 
-	cout << "PING" << endl;
-
-	cout << "Read: " << leftCityChars << " " << rightCityChars << endl;
+	//cout << "Read: " << leftCityChars << " " << rightCityChars << endl;
 
 	*leftCity = leftCityChars;
 	*rightCity = rightCityChars;
@@ -301,5 +364,28 @@ int FindCityIndex (string name, City* cityArray, int cityCount)
 
 	return 999999; 	//I hope this never happens, means the city doesn't exist in the array
 					//value should only cause issues if there is an array of >999999 cities
+
+}
+
+bool CheckIfValidCity (string name, City* cities, int numCities)
+{
+	bool isCity = false;
+	City* cityTrav = cities;
+
+	for (int i = 0; i < numCities; i++)
+	{
+		if ((*cityTrav).GetCityName() == name)
+		{
+			isCity = true;
+
+			break;
+		}
+
+		cityTrav++;
+	}
+
+	cityTrav = NULL;
+
+	return isCity;
 
 }

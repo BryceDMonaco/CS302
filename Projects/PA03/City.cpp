@@ -109,6 +109,12 @@ bool City::CheckIfDestination (string name)
 
 }
 
+bool City::CheckIfVisited ()
+{
+	return beenVisited;
+
+}
+
 City* City::GetDestination (string name)
 {
 	unsigned int position = 0;
@@ -123,11 +129,34 @@ City* City::GetDestination (string name)
 
 }
 
+City* City::GetUnvisitedDestination ()
+{
+	for (int i = 0; i < destinations; i++)
+	{
+		if (!(*(destinationPointers[i])).CheckIfVisited()) //If it hasn't been visited
+		{
+			return destinationPointers[i];
+
+		}
+
+	}
+
+	return NULL;
+
+}
+
 string City::GetCityName ()
 {
 	return thisCityName;
 
 }
+
+int City::GetDestinationCount ()
+{
+	return destinations;
+
+}
+
 
 void City::PrintCity ()
 {

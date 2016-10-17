@@ -15,8 +15,11 @@ class City
 		void AddDestination (string name, City* destinationPtr);	//Adds a destination name and address	
 
 		bool CheckIfDestination (string name);						//Used to see if this city goes to sent city
+		bool CheckIfVisited ();
 		City* GetDestination (string name);							//Used to return the address of a destination city
+		City* GetUnvisitedDestination ();							//Returns the next unvisited destination
 		string GetCityName ();
+		int GetDestinationCount ();
 
 		void PrintCity ();											//Prints this city name and its destinations (if any)
 
