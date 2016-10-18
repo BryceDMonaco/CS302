@@ -74,7 +74,7 @@ void City::SetCityName (string name)
 
 }
 
-void City::AddDestination (string name, City* destinationPtr)
+void City::AddDestination (string name, City* destinationPtr, int flightNumber, int cost)
 {
 	for (unsigned int i = 0; i < destinationNames.size(); i++) //vecotr.size() returns an unsigned int so i must be unsigned
 	{
@@ -87,6 +87,8 @@ void City::AddDestination (string name, City* destinationPtr)
 
 	destinationNames.push_back(name);
 	destinationPointers.push_back(destinationPtr);
+	flightNumbers.push_back(flightNumber);
+	flightCosts.push_back(cost);
 
 	destinations++;
 
@@ -174,12 +176,12 @@ void City::PrintCity ()
 
 			if (i == destinationNames.size() - 1)
 			{
-				cout << destinationNames[i];
+				cout << destinationNames[i] << " Flight #" << flightNumbers[i] << " Cost: $" << flightCosts[i];
 
 
 			} else
 			{
-				cout << destinationNames[i] << ",";
+				cout << destinationNames[i] << " Flight #" << flightNumbers[i] << " Cost: $" << flightCosts[i] << ",";
 
 			}
 
@@ -188,6 +190,64 @@ void City::PrintCity ()
 	}
 
 	cout << "}" << endl;
+
+	return;
+
+}
+
+int City::PrintFlight (City* destinationPtr)
+{
+	int destinationIndex = 0;
+	string destinationName = (*destinationPtr).GetCityName();
+
+	int index = 0;
+
+	for (index; index < destinations; index++)
+	{
+		if (destinationNames[index] == destinationName)
+		{
+			break;
+
+		}
+	}
+
+	cout << "Flight #" << flightNumbers[index] << " from " << thisCityName << " to " << destinationName;
+	cout << "\tCost: $" << flightCosts[index] << endl;
+
+	return flightCosts[index];
+
+}
+
+void City::PrintCityToLog (ofstream* logFile)
+{
+	(*logFile) << thisCityName << " has the destinations: {";
+
+	if (destinations <= 0)
+	{
+		(*logFile) << "(No Destinations)";
+
+
+	} else
+	{
+		for (unsigned int i = 0; i < destinationNames.size(); i++)
+		{
+
+			if (i == destinationNames.size() - 1)
+			{
+				(*logFile) << destinationNames[i] << " Flight #" << flightNumbers[i] << " Cost: $" << flightCosts[i];
+
+
+			} else
+			{
+				(*logFile) << destinationNames[i] << " Flight #" << flightNumbers[i] << " Cost: $" << flightCosts[i] << ",";
+
+			}
+
+		}
+
+	}
+
+	(*logFile) << "}" << endl;
 
 	return;
 

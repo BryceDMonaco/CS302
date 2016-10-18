@@ -115,10 +115,42 @@ bool FlightMapV1::IsPath (City* originCity, City* destinationCity)
 
 	}
 
-	cityStack.print();
+	//cityStack.printFlights();
 
-	return !cityPTRStack.isEmpty();
+	bool finalBool = !cityPTRStack.isEmpty();
+
+	if (!cityPTRStack.isEmpty())
+	{
+		Stack<City *> reverseCityPTRStack;
+
+		while (!cityPTRStack.isEmpty())
+		{
+			reverseCityPTRStack.push(cityPTRStack.pop());
+
+		}
+
+		int totalCost = 0;
+
+		while (!reverseCityPTRStack.isEmpty())
+		{
+			City* currentCity = reverseCityPTRStack.pop();
+			City* nextCity = reverseCityPTRStack.peek();
+
+			if (nextCity != NULL)
+			{
+				totalCost += (*currentCity).PrintFlight(nextCity);
+
+			}
+		}
+
+		cout << "Total Cost....................$" << totalCost << endl;
+	} else
+	{
+		cout << "Sorry, HPAir does not fly from " << (*originCity).GetCityName() << " to " << (*destinationCity).GetCityName() << "." << endl;
+
+	}
 
 	
 
+	return finalBool;
 }

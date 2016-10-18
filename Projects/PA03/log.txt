@@ -1,0 +1,135 @@
+Opened City File...
+Counted All Cities...
+Atlanta has the destinations: {(No Destinations)}
+Austin has the destinations: {(No Destinations)}
+Boise has the destinations: {(No Destinations)}
+Boston has the destinations: {(No Destinations)}
+Buffalo has the destinations: {(No Destinations)}
+Chicago has the destinations: {(No Destinations)}
+Cincinnati has the destinations: {(No Destinations)}
+Cleveland has the destinations: {(No Destinations)}
+Columbia has the destinations: {(No Destinations)}
+Dallas has the destinations: {(No Destinations)}
+Denton has the destinations: {(No Destinations)}
+Denver has the destinations: {(No Destinations)}
+Detroit has the destinations: {(No Destinations)}
+Everett has the destinations: {(No Destinations)}
+Glendale has the destinations: {(No Destinations)}
+Honolulu has the destinations: {(No Destinations)}
+Houston has the destinations: {(No Destinations)}
+Indianapolis has the destinations: {(No Destinations)}
+Irvine has the destinations: {(No Destinations)}
+Los Angeles has the destinations: {(No Destinations)}
+Miami has the destinations: {(No Destinations)}
+Nashville has the destinations: {(No Destinations)}
+Oakland has the destinations: {(No Destinations)}
+Reno has the destinations: {(No Destinations)}
+Salt Lake City has the destinations: {(No Destinations)}
+San Francisco has the destinations: {(No Destinations)}
+Tampa has the destinations: {(No Destinations)}
+Washington has the destinations: {(No Destinations)}
+Decoding the line: "Atlanta, Chicago	701 200"
+Decoded from: Atlanta Decoded to: Chicago
+Decoding the line: "Boise, Chicago	702 350"
+Decoded from: Boise Decoded to: Chicago
+Decoding the line: "Boston, Chicago	504 120"
+Decoded from: Boston Decoded to: Chicago
+Decoding the line: "Chicago, Atlanta	503 210"
+Decoded from: Chicago Decoded to: Atlanta
+Decoding the line: "Chicago, Boise	703 200"
+Decoded from: Chicago Decoded to: Boise
+Decoding the line: "Chicago, Boston	501 120"
+Decoded from: Chicago Decoded to: Boston
+Decoding the line: "Chicago, Houston	708 140"
+Decoded from: Chicago Decoded to: Houston
+Decoding the line: "Cleveland, Houston	709 130"
+Decoded from: Cleveland Decoded to: Houston
+Decoding the line: "Columbia, Houston	710 140"
+Decoded from: Columbia Decoded to: Houston
+Decoding the line: "Dallas, Houston	711 110"
+Decoded from: Dallas Decoded to: Houston
+Decoding the line: "Denton, Houston	712 100"
+Decoded from: Denton Decoded to: Houston
+Decoding the line: "Denver, Houston	713 130"
+Decoded from: Denver Decoded to: Houston
+Decoding the line: "Houston, Glendale	750 145"
+Decoded from: Houston Decoded to: Glendale
+Decoding the line: "Houston, Cleveland	801 150"
+Decoded from: Houston Decoded to: Cleveland
+Decoding the line: "Houston, Columbia	802 162"
+Decoded from: Houston Decoded to: Columbia
+Decoding the line: "Houston, Dallas	803 150"
+Decoded from: Houston Decoded to: Dallas
+Decoding the line: "Houston, Denton	804 184"
+Decoded from: Houston Decoded to: Denton
+Decoding the line: "Houston, Denver	807 190"
+Decoded from: Houston Decoded to: Denver
+Decoding the line: "Houston, Chicago	808 175"
+Decoded from: Houston Decoded to: Chicago
+Decoding the line: "Indianapolis, Los Angeles	809 160"
+Decoded from: Indianapolis Decoded to: Los Angeles
+Decoding the line: "Los Angeles, Indianapolis	810	50"
+Decoded from: Los Angeles Decoded to: Indianapolis
+Decoding the line: "Miami, Los Angeles	784 320"
+Decoded from: Miami Decoded to: Los Angeles
+Decoding the line: "Miami, Atlanta	774 246"
+Decoded from: Miami Decoded to: Atlanta
+Decoding the line: "Atlanta, Miami	821 245"
+Decoded from: Atlanta Decoded to: Miami
+Decoding the line: "Los Angeles, Miami	823 134"
+Decoded from: Los Angeles Decoded to: Miami
+Decoding the line: "San Francisco, Los Angeles	824 132"
+Decoded from: San Francisco Decoded to: Los Angeles
+Decoding the line: "Los Angeles, San Francisco	819 108"
+Decoded from: Los Angeles Decoded to: San Francisco
+Decoding the line: "Tampa, Los Angeles	178 184"
+Decoded from: Tampa Decoded to: Los Angeles
+Decoding the line: "Los Angeles, Tampa	183 102"
+Decoded from: Los Angeles Decoded to: Tampa
+Decoding the line: "Washington, Los Angeles	586 300"
+Decoded from: Washington Decoded to: Los Angeles
+Decoding the line: "Los Angeles, Washington	541 310"
+Decoded from: Los Angeles Decoded to: Washington
+Opened Request File...
+Decoding "Los Angeles, Houston"
+Decoded from: Los Angeles Decoded to: Houston
+Request is Los Angeles(19) to Houston(16)
+A valid path was found.
+Decoding "Glendale, Houston"
+Decoded from: Glendale Decoded to: Houston
+Request is Glendale(14) to Houston(16)
+A valid path could not be found.
+Decoding "Dallas, Austin"
+Decoded from: Dallas Decoded to: Austin
+Request is Dallas(9) to Austin(1)
+A valid path could not be found.
+Decoding "Cleveland, Chicago"
+Decoded from: Cleveland Decoded to: Chicago
+Request is Cleveland(7) to Chicago(5)
+A valid path was found.
+Decoding "Indianapolis, San Francisco"
+Decoded from: Indianapolis Decoded to: San Francisco
+Request is Indianapolis(17) to San Francisco(25)
+A valid path was found.
+Decoding "San Francisco, Washington"
+Decoded from: San Francisco Decoded to: Washington
+Request is San Francisco(25) to Washington(27)
+A valid path was found.
+Decoding "Boston, Columbia"
+Decoded from: Boston Decoded to: Columbia
+Request is Boston(3) to Columbia(8)
+A valid path was found.
+Decoding "Miami, Denver"
+Decoded from: Miami Decoded to: Denver
+Request is Miami(20) to Denver(11)
+A valid path was found.
+Decoding "Reno, Seattle"
+Decoded from: Reno Decoded to: Seattle
+Sorry, HPAir does not serve Seattle.
+Decoding "Tokyo, Dallas"
+Decoded from: Tokyo Decoded to: Dallas
+Sorry, HPAir does not serve Tokyo.
+Decoding "Seattle, Tokyo"
+Decoded from: Seattle Decoded to: Tokyo
+Sorry, HPAir does not serve Seattle and Tokyo.
+Program ran successfully. Terminating.

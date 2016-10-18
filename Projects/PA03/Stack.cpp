@@ -32,6 +32,7 @@ class Stack
 		itemType peek();
 
 		void print();
+		void printFlights();
 
 	private:
 		int max; //The max amount of values in the stack
@@ -362,3 +363,59 @@ void Stack<itemType>::print ()
 
 }
 
+/**
+*	@brief This function prints all values stored in the stack in a flight route format
+*
+*	@details This function runs through the stack and prints all values inside, formatted as a route.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] Outputs the contents of the stack to the console
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
+template<class itemType>
+void Stack<itemType>::printFlights ()
+{
+	cout <<"Route: ";
+
+	if (top != -1)
+	{
+		itemType* dataTrav = data;
+
+		for (int i = 0; i < top + 1; i++)
+		{
+			if (i == top)
+			{
+				//cout << *dataTrav << " (TOP)";
+				cout << *dataTrav;
+
+			} else
+			{
+				cout << *dataTrav << " -> ";
+
+			}
+
+			dataTrav++;
+
+		}
+
+		dataTrav = NULL;
+
+	} else
+	{
+		cout << "ERROR: NONE";
+
+	}
+
+	cout << "Number of stops: " << top + 1 << endl;
+
+
+	return;
+
+}

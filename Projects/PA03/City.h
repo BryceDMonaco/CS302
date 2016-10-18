@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 
 using namespace std;
@@ -12,7 +13,7 @@ class City
 
 		void SetVisitedState (bool state);
 		void SetCityName (string name);
-		void AddDestination (string name, City* destinationPtr);	//Adds a destination name and address	
+		void AddDestination (string name, City* destinationPtr, int flightNumber, int cost);	//Adds a destination name and address	
 
 		bool CheckIfDestination (string name);						//Used to see if this city goes to sent city
 		bool CheckIfVisited ();
@@ -22,6 +23,8 @@ class City
 		int GetDestinationCount ();
 
 		void PrintCity ();											//Prints this city name and its destinations (if any)
+		int PrintFlight (City* destinationPtr);
+		void PrintCityToLog (ofstream* logFile);
 
 
 
@@ -32,6 +35,8 @@ class City
 
 		vector<string> destinationNames; 	//Contains the names of cities that this city flies to
 		vector<City *> destinationPointers; 	//Pointers to the city objects that this city flies to
+		vector<int> flightNumbers;
+		vector<int> flightCosts;
 
 		int destinations;
 
