@@ -1,3 +1,17 @@
+/**
+*	@file PA03.cpp
+*
+*	@brief This is PA03's main driver file.
+*
+*	@author Bryce Monaco
+*
+*	@details This is the main driver file for the project, it hands input mostly.
+*
+*	@version 1.0
+*
+*	@note !!!!!!!!!!!!SEE LINE 140 TO SWITCH BETWEEN V1 AND V2!!!!!!!!!!!!!!
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,6 +21,7 @@
 //#include "Stack.cpp"
 //#include "City.h"
 #include "FlightMapV1.h"
+#include "FlightMapV2.h"
 
 using namespace std;
 
@@ -118,7 +133,14 @@ int main ()
 
 	}
 
+/*
+	****************************************************************************************************
+				BELOW, COMMENT OUT V1 OR V2 TO SELECT WHICH VERSION TO USE
+	****************************************************************************************************
+*/
+
 	FlightMapV1 map(cities, cityCount);
+	//FlightMapV2 map(cities, cityCount);
 
 	//Read in the requests
 	requestFile.open("requestFile.txt");

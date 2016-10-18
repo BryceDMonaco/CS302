@@ -1,6 +1,23 @@
 #include <iostream>
+/**
+*	@file City.h
+*
+*	@brief This file contains the header of the City class.
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header for the various members of the City class. Some functions are not used.
+*
+*	@version 1.0
+*
+*	@note None.
+*/
+
 #include <fstream>
 #include <vector>
+
+#ifndef CITY_CLASS
+#define CITY_CLASS
 
 using namespace std;
 
@@ -21,6 +38,7 @@ class City
 		City* GetUnvisitedDestination ();							//Returns the next unvisited destination
 		string GetCityName ();
 		int GetDestinationCount ();
+		vector<City *> GetDestinationPointers ();
 
 		void PrintCity ();											//Prints this city name and its destinations (if any)
 		int PrintFlight (City* destinationPtr);
@@ -41,3 +59,5 @@ class City
 		int destinations;
 
 };
+
+#endif

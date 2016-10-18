@@ -12,6 +12,9 @@
 *	@note This code was put into one file instead of a .h and .cpp because of issues with templating. The header section of this code is the only part taken from the 202 code, I set it up to be templated (originally it only worked with chars) and completely rewrote the implementation.
 */
 
+#ifndef STACK_CLASS
+#define STACK_CLASS
+
 #include <iostream>
 
 using namespace std;
@@ -419,3 +422,5 @@ void Stack<itemType>::printFlights ()
 	return;
 
 }
+
+#endif

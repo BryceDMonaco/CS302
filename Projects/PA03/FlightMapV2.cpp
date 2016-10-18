@@ -1,7 +1,7 @@
-#ifndef MAP_V1
-#define MAP_V1
+#ifndef MAP_V2
+#define MAP_V2
 
-#include "FlightMapV1.h"
+#include "FlightMapV2.h"
 
 using namespace std;
 
@@ -12,11 +12,11 @@ using namespace std;
 
 using namespace std;
 
-class FlightMapV1
+class FlightMapV2
 {
 	public:
-		FlightMapV1(City* sentCityHead, int sentNumCities);
-		~FlightMapV1();
+		FlightMapV2(City* sentCityHead, int sentNumCities);
+		~FlightMapV2();
 
 		void MarkVisited (City* sentCity);
 		void UnvisitAll (); //Resets the visited state in all cities
@@ -32,7 +32,7 @@ class FlightMapV1
 };
 */
 
-FlightMapV1::FlightMapV1 (City* sentCityHead, int sentNumCities)
+FlightMapV2::FlightMapV2 (City* sentCityHead, int sentNumCities)
 {
 	cityHead = sentCityHead;
 
@@ -40,13 +40,13 @@ FlightMapV1::FlightMapV1 (City* sentCityHead, int sentNumCities)
 
 }
 
-FlightMapV1::~FlightMapV1 ()
+FlightMapV2::~FlightMapV2 ()
 {
 	cityHead = NULL;
 
 }
 
-void FlightMapV1::MarkVisited (City* sentCity)
+void FlightMapV2::MarkVisited (City* sentCity)
 {
 	(*sentCity).SetVisitedState(true);
 
@@ -54,7 +54,7 @@ void FlightMapV1::MarkVisited (City* sentCity)
 
 }
 
-void FlightMapV1::UnvisitAll ()
+void FlightMapV2::UnvisitAll ()
 {
 	City* cityTrav = cityHead;
 
@@ -72,19 +72,31 @@ void FlightMapV1::UnvisitAll ()
 
 }
 
-City* FlightMapV1::GetNextCity (City* fromCity)
+void FlightMapV2::UnvisitAll (vector<City *> *sentVector)
+{
+	for (unsigned int i = 0; i < (*sentVector).size(); i++)
+	{
+		(*((*sentVector).at(i))).SetVisitedState(false);
+
+	}
+
+	return;
+
+} 
+
+City* FlightMapV2::GetNextCity (City* fromCity)
 {
 	return (*fromCity).GetUnvisitedDestination(); //Will return NULL if there are no more unvisited cities!!!
 
 }
 
-bool FlightMapV1::IsPath (City* originCity, City* destinationCity)
+bool FlightMapV2::IsPath (City* originCity, City* destinationCity)
 {
 	Stack<string> cityStack; //Keeps track of the city names
 	Stack<City *> cityPTRStack; //Keeps track of the city objects, should be pushed/popped at the same time as cityStack
+	vector<City *> tryNextArray = (*originCity).GetDestinationPointers(); //Exclusive to v2, an array of pointers to try next
 
-	UnvisitAll();
-
+	
 	cityStack.push((*originCity).GetCityName());
 	cityPTRStack.push(originCity);
 
@@ -94,6 +106,7 @@ bool FlightMapV1::IsPath (City* originCity, City* destinationCity)
 
 	while (!cityStack.isEmpty() && topCity != destinationCity)
 	{
+
 		City* nextCity = GetNextCity(topCity);
 
 		if (nextCity == NULL)
@@ -117,7 +130,40 @@ bool FlightMapV1::IsPath (City* originCity, City* destinationCity)
 		}
 
 	}
+	
+/*
+	cityStack.push((*originCity).GetCityName());
+	cityPTRStack.push(originCity);
 
+	MarkVisited(originCity);
+
+	//City* onCity = originCity;
+	City* nextCity = tryNextArray[tryNextArray.size() - 1]; //Moves to the end of the array
+	vector<City *> thisCityDestinations;
+
+	while (!tryNextArray.empty() && onCity != destinationCity)
+	{
+		if ((*nextCity).GetDestinationCount() <= 0) //If the city in focus has no destinations it is a dead end
+		{
+			tryNextArray.pop_back();
+
+			nextCity = tryNextArray[tryNextArray.size() - 1];
+
+		} else if (thisCityDestinations.empty())
+		{
+			thisCityDestinations = (*nextCity).GetDestinationPointers();
+
+			continue;
+
+		}else
+		{
+			nextCity = thisCityDestinations[thisCityDestinations.size() - 1];
+
+		}
+		
+
+	}
+*/
 	//cityStack.printFlights();
 
 	bool finalBool = !cityPTRStack.isEmpty();
