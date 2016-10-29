@@ -9,7 +9,7 @@
 *
 *	@version 1.0
 *
-*	@note !!!!!!!!!!!!SEE LINE 140 TO SWITCH BETWEEN V1 AND V2!!!!!!!!!!!!!!
+*	@note !!!!!!!!!!!!SEE LINE 142/143 TO SWITCH BETWEEN V1 AND V2!!!!!!!!!!!!!!
 */
 
 #include <iostream>
@@ -218,7 +218,7 @@ int main ()
 
 		}
 
-		if (map.IsPath (&cities[fromCityIndex], &cities[toCityIndex]))
+		if (map.IsPath (&cities[fromCityIndex], &cities[toCityIndex], &logFile))
 		{
 			logFile << "A valid path was found." << endl;
 
@@ -289,6 +289,26 @@ int GetDataAmount (ifstream *sentFile)
 
 }
 
+/**
+*	@brief Finds the two city names within the sent string
+*
+*	@details Moves through the sent string, checking each character and storing it if it is part of the name
+*
+*	@par Algorithm Goes through the string, character by character, and stores each found char into the left city name, once it hits the comma it skips any white space and stores the next found characters in the right city name
+*
+*	@param[in] sentLine The string read in from a file with getline()
+*
+*	@param[in] leftCity Pointer to the string where the left city name is stored
+*
+*	@param[in] rightCity Pointer to the string where the right city name is stored
+*
+*	@param[out] None.
+*
+*	@return Returns None.
+*
+*	@note None.
+*
+*/
 void DecodeLine (string sentLine, string* leftCity, string* rightCity)
 {
 	char* leftCityChars = new char[15]; //Project spec says city names will be no more than 15 chars
@@ -386,6 +406,30 @@ void DecodeLine (string sentLine, string* leftCity, string* rightCity)
 
 }
 
+/**
+*	@brief Finds the two city names within the sent string, also decodes the flight number and cost
+*
+*	@details Moves through the sent string, checking each character and storing it if it is part of the name
+*
+*	@par Algorithm Goes through the string, character by character, and stores each found char into the left city name, once it hits the comma it skips any white space and stores the next found characters in the right city name. When it hits the first set of numbers it stores them in the flight number and the second into the cost
+*
+*	@param[in] sentLine The string read in from a file with getline()
+*
+*	@param[in] leftCity Pointer to the string where the left city name is stored
+*
+*	@param[in] rightCity Pointer to the string where the right city name is stored
+*
+*	@param[in] flightNum Pointer the the int where the flight number is stored
+*
+*	@param[in] cost Pointer to the int where the cost is stored
+*
+*	@param[out] None.
+*
+*	@return Returns None.
+*
+*	@note None.
+*
+*/
 void DecodeLine (string sentLine, string* leftCity, string* rightCity, int* flightNum, int* cost)
 {
 	char* leftCityChars = new char[15]; //Project spec says city names will be no more than 15 chars
@@ -558,6 +602,26 @@ void DecodeLine (string sentLine, string* leftCity, string* rightCity, int* flig
 
 }
 
+/**
+*	@brief Finds the index of the city with the given name in the city array
+*
+*	@details Uses the sent name to find a city with the same name in the city array
+*
+*	@par Algorithm None.
+*
+*	@param[in] name The string of the name to search for
+*
+*	@param[in] cityArray Pointer to the start of the city array
+*
+*	@param[in] cityCount An int used to make sure that the loop does not go out of bounds in the city array
+*
+*	@param[out] None.
+*
+*	@return Returns the index of the city, 999999 if the city does not exist.
+*
+*	@note While theoretically there is a possiblility for error with returning 999999, if there is an array of >999999 cities then there will likely be a memory capacity issue before this function causes an issue
+*
+*/
 int FindCityIndex (string name, City* cityArray, int cityCount)
 {
 	City* cityTrav = cityArray;
@@ -581,6 +645,26 @@ int FindCityIndex (string name, City* cityArray, int cityCount)
 
 }
 
+/**
+*	@brief Checks if the sent city is in the city array
+*
+*	@details Uses the sent name to find a city with the same name in the city array
+*
+*	@par Algorithm None.
+*
+*	@param[in] name The string of the name to search for
+*
+*	@param[in] cities Pointer to the start of the city array
+*
+*	@param[in] numCities An int used to make sure that the loop does not go out of bounds in the city array
+*
+*	@param[out] None.
+*
+*	@return Returns true if the city is in the array, false if it is not
+*
+*	@note None.
+*
+*/
 bool CheckIfValidCity (string name, City* cities, int numCities)
 {
 	bool isCity = false;

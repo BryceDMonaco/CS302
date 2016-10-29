@@ -1,0 +1,282 @@
+\hypertarget{class_stack}{}\subsection{Stack$<$ item\+Type $>$ Class Template Reference}
+\label{class_stack}\index{Stack$<$ item\+Type $>$@{Stack$<$ item\+Type $>$}}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Stack} (int size=10)\hypertarget{class_stack_a17f8469c3c765f436b4b6defa24a0364}{}\label{class_stack_a17f8469c3c765f436b4b6defa24a0364}
+
+\item 
+{\bfseries Stack} (const \hyperlink{class_stack}{Stack}$<$ item\+Type $>$ \&)\hypertarget{class_stack_acf76ef327f8d9ef2e9cda44b053b03e2}{}\label{class_stack_acf76ef327f8d9ef2e9cda44b053b03e2}
+
+\item 
+bool \hyperlink{class_stack_a4818af0b239152e47fc58affd835af07}{push} (item\+Type)
+\begin{DoxyCompactList}\small\item\em This function pushes a value onto the stack if there is room. \end{DoxyCompactList}\item 
+item\+Type \hyperlink{class_stack_a338004c15b0e8a946503edf7de7b1f6c}{pop} ()
+\begin{DoxyCompactList}\small\item\em This function is used to remove the value at the top of the stack. \end{DoxyCompactList}\item 
+bool \hyperlink{class_stack_a6fe8b8562bd7a9b944645f18b3756a83}{is\+Empty} () const 
+\begin{DoxyCompactList}\small\item\em This function checks if the stack has any values stored. \end{DoxyCompactList}\item 
+bool \hyperlink{class_stack_a481f030244ba8c14d0560efd9d5b9a9c}{is\+Full} () const 
+\begin{DoxyCompactList}\small\item\em This function checks if the stack is full. \end{DoxyCompactList}\item 
+bool \hyperlink{class_stack_a5d88a4afe5eafd2eb64af4ae11c0a3d4}{clear} ()
+\begin{DoxyCompactList}\small\item\em This function deletes the data stored in the stack. \end{DoxyCompactList}\item 
+item\+Type \hyperlink{class_stack_a3832797c0ce020f1564dd28b4a4ab43e}{peek} ()
+\begin{DoxyCompactList}\small\item\em This function returns the value at the top of the stack. \end{DoxyCompactList}\item 
+void \hyperlink{class_stack_accff4918f3c313e2b5217fbb54602f6c}{print} ()
+\begin{DoxyCompactList}\small\item\em This function prints all values stored in the stack. \end{DoxyCompactList}\item 
+void \hyperlink{class_stack_ab3e450bb26a2ddc4158f21d2ae57267f}{print\+Flights} ()
+\begin{DoxyCompactList}\small\item\em This function prints all values stored in the stack in a flight route format. \end{DoxyCompactList}\item 
+void {\bfseries print\+Flights\+To\+Log} (ofstream $\ast$log\+File)\hypertarget{class_stack_af330d4a34d33b93fc2413c0736fa52b1}{}\label{class_stack_af330d4a34d33b93fc2413c0736fa52b1}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries max}\hypertarget{class_stack_a6185453ccd1411ad8ea53d9295f19efd}{}\label{class_stack_a6185453ccd1411ad8ea53d9295f19efd}
+
+\item 
+int {\bfseries top}\hypertarget{class_stack_a16dd36c7c6befd29e68427917c887b95}{}\label{class_stack_a16dd36c7c6befd29e68427917c887b95}
+
+\item 
+item\+Type $\ast$ {\bfseries data}\hypertarget{class_stack_a0989aa0f2ff46659b6f7736b1b1ba344}{}\label{class_stack_a0989aa0f2ff46659b6f7736b1b1ba344}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Member Function Documentation}
+\index{Stack@{Stack}!clear@{clear}}
+\index{clear@{clear}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{clear()}{clear()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ bool {\bf Stack}$<$ item\+Type $>$\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_stack_a5d88a4afe5eafd2eb64af4ae11c0a3d4}{}\label{class_stack_a5d88a4afe5eafd2eb64af4ae11c0a3d4}
+
+
+This function deletes the data stored in the stack. 
+
+This function deletes the data stored in the stack, and allocates a new set of memory to make a clean stack
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Should always return true.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Originally the function should return false if the stack is already empty, this behaviour was removed and it just wipes the stack no matter what 
+\end{DoxyNote}
+\index{Stack@{Stack}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{is\+Empty() const }{isEmpty() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ bool {\bf Stack}$<$ item\+Type $>$\+::is\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_stack_a6fe8b8562bd7a9b944645f18b3756a83}{}\label{class_stack_a6fe8b8562bd7a9b944645f18b3756a83}
+
+
+This function checks if the stack has any values stored. 
+
+This function checks the value of top, which should be $>$=0 if there is any data inside.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the stack is empty, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Stack@{Stack}!is\+Full@{is\+Full}}
+\index{is\+Full@{is\+Full}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{is\+Full() const }{isFull() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ bool {\bf Stack}$<$ item\+Type $>$\+::is\+Full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_stack_a481f030244ba8c14d0560efd9d5b9a9c}{}\label{class_stack_a481f030244ba8c14d0560efd9d5b9a9c}
+
+
+This function checks if the stack is full. 
+
+This function checks the value of top, which should be equal to max -\/ 1 if it is full
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the stack is full, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Stack@{Stack}!peek@{peek}}
+\index{peek@{peek}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{peek()}{peek()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ item\+Type {\bf Stack}$<$ item\+Type $>$\+::peek (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_stack_a3832797c0ce020f1564dd28b4a4ab43e}{}\label{class_stack_a3832797c0ce020f1564dd28b4a4ab43e}
+
+
+This function returns the value at the top of the stack. 
+
+This function goes to the top of the stack and returns the value
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value at top if there is one
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Stack@{Stack}!pop@{pop}}
+\index{pop@{pop}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{pop()}{pop()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ item\+Type {\bf Stack}$<$ item\+Type $>$\+::pop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_stack_a338004c15b0e8a946503edf7de7b1f6c}{}\label{class_stack_a338004c15b0e8a946503edf7de7b1f6c}
+
+
+This function is used to remove the value at the top of the stack. 
+
+This function removes the value from the top of the stack (if there is one) and returns it.
+
+\begin{DoxyParagraph}{Algorithm Moves the pointer data\+Trav to the top of the stack, removes it, and returns it.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value that was at the top of the stack. N\+U\+LL if the stack is empty.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Stack@{Stack}!print@{print}}
+\index{print@{print}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{print()}{print()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ void {\bf Stack}$<$ item\+Type $>$\+::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_stack_accff4918f3c313e2b5217fbb54602f6c}{}\label{class_stack_accff4918f3c313e2b5217fbb54602f6c}
+
+
+This function prints all values stored in the stack. 
+
+This function runs through the stack and prints all values inside. Top is marked.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em Outputs} & the contents of the stack to the console\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Stack@{Stack}!print\+Flights@{print\+Flights}}
+\index{print\+Flights@{print\+Flights}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{print\+Flights()}{printFlights()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ void {\bf Stack}$<$ item\+Type $>$\+::print\+Flights (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_stack_ab3e450bb26a2ddc4158f21d2ae57267f}{}\label{class_stack_ab3e450bb26a2ddc4158f21d2ae57267f}
+
+
+This function prints all values stored in the stack in a flight route format. 
+
+This function runs through the stack and prints all values inside, formatted as a route.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em Outputs} & the contents of the stack to the console\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Stack@{Stack}!push@{push}}
+\index{push@{push}!Stack@{Stack}}
+\paragraph[{\texorpdfstring{push(item\+Type)}{push(itemType)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class item\+Type $>$ bool {\bf Stack}$<$ item\+Type $>$\+::push (
+\begin{DoxyParamCaption}
+\item[{item\+Type}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{class_stack_a4818af0b239152e47fc58affd835af07}{}\label{class_stack_a4818af0b239152e47fc58affd835af07}
+
+
+This function pushes a value onto the stack if there is room. 
+
+This function pushes a value on the stack if there is room for the value
+
+\begin{DoxyParagraph}{Algorithm If there is room, the traverser pointer is moved to the top of the stack and the value is inserted}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & The value to be inserted, must be the same type as the stack (i.\+e. a string can\textquotesingle{}t be pushed into an int stack)\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if a value was able to be pushed, returns false if the stack was full
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+P\+A03/\hyperlink{_stack_8cpp}{Stack.\+cpp}\end{DoxyCompactItemize}

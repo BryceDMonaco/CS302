@@ -1,0 +1,230 @@
+\hypertarget{_p_a03_8cpp}{}\subsection{P\+A03/\+P\+A03.cpp File Reference}
+\label{_p_a03_8cpp}\index{P\+A03/\+P\+A03.\+cpp@{P\+A03/\+P\+A03.\+cpp}}
+
+
+This is P\+A03\textquotesingle{}s main driver file.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}Flight\+Map\+V1.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Flight\+Map\+V2.\+h\char`\"{}}\\*
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_p_a03_8cpp_a9b7127964a680b64ad03a08c5c399691}{Get\+Data\+Amount} (ifstream $\ast$sent\+File)
+\begin{DoxyCompactList}\small\item\em This function is used to scan through the data file to see the amount of values within the file. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a03_8cpp_a394dca9849f471f79376e53aeb6af3fa}{Decode\+Line} (string sent\+Line, string $\ast$left\+City, string $\ast$right\+City)
+\begin{DoxyCompactList}\small\item\em Finds the two city names within the sent string. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a03_8cpp_a78dbec7d6a4cbf3b06ed3992b77f5338}{Decode\+Line} (string sent\+Line, string $\ast$left\+City, string $\ast$right\+City, int $\ast$flight\+Num, int $\ast$cost)
+\begin{DoxyCompactList}\small\item\em Finds the two city names within the sent string, also decodes the flight number and cost. \end{DoxyCompactList}\item 
+int \hyperlink{_p_a03_8cpp_a7f7a4dd8a5097daa77ab791580e8bec0}{Find\+City\+Index} (string name, \hyperlink{class_city}{City} $\ast$city\+Array, int city\+Count)
+\begin{DoxyCompactList}\small\item\em Finds the index of the city with the given name in the city array. \end{DoxyCompactList}\item 
+bool \hyperlink{_p_a03_8cpp_ac3716bf8cc571a98a8a315a46f1abd9c}{Check\+If\+Valid\+City} (string name, \hyperlink{class_city}{City} $\ast$cities, int num\+Cities)
+\begin{DoxyCompactList}\small\item\em Checks if the sent city is in the city array. \end{DoxyCompactList}\item 
+int {\bfseries main} ()\hypertarget{_p_a03_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{_p_a03_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+\end{DoxyCompactItemize}
+\subsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+ofstream {\bfseries log\+File}\hypertarget{_p_a03_8cpp_af6fd65a690619ab800f6ddc3ff64eebb}{}\label{_p_a03_8cpp_af6fd65a690619ab800f6ddc3ff64eebb}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+This is P\+A03\textquotesingle{}s main driver file. 
+
+\begin{DoxyAuthor}{Author}
+Bryce Monaco
+\end{DoxyAuthor}
+This is the main driver file for the project, it hands input mostly.
+
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+!!!!!!!!!!!!\+S\+EE L\+I\+NE 142/143 TO S\+W\+I\+T\+CH B\+E\+T\+W\+E\+EN V1 A\+ND V2!!!!!!!!!!!!!! 
+\end{DoxyNote}
+
+
+\subsubsection{Function Documentation}
+\index{P\+A03.\+cpp@{P\+A03.\+cpp}!Check\+If\+Valid\+City@{Check\+If\+Valid\+City}}
+\index{Check\+If\+Valid\+City@{Check\+If\+Valid\+City}!P\+A03.\+cpp@{P\+A03.\+cpp}}
+\paragraph[{\texorpdfstring{Check\+If\+Valid\+City(string name, City $\ast$cities, int num\+Cities)}{CheckIfValidCity(string name, City *cities, int numCities)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+If\+Valid\+City (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{{\bf City} $\ast$}]{cities, }
+\item[{int}]{num\+Cities}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a03_8cpp_ac3716bf8cc571a98a8a315a46f1abd9c}{}\label{_p_a03_8cpp_ac3716bf8cc571a98a8a315a46f1abd9c}
+
+
+Checks if the sent city is in the city array. 
+
+Uses the sent name to find a city with the same name in the city array
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The string of the name to search for\\
+\hline
+\mbox{\tt in}  & {\em cities} & Pointer to the start of the city array\\
+\hline
+\mbox{\tt in}  & {\em num\+Cities} & An int used to make sure that the loop does not go out of bounds in the city array\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the city is in the array, false if it is not
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A03.\+cpp@{P\+A03.\+cpp}!Decode\+Line@{Decode\+Line}}
+\index{Decode\+Line@{Decode\+Line}!P\+A03.\+cpp@{P\+A03.\+cpp}}
+\paragraph[{\texorpdfstring{Decode\+Line(string sent\+Line, string $\ast$left\+City, string $\ast$right\+City)}{DecodeLine(string sentLine, string *leftCity, string *rightCity)}}]{\setlength{\rightskip}{0pt plus 5cm}void Decode\+Line (
+\begin{DoxyParamCaption}
+\item[{string}]{sent\+Line, }
+\item[{string $\ast$}]{left\+City, }
+\item[{string $\ast$}]{right\+City}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a03_8cpp_a394dca9849f471f79376e53aeb6af3fa}{}\label{_p_a03_8cpp_a394dca9849f471f79376e53aeb6af3fa}
+
+
+Finds the two city names within the sent string. 
+
+Moves through the sent string, checking each character and storing it if it is part of the name
+
+\begin{DoxyParagraph}{Algorithm Goes through the string, character by character, and stores each found char into the left city name, once it hits the comma it skips any white space and stores the next found characters in the right city name}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Line} & The string read in from a file with getline()\\
+\hline
+\mbox{\tt in}  & {\em left\+City} & Pointer to the string where the left city name is stored\\
+\hline
+\mbox{\tt in}  & {\em right\+City} & Pointer to the string where the right city name is stored\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A03.\+cpp@{P\+A03.\+cpp}!Decode\+Line@{Decode\+Line}}
+\index{Decode\+Line@{Decode\+Line}!P\+A03.\+cpp@{P\+A03.\+cpp}}
+\paragraph[{\texorpdfstring{Decode\+Line(string sent\+Line, string $\ast$left\+City, string $\ast$right\+City, int $\ast$flight\+Num, int $\ast$cost)}{DecodeLine(string sentLine, string *leftCity, string *rightCity, int *flightNum, int *cost)}}]{\setlength{\rightskip}{0pt plus 5cm}void Decode\+Line (
+\begin{DoxyParamCaption}
+\item[{string}]{sent\+Line, }
+\item[{string $\ast$}]{left\+City, }
+\item[{string $\ast$}]{right\+City, }
+\item[{int $\ast$}]{flight\+Num, }
+\item[{int $\ast$}]{cost}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a03_8cpp_a78dbec7d6a4cbf3b06ed3992b77f5338}{}\label{_p_a03_8cpp_a78dbec7d6a4cbf3b06ed3992b77f5338}
+
+
+Finds the two city names within the sent string, also decodes the flight number and cost. 
+
+Moves through the sent string, checking each character and storing it if it is part of the name
+
+\begin{DoxyParagraph}{Algorithm Goes through the string, character by character, and stores each found char into the left city name, once it hits the comma it skips any white space and stores the next found characters in the right city name. When it hits the first set of numbers it stores them in the flight number and the second into the cost}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Line} & The string read in from a file with getline()\\
+\hline
+\mbox{\tt in}  & {\em left\+City} & Pointer to the string where the left city name is stored\\
+\hline
+\mbox{\tt in}  & {\em right\+City} & Pointer to the string where the right city name is stored\\
+\hline
+\mbox{\tt in}  & {\em flight\+Num} & Pointer the the int where the flight number is stored\\
+\hline
+\mbox{\tt in}  & {\em cost} & Pointer to the int where the cost is stored\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A03.\+cpp@{P\+A03.\+cpp}!Find\+City\+Index@{Find\+City\+Index}}
+\index{Find\+City\+Index@{Find\+City\+Index}!P\+A03.\+cpp@{P\+A03.\+cpp}}
+\paragraph[{\texorpdfstring{Find\+City\+Index(string name, City $\ast$city\+Array, int city\+Count)}{FindCityIndex(string name, City *cityArray, int cityCount)}}]{\setlength{\rightskip}{0pt plus 5cm}int Find\+City\+Index (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{{\bf City} $\ast$}]{city\+Array, }
+\item[{int}]{city\+Count}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a03_8cpp_a7f7a4dd8a5097daa77ab791580e8bec0}{}\label{_p_a03_8cpp_a7f7a4dd8a5097daa77ab791580e8bec0}
+
+
+Finds the index of the city with the given name in the city array. 
+
+Uses the sent name to find a city with the same name in the city array
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The string of the name to search for\\
+\hline
+\mbox{\tt in}  & {\em city\+Array} & Pointer to the start of the city array\\
+\hline
+\mbox{\tt in}  & {\em city\+Count} & An int used to make sure that the loop does not go out of bounds in the city array\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the index of the city, 999999 if the city does not exist.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+While theoretically there is a possiblility for error with returning 999999, if there is an array of $>$999999 cities then there will likely be a memory capacity issue before this function causes an issue 
+\end{DoxyNote}
+\index{P\+A03.\+cpp@{P\+A03.\+cpp}!Get\+Data\+Amount@{Get\+Data\+Amount}}
+\index{Get\+Data\+Amount@{Get\+Data\+Amount}!P\+A03.\+cpp@{P\+A03.\+cpp}}
+\paragraph[{\texorpdfstring{Get\+Data\+Amount(ifstream $\ast$sent\+File)}{GetDataAmount(ifstream *sentFile)}}]{\setlength{\rightskip}{0pt plus 5cm}int Get\+Data\+Amount (
+\begin{DoxyParamCaption}
+\item[{ifstream $\ast$}]{sent\+File}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a03_8cpp_a9b7127964a680b64ad03a08c5c399691}{}\label{_p_a03_8cpp_a9b7127964a680b64ad03a08c5c399691}
+
+
+This function is used to scan through the data file to see the amount of values within the file. 
+
+The function continuously reads through the data file to count the number of values within it. The number found is used to dynamically size the values array in main().
+
+\begin{DoxyParagraph}{Algorithm Continuously reads through the file checking if it has reached the end of the file. It increments an integer to keep count of the values and returns it at the end of the file.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+File} & The data file opened in main(), contains the data to be read in.\\
+\hline
+\mbox{\tt out}  & {\em count} & The number of values within the data file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the amount of valid values within the data file. Plus one because eof isn\textquotesingle{}t marked until after with getline
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}

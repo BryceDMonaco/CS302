@@ -1,0 +1,250 @@
+\hypertarget{class_flight_map_v2}{}\subsection{Flight\+Map\+V2 Class Reference}
+\label{class_flight_map_v2}\index{Flight\+Map\+V2@{Flight\+Map\+V2}}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_flight_map_v2_a25bea526c9472d199dd6299cde269155}{Flight\+Map\+V2} (\hyperlink{class_city}{City} $\ast$sent\+City\+Head, int sent\+Num\+Cities)
+\begin{DoxyCompactList}\small\item\em The parameter constructor for a \hyperlink{class_flight_map_v2}{Flight\+Map\+V2} object. \end{DoxyCompactList}\item 
+\hyperlink{class_flight_map_v2_acb9257412ce95c9c3e00e3403d2e23ef}{$\sim$\+Flight\+Map\+V2} ()
+\begin{DoxyCompactList}\small\item\em The destructor for a \hyperlink{class_flight_map_v2}{Flight\+Map\+V2} object. \end{DoxyCompactList}\item 
+void \hyperlink{class_flight_map_v2_aeee84b9d5e6350666dc11a07416cb7a7}{Mark\+Visited} (\hyperlink{class_city}{City} $\ast$sent\+City)
+\begin{DoxyCompactList}\small\item\em Marks the sent city as visited. \end{DoxyCompactList}\item 
+void \hyperlink{class_flight_map_v2_a9107cff9dcddfdd77b199c4bbdc719d1}{Unvisit\+All} ()
+\begin{DoxyCompactList}\small\item\em Marks all cities as unvisited. \end{DoxyCompactList}\item 
+void \hyperlink{class_flight_map_v2_ae863916273ba94e35d935347eebc3cbe}{Unvisit\+All} (vector$<$ \hyperlink{class_city}{City} $\ast$ $>$ $\ast$sent\+Vector)
+\begin{DoxyCompactList}\small\item\em Marks all cities as unvisited inside of a vector of cities. \end{DoxyCompactList}\item 
+\hyperlink{class_city}{City} $\ast$ \hyperlink{class_flight_map_v2_a8cfb4e2cb26da804effd2609f968e074}{Get\+Next\+City} (\hyperlink{class_city}{City} $\ast$from\+City)
+\begin{DoxyCompactList}\small\item\em Gets the next unvisited city. \end{DoxyCompactList}\item 
+bool \hyperlink{class_flight_map_v2_ac16a88d6a40a58164abb8e8a6eb39f02}{Is\+Path} (\hyperlink{class_city}{City} $\ast$origin\+City, \hyperlink{class_city}{City} $\ast$destination\+City, ofstream $\ast$log\+File)
+\begin{DoxyCompactList}\small\item\em Checks if there is a valid flight path between the two cities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_city}{City} $\ast$ {\bfseries city\+Head}\hypertarget{class_flight_map_v2_afe1d516b4dbd44081cef97d422bd7325}{}\label{class_flight_map_v2_afe1d516b4dbd44081cef97d422bd7325}
+
+\item 
+int {\bfseries num\+Cities}\hypertarget{class_flight_map_v2_ae3057241951c8d9086c53da33237b522}{}\label{class_flight_map_v2_ae3057241951c8d9086c53da33237b522}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\paragraph[{\texorpdfstring{Flight\+Map\+V2(\+City $\ast$sent\+City\+Head, int sent\+Num\+Cities)}{FlightMapV2(City *sentCityHead, int sentNumCities)}}]{\setlength{\rightskip}{0pt plus 5cm}Flight\+Map\+V2\+::\+Flight\+Map\+V2 (
+\begin{DoxyParamCaption}
+\item[{{\bf City} $\ast$}]{sent\+City\+Head, }
+\item[{int}]{sent\+Num\+Cities}
+\end{DoxyParamCaption}
+)}\hypertarget{class_flight_map_v2_a25bea526c9472d199dd6299cde269155}{}\label{class_flight_map_v2_a25bea526c9472d199dd6299cde269155}
+
+
+The parameter constructor for a \hyperlink{class_flight_map_v2}{Flight\+Map\+V2} object. 
+
+The parameter constructor for a \hyperlink{class_flight_map_v2}{Flight\+Map\+V2} object
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+City\+Head} & Pointer to the start of the city array\\
+\hline
+\mbox{\tt in}  & {\em sent\+Num\+Cities} & the number of cities in the city array\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!````~Flight\+Map\+V2@{$\sim$\+Flight\+Map\+V2}}
+\index{````~Flight\+Map\+V2@{$\sim$\+Flight\+Map\+V2}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\paragraph[{\texorpdfstring{$\sim$\+Flight\+Map\+V2()}{~FlightMapV2()}}]{\setlength{\rightskip}{0pt plus 5cm}Flight\+Map\+V2\+::$\sim$\+Flight\+Map\+V2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_flight_map_v2_acb9257412ce95c9c3e00e3403d2e23ef}{}\label{class_flight_map_v2_acb9257412ce95c9c3e00e3403d2e23ef}
+
+
+The destructor for a \hyperlink{class_flight_map_v2}{Flight\+Map\+V2} object. 
+
+The destructor for a \hyperlink{class_flight_map_v2}{Flight\+Map\+V2} object
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+\subsubsection{Member Function Documentation}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!Get\+Next\+City@{Get\+Next\+City}}
+\index{Get\+Next\+City@{Get\+Next\+City}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\paragraph[{\texorpdfstring{Get\+Next\+City(\+City $\ast$from\+City)}{GetNextCity(City *fromCity)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf City} $\ast$ Flight\+Map\+V2\+::\+Get\+Next\+City (
+\begin{DoxyParamCaption}
+\item[{{\bf City} $\ast$}]{from\+City}
+\end{DoxyParamCaption}
+)}\hypertarget{class_flight_map_v2_a8cfb4e2cb26da804effd2609f968e074}{}\label{class_flight_map_v2_a8cfb4e2cb26da804effd2609f968e074}
+
+
+Gets the next unvisited city. 
+
+Gets the first unvisited city from the sent city\textquotesingle{}s destinations
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em from\+City} & Pointer to the city which will have its destinations checked\\
+\hline
+\mbox{\tt out}  & {\em A} & pointer to a city.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to the first unvisited city found, N\+U\+LL if none found.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!Is\+Path@{Is\+Path}}
+\index{Is\+Path@{Is\+Path}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\paragraph[{\texorpdfstring{Is\+Path(\+City $\ast$origin\+City, City $\ast$destination\+City, ofstream $\ast$log\+File)}{IsPath(City *originCity, City *destinationCity, ofstream *logFile)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Flight\+Map\+V2\+::\+Is\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf City} $\ast$}]{origin\+City, }
+\item[{{\bf City} $\ast$}]{destination\+City, }
+\item[{ofstream $\ast$}]{log\+File}
+\end{DoxyParamCaption}
+)}\hypertarget{class_flight_map_v2_ac16a88d6a40a58164abb8e8a6eb39f02}{}\label{class_flight_map_v2_ac16a88d6a40a58164abb8e8a6eb39f02}
+
+
+Checks if there is a valid flight path between the two cities. 
+
+Moves through the cities searching for a path from origin\+City to destination\+City
+
+\begin{DoxyParagraph}{Algorithm Moves through destinations until it finds a valid path to the destination or it is out of possible routes. Marks cities as visited to avoid re-\/visiting them.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em origin\+City} & Pointer to the city which the search starts from\\
+\hline
+\mbox{\tt in}  & {\em destination\+City} & Pointer to the destination city\\
+\hline
+\mbox{\tt out}  & {\em A} & bool whether or not a path exists\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if there is a valid path, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!Mark\+Visited@{Mark\+Visited}}
+\index{Mark\+Visited@{Mark\+Visited}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\paragraph[{\texorpdfstring{Mark\+Visited(\+City $\ast$sent\+City)}{MarkVisited(City *sentCity)}}]{\setlength{\rightskip}{0pt plus 5cm}void Flight\+Map\+V2\+::\+Mark\+Visited (
+\begin{DoxyParamCaption}
+\item[{{\bf City} $\ast$}]{sent\+City}
+\end{DoxyParamCaption}
+)}\hypertarget{class_flight_map_v2_aeee84b9d5e6350666dc11a07416cb7a7}{}\label{class_flight_map_v2_aeee84b9d5e6350666dc11a07416cb7a7}
+
+
+Marks the sent city as visited. 
+
+Calls the sent city object\textquotesingle{}s Set\+Visited\+State function with the argument true
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+City} & Pointer to the city to mark as visited\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!Unvisit\+All@{Unvisit\+All}}
+\index{Unvisit\+All@{Unvisit\+All}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\paragraph[{\texorpdfstring{Unvisit\+All()}{UnvisitAll()}}]{\setlength{\rightskip}{0pt plus 5cm}void Flight\+Map\+V2\+::\+Unvisit\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_flight_map_v2_a9107cff9dcddfdd77b199c4bbdc719d1}{}\label{class_flight_map_v2_a9107cff9dcddfdd77b199c4bbdc719d1}
+
+
+Marks all cities as unvisited. 
+
+Starts at the beginning of the city array and mark each city as unvisited
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em All} & cities are now reset to be unvisited.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Flight\+Map\+V2@{Flight\+Map\+V2}!Unvisit\+All@{Unvisit\+All}}
+\index{Unvisit\+All@{Unvisit\+All}!Flight\+Map\+V2@{Flight\+Map\+V2}}
+\paragraph[{\texorpdfstring{Unvisit\+All(vector$<$ City $\ast$ $>$ $\ast$sent\+Vector)}{UnvisitAll(vector< City * > *sentVector)}}]{\setlength{\rightskip}{0pt plus 5cm}void Flight\+Map\+V2\+::\+Unvisit\+All (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf City} $\ast$ $>$ $\ast$}]{sent\+Vector}
+\end{DoxyParamCaption}
+)}\hypertarget{class_flight_map_v2_ae863916273ba94e35d935347eebc3cbe}{}\label{class_flight_map_v2_ae863916273ba94e35d935347eebc3cbe}
+
+
+Marks all cities as unvisited inside of a vector of cities. 
+
+Starts at the beginning of the city vector and mark each city as unvisited
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em All} & cities in the vector are now reset to be unvisited.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+P\+A03/\hyperlink{_flight_map_v2_8h}{Flight\+Map\+V2.\+h}\item 
+P\+A03/\hyperlink{_flight_map_v2_8cpp}{Flight\+Map\+V2.\+cpp}\end{DoxyCompactItemize}

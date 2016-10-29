@@ -16,6 +16,7 @@
 #define STACK_CLASS
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -36,6 +37,7 @@ class Stack
 
 		void print();
 		void printFlights();
+		void printFlightsToLog (ofstream* logFile);
 
 	private:
 		int max; //The max amount of values in the stack
@@ -100,7 +102,7 @@ Stack<itemType>::~Stack()
 *	@brief This function pushes a value onto the stack if there is room
 *
 *	@details This function pushes a value on the stack if there is room for the value
-
+*
 *	@par Algorithm If there is room, the traverser pointer is moved to the top of the stack and the value is inserted
 *
 *	@param[in] value The value to be inserted, must be the same type as the stack (i.e. a string can't be pushed into an int stack)
@@ -418,6 +420,47 @@ void Stack<itemType>::printFlights ()
 
 	cout << "Number of stops: " << top + 1 << endl;
 
+
+	return;
+
+}
+
+template<class itemType>
+void Stack<itemType>::printFlightsToLog (ofstream* logFile)
+{
+	(*logFile) << "Contents of stack after isPath: " << endl;
+	(*logFile) << "Route: ";
+
+	if (top != -1)
+	{
+		itemType* dataTrav = data;
+
+		for (int i = 0; i < top + 1; i++)
+		{
+			if (i == top)
+			{
+				//cout << *dataTrav << " (TOP)";
+				(*logFile) << *dataTrav;
+
+			} else
+			{
+				(*logFile) << *dataTrav << " -> ";
+
+			}
+
+			dataTrav++;
+
+		}
+
+		dataTrav = NULL;
+
+	} else
+	{
+		(*logFile) << "ERROR: NONE";
+
+	}
+
+	(*logFile) << "Number of stops: " << top + 1 << endl;
 
 	return;
 

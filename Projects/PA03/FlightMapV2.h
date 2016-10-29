@@ -28,7 +28,7 @@ class FlightMapV2
 		void UnvisitAll (); //Resets the visited state in all cities
 		void UnvisitAll (vector<City *> *sentVector);
 		City* GetNextCity (City* fromCity); //Returns a pointer to the next unvisited city
-		bool IsPath (City* originCity, City* destinationCity); //Checks for a sequence of flights between the cities 
+		bool IsPath (City* originCity, City* destinationCity, ofstream* logFile); //Checks for a sequence of flights between the cities 
 
 	private:
 		City* cityHead;

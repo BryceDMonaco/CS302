@@ -94,34 +94,42 @@ Opened Request File...
 Decoding "Los Angeles, Houston"
 Decoded from: Los Angeles Decoded to: Houston
 Request is Los Angeles(19) to Houston(16)
+Route: Los Angeles -> Miami -> Atlanta -> Chicago -> HoustonNumber of stops: 5
 A valid path was found.
 Decoding "Glendale, Houston"
 Decoded from: Glendale Decoded to: Houston
 Request is Glendale(14) to Houston(16)
+Route: ERROR: NONENumber of stops: 0
 A valid path could not be found.
 Decoding "Dallas, Austin"
 Decoded from: Dallas Decoded to: Austin
 Request is Dallas(9) to Austin(1)
+Route: ERROR: NONENumber of stops: 0
 A valid path could not be found.
 Decoding "Cleveland, Chicago"
 Decoded from: Cleveland Decoded to: Chicago
 Request is Cleveland(7) to Chicago(5)
+Route: Cleveland -> Houston -> ChicagoNumber of stops: 3
 A valid path was found.
 Decoding "Indianapolis, San Francisco"
 Decoded from: Indianapolis Decoded to: San Francisco
 Request is Indianapolis(17) to San Francisco(25)
+Route: Indianapolis -> Los Angeles -> San FranciscoNumber of stops: 3
 A valid path was found.
 Decoding "San Francisco, Washington"
 Decoded from: San Francisco Decoded to: Washington
 Request is San Francisco(25) to Washington(27)
+Route: San Francisco -> Los Angeles -> WashingtonNumber of stops: 3
 A valid path was found.
 Decoding "Boston, Columbia"
 Decoded from: Boston Decoded to: Columbia
 Request is Boston(3) to Columbia(8)
+Route: Boston -> Chicago -> Houston -> ColumbiaNumber of stops: 4
 A valid path was found.
 Decoding "Miami, Denver"
 Decoded from: Miami Decoded to: Denver
 Request is Miami(20) to Denver(11)
+Route: Miami -> Atlanta -> Chicago -> Houston -> DenverNumber of stops: 5
 A valid path was found.
 Decoding "Reno, Seattle"
 Decoded from: Reno Decoded to: Seattle
