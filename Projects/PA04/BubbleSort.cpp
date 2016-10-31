@@ -61,7 +61,7 @@ int* BubbleSort::DoSort ()
 
 	}
 
-	PrintFinal(countSwaps, countComparisons);
+	//PrintFinal(countSwaps, countComparisons);
 
 	return data;
 
