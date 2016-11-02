@@ -1,3 +1,17 @@
+/**
+*	@file MergeSort.h
+*
+*	@brief This is the header of the MergeSort class
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header of the MergeSort class
+*
+*	@version 1.0
+*
+*	@note None.
+*/
+
 #include <iostream>
 #include <ctime>
 
@@ -17,6 +31,9 @@ class MergeSort
 		void PrintFinal ();
 
 		void ResetCounts ();
+
+		int GetSwaps ();
+		int GetComps ();
 
 
 	private:

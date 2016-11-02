@@ -1,3 +1,17 @@
+/**
+*	@file CountingSort.h
+*
+*	@brief This is the header of the CountingSort class
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header of the CountingSort class
+*
+*	@version 1.0
+*
+*	@note None.
+*/
+
 #include <iostream>
 #include <ctime>
 
@@ -14,10 +28,16 @@ class CountingSort
 		int* DoSort (int* data, int size, int max); 
 		void PrintFinal (int swapCount, int compCount);
 
+		int GetSwaps ();
+		int GetComps ();
+
 
 	private:
 		int size;
 		int* data;
 		int max;
+
+		int lastSwap;
+		int lastComp;
 
 };

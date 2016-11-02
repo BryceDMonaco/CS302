@@ -1,0 +1,294 @@
+\hypertarget{class_counting_sort}{}\subsection{Counting\+Sort Class Reference}
+\label{class_counting_sort}\index{Counting\+Sort@{Counting\+Sort}}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_counting_sort_a535a1330331220653a34030805e67e30}{Counting\+Sort} ()
+\begin{DoxyCompactList}\small\item\em The default constructor of a \hyperlink{class_counting_sort}{Counting\+Sort} object. \end{DoxyCompactList}\item 
+\hyperlink{class_counting_sort_a1d66fa72e392e47b4262086d8a8d15a4}{Counting\+Sort} (int $\ast$data, int size, int max)
+\begin{DoxyCompactList}\small\item\em The parameterized constructor of a \hyperlink{class_counting_sort}{Counting\+Sort} object. \end{DoxyCompactList}\item 
+\hyperlink{class_counting_sort_a941a0d58043a739dda7d1c2959e6f954}{$\sim$\+Counting\+Sort} ()
+\begin{DoxyCompactList}\small\item\em The destructor of a \hyperlink{class_counting_sort}{Counting\+Sort} object. \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{class_counting_sort_a2d7bdd32c10208eb342238ca90506eff}{Do\+Sort} ()
+\begin{DoxyCompactList}\small\item\em This function runs the sorting algorithm. \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{class_counting_sort_a02f4cf3f6d7063f187354212b06bea0e}{Do\+Sort} (int $\ast$data, int size, int max)
+\begin{DoxyCompactList}\small\item\em This function runs the sorting algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{class_counting_sort_af18bc4bb51834bdb972b7a6f5cd71325}{Print\+Final} (int swap\+Count, int comp\+Count)
+\begin{DoxyCompactList}\small\item\em Outputs what happened in the sort. \end{DoxyCompactList}\item 
+int \hyperlink{class_counting_sort_adcce24a59aa35e8c05f56cf529963e11}{Get\+Swaps} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of swaps. \end{DoxyCompactList}\item 
+int \hyperlink{class_counting_sort_aaec9b4404803b770fdf2b02235dfa22e}{Get\+Comps} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of comparisons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries size}\hypertarget{class_counting_sort_a943cf202f3731d81c97035a4ab989820}{}\label{class_counting_sort_a943cf202f3731d81c97035a4ab989820}
+
+\item 
+int $\ast$ {\bfseries data}\hypertarget{class_counting_sort_a7ed190ada052d8133142d5735c2f0ec4}{}\label{class_counting_sort_a7ed190ada052d8133142d5735c2f0ec4}
+
+\item 
+int {\bfseries max}\hypertarget{class_counting_sort_a3bb9f07597f2d6dad14557d61160221a}{}\label{class_counting_sort_a3bb9f07597f2d6dad14557d61160221a}
+
+\item 
+int {\bfseries last\+Swap}\hypertarget{class_counting_sort_af372a8521db8f01a73f693b4bb387af7}{}\label{class_counting_sort_af372a8521db8f01a73f693b4bb387af7}
+
+\item 
+int {\bfseries last\+Comp}\hypertarget{class_counting_sort_aae122091fbf6b4f8b42610cdb883f3aa}{}\label{class_counting_sort_aae122091fbf6b4f8b42610cdb883f3aa}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\index{Counting\+Sort@{Counting\+Sort}!Counting\+Sort@{Counting\+Sort}}
+\index{Counting\+Sort@{Counting\+Sort}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{Counting\+Sort()}{CountingSort()}}]{\setlength{\rightskip}{0pt plus 5cm}Counting\+Sort\+::\+Counting\+Sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_a535a1330331220653a34030805e67e30}{}\label{class_counting_sort_a535a1330331220653a34030805e67e30}
+
+
+The default constructor of a \hyperlink{class_counting_sort}{Counting\+Sort} object. 
+
+This constructor initializes values of a \hyperlink{class_counting_sort}{Counting\+Sort} object to default values
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Counting\+Sort@{Counting\+Sort}!Counting\+Sort@{Counting\+Sort}}
+\index{Counting\+Sort@{Counting\+Sort}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{Counting\+Sort(int $\ast$data, int size, int max)}{CountingSort(int *data, int size, int max)}}]{\setlength{\rightskip}{0pt plus 5cm}Counting\+Sort\+::\+Counting\+Sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{sent\+Data, }
+\item[{int}]{sent\+Size, }
+\item[{int}]{sent\+Max}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_a1d66fa72e392e47b4262086d8a8d15a4}{}\label{class_counting_sort_a1d66fa72e392e47b4262086d8a8d15a4}
+
+
+The parameterized constructor of a \hyperlink{class_counting_sort}{Counting\+Sort} object. 
+
+This constructor initializes values of a \hyperlink{class_counting_sort}{Counting\+Sort} object to the sent values
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Counting\+Sort@{Counting\+Sort}!````~Counting\+Sort@{$\sim$\+Counting\+Sort}}
+\index{````~Counting\+Sort@{$\sim$\+Counting\+Sort}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{$\sim$\+Counting\+Sort()}{~CountingSort()}}]{\setlength{\rightskip}{0pt plus 5cm}Counting\+Sort\+::$\sim$\+Counting\+Sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_a941a0d58043a739dda7d1c2959e6f954}{}\label{class_counting_sort_a941a0d58043a739dda7d1c2959e6f954}
+
+
+The destructor of a \hyperlink{class_counting_sort}{Counting\+Sort} object. 
+
+This safely removes a \hyperlink{class_counting_sort}{Counting\+Sort} object from memory
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+\subsubsection{Member Function Documentation}
+\index{Counting\+Sort@{Counting\+Sort}!Do\+Sort@{Do\+Sort}}
+\index{Do\+Sort@{Do\+Sort}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{Do\+Sort()}{DoSort()}}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Counting\+Sort\+::\+Do\+Sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_a2d7bdd32c10208eb342238ca90506eff}{}\label{class_counting_sort_a2d7bdd32c10208eb342238ca90506eff}
+
+
+This function runs the sorting algorithm. 
+
+The function takes the data and sorts it with the counting sort algorithm
+
+\begin{DoxyParagraph}{Algorithm Counts the frequency of each value in the data, then sorts it by the count}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em The} & array pointed at by data is now sorted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Counting\+Sort@{Counting\+Sort}!Do\+Sort@{Do\+Sort}}
+\index{Do\+Sort@{Do\+Sort}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{Do\+Sort(int $\ast$data, int size, int max)}{DoSort(int *data, int size, int max)}}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Counting\+Sort\+::\+Do\+Sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{sent\+Data, }
+\item[{int}]{sent\+Size, }
+\item[{int}]{sent\+Max}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_a02f4cf3f6d7063f187354212b06bea0e}{}\label{class_counting_sort_a02f4cf3f6d7063f187354212b06bea0e}
+
+
+This function runs the sorting algorithm. 
+
+The function takes the data and sorts it with the counting sort algorithm with the sent values
+
+\begin{DoxyParagraph}{Algorithm Counts the frequency of each value in the data, then sorts it by the count}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Data} & Pointer to the integer array to be sorted\\
+\hline
+\mbox{\tt in}  & {\em sent\+Size} & The size of the array\\
+\hline
+\mbox{\tt in}  & {\em sent\+Max} & The maximum value in the data, constantly 1M for this project\\
+\hline
+\mbox{\tt out}  & {\em The} & array pointed at by data is now sorted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pointer to the sorted integer array
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Counting\+Sort@{Counting\+Sort}!Get\+Comps@{Get\+Comps}}
+\index{Get\+Comps@{Get\+Comps}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{Get\+Comps()}{GetComps()}}]{\setlength{\rightskip}{0pt plus 5cm}int Counting\+Sort\+::\+Get\+Comps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_aaec9b4404803b770fdf2b02235dfa22e}{}\label{class_counting_sort_aaec9b4404803b770fdf2b02235dfa22e}
+
+
+Gets the number of comparisons. 
+
+Gets the number of comparisons from the last run of the sort
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the integer value of last\+Comp.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Counting\+Sort@{Counting\+Sort}!Get\+Swaps@{Get\+Swaps}}
+\index{Get\+Swaps@{Get\+Swaps}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{Get\+Swaps()}{GetSwaps()}}]{\setlength{\rightskip}{0pt plus 5cm}int Counting\+Sort\+::\+Get\+Swaps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_adcce24a59aa35e8c05f56cf529963e11}{}\label{class_counting_sort_adcce24a59aa35e8c05f56cf529963e11}
+
+
+Gets the number of swaps. 
+
+Gets the number of swaps from the last run of the sort
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the integer value of last\+Swap.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Counting\+Sort@{Counting\+Sort}!Print\+Final@{Print\+Final}}
+\index{Print\+Final@{Print\+Final}!Counting\+Sort@{Counting\+Sort}}
+\paragraph[{\texorpdfstring{Print\+Final(int swap\+Count, int comp\+Count)}{PrintFinal(int swapCount, int compCount)}}]{\setlength{\rightskip}{0pt plus 5cm}void Counting\+Sort\+::\+Print\+Final (
+\begin{DoxyParamCaption}
+\item[{int}]{swap\+Count, }
+\item[{int}]{comp\+Count}
+\end{DoxyParamCaption}
+)}\hypertarget{class_counting_sort_af18bc4bb51834bdb972b7a6f5cd71325}{}\label{class_counting_sort_af18bc4bb51834bdb972b7a6f5cd71325}
+
+
+Outputs what happened in the sort. 
+
+Prints the data in the array as well as the number of swaps and comparisons
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em swap\+Count} & An integer representing the number of swaps performed\\
+\hline
+\mbox{\tt in}  & {\em comp\+Count} & An integer representing the number of comparisons performed\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+P\+A04/\hyperlink{_counting_sort_8h}{Counting\+Sort.\+h}\item 
+P\+A04/\hyperlink{_counting_sort_8cpp}{Counting\+Sort.\+cpp}\end{DoxyCompactItemize}

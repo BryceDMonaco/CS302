@@ -1,0 +1,301 @@
+\hypertarget{class_merge_sort}{}\subsection{Merge\+Sort Class Reference}
+\label{class_merge_sort}\index{Merge\+Sort@{Merge\+Sort}}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_merge_sort_a55ae6cf0736f402fc4f0db2d9326a641}{Merge\+Sort} ()
+\begin{DoxyCompactList}\small\item\em The default constructor of a \hyperlink{class_merge_sort}{Merge\+Sort} object. \end{DoxyCompactList}\item 
+\hyperlink{class_merge_sort_abc29044c4779dac7ae35b476e3bff294}{Merge\+Sort} (int $\ast$data, int size)
+\begin{DoxyCompactList}\small\item\em The parameterized constructor of a \hyperlink{class_merge_sort}{Merge\+Sort} object. \end{DoxyCompactList}\item 
+\hyperlink{class_merge_sort_a7140fd17b17558d9810c8e791c353909}{$\sim$\+Merge\+Sort} ()
+\begin{DoxyCompactList}\small\item\em The destructor of a \hyperlink{class_merge_sort}{Merge\+Sort} object. \end{DoxyCompactList}\item 
+void \hyperlink{class_merge_sort_a51d177b7a69bec202ebc6f6bf5b55adc}{Do\+Sort} (int first, int last)
+\begin{DoxyCompactList}\small\item\em This function runs the sorting algorithm. \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{class_merge_sort_a3d6520e0f0d28d99f68ad60766bb5a95}{Do\+Sort} (int first, int mid, int last)
+\begin{DoxyCompactList}\small\item\em This function runs the sorting algorithm. \end{DoxyCompactList}\item 
+void {\bfseries Do\+Sort} (int $\ast$data, int size)\hypertarget{class_merge_sort_a534de28f6f40cf1a71c8305b4312407b}{}\label{class_merge_sort_a534de28f6f40cf1a71c8305b4312407b}
+
+\item 
+void {\bfseries Swap} (int $\ast$first\+Val, int $\ast$second\+Val)\hypertarget{class_merge_sort_a06368d7437ae210f88ea3fa531f30e0f}{}\label{class_merge_sort_a06368d7437ae210f88ea3fa531f30e0f}
+
+\item 
+void \hyperlink{class_merge_sort_a02132743e011fd008d14cb6d2e4572e9}{Print\+Final} ()
+\begin{DoxyCompactList}\small\item\em Outputs what happened in the sort. \end{DoxyCompactList}\item 
+void {\bfseries Reset\+Counts} ()\hypertarget{class_merge_sort_a96372cd3f60131b422010e816c837f3c}{}\label{class_merge_sort_a96372cd3f60131b422010e816c837f3c}
+
+\item 
+int \hyperlink{class_merge_sort_aa09d69026e874d684cde60a05da1730f}{Get\+Swaps} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of swaps. \end{DoxyCompactList}\item 
+int \hyperlink{class_merge_sort_aa3b74203993c3194544f498fe9bfab42}{Get\+Comps} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of comparisons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries size}\hypertarget{class_merge_sort_a4fa726789d196e248d09f2873ac694df}{}\label{class_merge_sort_a4fa726789d196e248d09f2873ac694df}
+
+\item 
+int $\ast$ {\bfseries data}\hypertarget{class_merge_sort_a039eed2246f7043bd3aad1ad1b1728b3}{}\label{class_merge_sort_a039eed2246f7043bd3aad1ad1b1728b3}
+
+\item 
+int {\bfseries last\+Comparison\+Count}\hypertarget{class_merge_sort_ae93d6d3917323bcb7c02ed29cebcc045}{}\label{class_merge_sort_ae93d6d3917323bcb7c02ed29cebcc045}
+
+\item 
+int {\bfseries last\+Swap\+Count}\hypertarget{class_merge_sort_a4f54218d220d979a1d4a6694cc10e63d}{}\label{class_merge_sort_a4f54218d220d979a1d4a6694cc10e63d}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\index{Merge\+Sort@{Merge\+Sort}!Merge\+Sort@{Merge\+Sort}}
+\index{Merge\+Sort@{Merge\+Sort}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{Merge\+Sort()}{MergeSort()}}]{\setlength{\rightskip}{0pt plus 5cm}Merge\+Sort\+::\+Merge\+Sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_a55ae6cf0736f402fc4f0db2d9326a641}{}\label{class_merge_sort_a55ae6cf0736f402fc4f0db2d9326a641}
+
+
+The default constructor of a \hyperlink{class_merge_sort}{Merge\+Sort} object. 
+
+This constructor initializes values of a \hyperlink{class_merge_sort}{Merge\+Sort} object to default values
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Merge\+Sort@{Merge\+Sort}!Merge\+Sort@{Merge\+Sort}}
+\index{Merge\+Sort@{Merge\+Sort}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{Merge\+Sort(int $\ast$data, int size)}{MergeSort(int *data, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}Merge\+Sort\+::\+Merge\+Sort (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{sent\+Data, }
+\item[{int}]{sent\+Size}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_abc29044c4779dac7ae35b476e3bff294}{}\label{class_merge_sort_abc29044c4779dac7ae35b476e3bff294}
+
+
+The parameterized constructor of a \hyperlink{class_merge_sort}{Merge\+Sort} object. 
+
+This constructor initializes values of a \hyperlink{class_merge_sort}{Merge\+Sort} object to the sent values
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Merge\+Sort@{Merge\+Sort}!````~Merge\+Sort@{$\sim$\+Merge\+Sort}}
+\index{````~Merge\+Sort@{$\sim$\+Merge\+Sort}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{$\sim$\+Merge\+Sort()}{~MergeSort()}}]{\setlength{\rightskip}{0pt plus 5cm}Merge\+Sort\+::$\sim$\+Merge\+Sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_a7140fd17b17558d9810c8e791c353909}{}\label{class_merge_sort_a7140fd17b17558d9810c8e791c353909}
+
+
+The destructor of a \hyperlink{class_merge_sort}{Merge\+Sort} object. 
+
+This safely removes a \hyperlink{class_merge_sort}{Merge\+Sort} object from memory
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+\subsubsection{Member Function Documentation}
+\index{Merge\+Sort@{Merge\+Sort}!Do\+Sort@{Do\+Sort}}
+\index{Do\+Sort@{Do\+Sort}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{Do\+Sort(int first, int last)}{DoSort(int first, int last)}}]{\setlength{\rightskip}{0pt plus 5cm}void Merge\+Sort\+::\+Do\+Sort (
+\begin{DoxyParamCaption}
+\item[{int}]{first, }
+\item[{int}]{last}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_a51d177b7a69bec202ebc6f6bf5b55adc}{}\label{class_merge_sort_a51d177b7a69bec202ebc6f6bf5b55adc}
+
+
+This function runs the sorting algorithm. 
+
+The function takes the data and sorts it by splitting the array into smaller arrays and sorting those then merging it all back together
+
+\begin{DoxyParagraph}{Algorithm Splits the main array into smaller arrays and sorts them then merges them together into one sorted array}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & The index of the first value of the array in scope\\
+\hline
+\mbox{\tt in}  & {\em last} & The index of the last value of the array in scope\\
+\hline
+\mbox{\tt out}  & {\em The} & array pointed at by data is now sorted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Merge\+Sort@{Merge\+Sort}!Do\+Sort@{Do\+Sort}}
+\index{Do\+Sort@{Do\+Sort}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{Do\+Sort(int first, int mid, int last)}{DoSort(int first, int mid, int last)}}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Merge\+Sort\+::\+Do\+Sort (
+\begin{DoxyParamCaption}
+\item[{int}]{first, }
+\item[{int}]{mid, }
+\item[{int}]{last}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_a3d6520e0f0d28d99f68ad60766bb5a95}{}\label{class_merge_sort_a3d6520e0f0d28d99f68ad60766bb5a95}
+
+
+This function runs the sorting algorithm. 
+
+The function takes the data and sorts it by splitting the array into smaller arrays and sorting those then merging it all back together
+
+\begin{DoxyParagraph}{Algorithm Splits the main array into smaller arrays and sorts them then merges them together into one sorted array}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em first} & The index of the first value of the array in scope\\
+\hline
+\mbox{\tt in}  & {\em last} & The index of the last value of the array in scope\\
+\hline
+\mbox{\tt in}  & {\em mid} & The index of the mid point of the array in scope\\
+\hline
+\mbox{\tt out}  & {\em The} & array pointed at by data is now sorted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Merge\+Sort@{Merge\+Sort}!Get\+Comps@{Get\+Comps}}
+\index{Get\+Comps@{Get\+Comps}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{Get\+Comps()}{GetComps()}}]{\setlength{\rightskip}{0pt plus 5cm}int Merge\+Sort\+::\+Get\+Comps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_aa3b74203993c3194544f498fe9bfab42}{}\label{class_merge_sort_aa3b74203993c3194544f498fe9bfab42}
+
+
+Gets the number of comparisons. 
+
+Gets the number of comparisons from the last run of the sort
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the integer value of last\+Comp.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Merge\+Sort@{Merge\+Sort}!Get\+Swaps@{Get\+Swaps}}
+\index{Get\+Swaps@{Get\+Swaps}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{Get\+Swaps()}{GetSwaps()}}]{\setlength{\rightskip}{0pt plus 5cm}int Merge\+Sort\+::\+Get\+Swaps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_aa09d69026e874d684cde60a05da1730f}{}\label{class_merge_sort_aa09d69026e874d684cde60a05da1730f}
+
+
+Gets the number of swaps. 
+
+Gets the number of swaps from the last run of the sort
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the integer value of last\+Swap.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Merge\+Sort@{Merge\+Sort}!Print\+Final@{Print\+Final}}
+\index{Print\+Final@{Print\+Final}!Merge\+Sort@{Merge\+Sort}}
+\paragraph[{\texorpdfstring{Print\+Final()}{PrintFinal()}}]{\setlength{\rightskip}{0pt plus 5cm}void Merge\+Sort\+::\+Print\+Final (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_merge_sort_a02132743e011fd008d14cb6d2e4572e9}{}\label{class_merge_sort_a02132743e011fd008d14cb6d2e4572e9}
+
+
+Outputs what happened in the sort. 
+
+Prints the data in the array as well as the number of swaps and comparisons
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em swap\+Count} & An integer representing the number of swaps performed\\
+\hline
+\mbox{\tt in}  & {\em comp\+Count} & An integer representing the number of comparisons performed\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+P\+A04/\hyperlink{_merge_sort_8h}{Merge\+Sort.\+h}\item 
+P\+A04/\hyperlink{_merge_sort_8cpp}{Merge\+Sort.\+cpp}\end{DoxyCompactItemize}
