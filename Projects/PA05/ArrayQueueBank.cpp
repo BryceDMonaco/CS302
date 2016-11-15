@@ -111,6 +111,19 @@ int ArrayQueueBank::PeekTransaction ()
 	}
 }
 
+Client* ArrayQueueBank::PeekFront ()
+{
+	if (!IsEmpty())
+	{
+		return (data + front);
+
+	} else
+	{
+		return NULL;
+
+	}
+}
+
 void ArrayQueueBank::Print ()
 {
 	cout << "Contents of queue:" << endl << "\tFront: " << front << endl << "\tBack: " << back << endl << "\t";

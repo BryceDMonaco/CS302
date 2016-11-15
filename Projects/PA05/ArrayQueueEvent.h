@@ -4,19 +4,19 @@
 
 using namespace std;
 
-class ArrayQueueBank
+class ArrayQueueEvent
 {
 	public:
-		ArrayQueueBank ();
-		ArrayQueueBank (int sentCap);
-		~ArrayQueueBank ();
+		ArrayQueueEvent ();
+		ArrayQueueEvent (int sentCap);
+		~ArrayQueueEvent ();
 
 		bool IsEmpty ();
 		bool Enqueue (int sentArr, int sentTrans);
 		bool Dequeue ();
 		int PeekArrival ();
 		int PeekTransaction ();
-		Client* PeekFront ();
+		Event* PeekFront ();
 
 
 		void Print ();
@@ -26,6 +26,6 @@ class ArrayQueueBank
 		int back;
 		int count;
 		int capacity;
-		Client* data;
+		Event* data;
 
 };
