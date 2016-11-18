@@ -1,0 +1,299 @@
+\hypertarget{class_simulation1_a}{}\subsection{Simulation1A Class Reference}
+\label{class_simulation1_a}\index{Simulation1A@{Simulation1A}}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_simulation1_a_a814b7c8b8412e631f31089ff84a3ac9d}{Simulation1A} ()
+\begin{DoxyCompactList}\small\item\em The default constructor of a \hyperlink{class_simulation1_a}{Simulation1A} object. \end{DoxyCompactList}\item 
+\hyperlink{class_simulation1_a_ac576ab3c8817e7ee476a8234b9652715}{Simulation1A} (\hyperlink{class_client}{Client} $\ast$sent\+Clients, int count)
+\begin{DoxyCompactList}\small\item\em The default constructor of a \hyperlink{class_simulation1_a}{Simulation1A} object. \end{DoxyCompactList}\item 
+\hyperlink{class_simulation1_a_a1fadc48d0f5f137192c8b404e3a22d6a}{$\sim$\+Simulation1A} ()
+\begin{DoxyCompactList}\small\item\em The destructor of a \hyperlink{class_simulation1_a}{Simulation1A} object. \end{DoxyCompactList}\item 
+void \hyperlink{class_simulation1_a_ac94ce808c353225b8c1ebc8d1119983b}{Send\+Clients} (\hyperlink{class_client}{Client} $\ast$sent\+Clients, int count)
+\begin{DoxyCompactList}\small\item\em Sets the clients of this simulation. \end{DoxyCompactList}\item 
+void \hyperlink{class_simulation1_a_a5fbe6a6427ad459307f687148141c53b}{Reset\+Simulation} ()
+\begin{DoxyCompactList}\small\item\em Resets the simulation. \end{DoxyCompactList}\item 
+void \hyperlink{class_simulation1_a_a415550ac4cfb5782b43c565f62da3df3}{Simulate} ()
+\begin{DoxyCompactList}\small\item\em Runs the simulation. \end{DoxyCompactList}\item 
+void \hyperlink{class_simulation1_a_aac07aaeea13487e814394ff391ace7de}{Process\+Arrival} (\hyperlink{class_client}{Client} $\ast$sent\+Client, int time)
+\begin{DoxyCompactList}\small\item\em Processes the arrival of a client. \end{DoxyCompactList}\item 
+void \hyperlink{class_simulation1_a_aa6a20ed7614c1a2bd31083870a28c590}{Process\+Departure} (\hyperlink{class_client}{Client} $\ast$sent\+Client, int time)
+\begin{DoxyCompactList}\small\item\em Processes the departure of a client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_client}{Client} $\ast$ {\bfseries clients}\hypertarget{class_simulation1_a_ac02a6bea729312694efd64936cfb09fe}{}\label{class_simulation1_a_ac02a6bea729312694efd64936cfb09fe}
+
+\item 
+\hyperlink{class_array_queue_bank}{Array\+Queue\+Bank} {\bfseries client\+Queue}\hypertarget{class_simulation1_a_a8001f61f724485492c5380c40ec8f8e4}{}\label{class_simulation1_a_a8001f61f724485492c5380c40ec8f8e4}
+
+\item 
+\hyperlink{class_array_queue_bank}{Array\+Queue\+Bank} {\bfseries bank\+Queue}\hypertarget{class_simulation1_a_a90996f9ae764354398a2fa41c26b9f65}{}\label{class_simulation1_a_a90996f9ae764354398a2fa41c26b9f65}
+
+\item 
+\hyperlink{class_array_queue}{Array\+Queue} {\bfseries arrival\+Events}\hypertarget{class_simulation1_a_a5d13b12c515964653d6cb2dd9911dd81}{}\label{class_simulation1_a_a5d13b12c515964653d6cb2dd9911dd81}
+
+\item 
+\hyperlink{class_array_queue}{Array\+Queue} {\bfseries departure\+Events}\hypertarget{class_simulation1_a_ac764c20ec0ea012b892b362739859b5a}{}\label{class_simulation1_a_ac764c20ec0ea012b892b362739859b5a}
+
+\item 
+int {\bfseries client\+Count}\hypertarget{class_simulation1_a_aaba1ca6cef545e1ca88a82f4fe100c61}{}\label{class_simulation1_a_aaba1ca6cef545e1ca88a82f4fe100c61}
+
+\item 
+bool {\bfseries teller\+Available}\hypertarget{class_simulation1_a_a3b48ecc4fd72db14184cf75c54200133}{}\label{class_simulation1_a_a3b48ecc4fd72db14184cf75c54200133}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\index{Simulation1A@{Simulation1A}!Simulation1A@{Simulation1A}}
+\index{Simulation1A@{Simulation1A}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{Simulation1\+A()}{Simulation1A()}}]{\setlength{\rightskip}{0pt plus 5cm}Simulation1\+A\+::\+Simulation1A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_a814b7c8b8412e631f31089ff84a3ac9d}{}\label{class_simulation1_a_a814b7c8b8412e631f31089ff84a3ac9d}
+
+
+The default constructor of a \hyperlink{class_simulation1_a}{Simulation1A} object. 
+
+This constructor initializes values of a \hyperlink{class_simulation1_a}{Simulation1A} object to default values
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Simulation1A@{Simulation1A}!Simulation1A@{Simulation1A}}
+\index{Simulation1A@{Simulation1A}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{Simulation1\+A(\+Client $\ast$sent\+Clients, int count)}{Simulation1A(Client *sentClients, int count)}}]{\setlength{\rightskip}{0pt plus 5cm}Simulation1\+A\+::\+Simulation1A (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{sent\+Clients, }
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_ac576ab3c8817e7ee476a8234b9652715}{}\label{class_simulation1_a_ac576ab3c8817e7ee476a8234b9652715}
+
+
+The default constructor of a \hyperlink{class_simulation1_a}{Simulation1A} object. 
+
+This constructor initializes values of a \hyperlink{class_simulation1_a}{Simulation1A} object to sent values
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Simulation1A@{Simulation1A}!````~Simulation1A@{$\sim$\+Simulation1A}}
+\index{````~Simulation1A@{$\sim$\+Simulation1A}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{$\sim$\+Simulation1\+A()}{~Simulation1A()}}]{\setlength{\rightskip}{0pt plus 5cm}Simulation1\+A\+::$\sim$\+Simulation1A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_a1fadc48d0f5f137192c8b404e3a22d6a}{}\label{class_simulation1_a_a1fadc48d0f5f137192c8b404e3a22d6a}
+
+
+The destructor of a \hyperlink{class_simulation1_a}{Simulation1A} object. 
+
+Safely removes this object from memeory.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+\subsubsection{Member Function Documentation}
+\index{Simulation1A@{Simulation1A}!Process\+Arrival@{Process\+Arrival}}
+\index{Process\+Arrival@{Process\+Arrival}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{Process\+Arrival(\+Client $\ast$sent\+Client, int time)}{ProcessArrival(Client *sentClient, int time)}}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation1\+A\+::\+Process\+Arrival (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{sent\+Client, }
+\item[{int}]{time}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_aac07aaeea13487e814394ff391ace7de}{}\label{class_simulation1_a_aac07aaeea13487e814394ff391ace7de}
+
+
+Processes the arrival of a client. 
+
+Takes the client that arrived and adds it to the bank\+Queue.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Client} & Pointer to the client that arrived\\
+\hline
+\mbox{\tt in}  & {\em time} & The time that the client arrived.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Simulation1A@{Simulation1A}!Process\+Departure@{Process\+Departure}}
+\index{Process\+Departure@{Process\+Departure}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{Process\+Departure(\+Client $\ast$sent\+Client, int time)}{ProcessDeparture(Client *sentClient, int time)}}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation1\+A\+::\+Process\+Departure (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{sent\+Client, }
+\item[{int}]{time}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_aa6a20ed7614c1a2bd31083870a28c590}{}\label{class_simulation1_a_aa6a20ed7614c1a2bd31083870a28c590}
+
+
+Processes the departure of a client. 
+
+Takes the client that departed and adds removes it from the bank queue.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Client} & Pointer to the client that arrived\\
+\hline
+\mbox{\tt in}  & {\em time} & The time that the client left.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Simulation1A@{Simulation1A}!Reset\+Simulation@{Reset\+Simulation}}
+\index{Reset\+Simulation@{Reset\+Simulation}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{Reset\+Simulation()}{ResetSimulation()}}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation1\+A\+::\+Reset\+Simulation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_a5fbe6a6427ad459307f687148141c53b}{}\label{class_simulation1_a_a5fbe6a6427ad459307f687148141c53b}
+
+
+Resets the simulation. 
+
+Completely dequeues both queues of the simulation.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Simulation1A@{Simulation1A}!Send\+Clients@{Send\+Clients}}
+\index{Send\+Clients@{Send\+Clients}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{Send\+Clients(\+Client $\ast$sent\+Clients, int count)}{SendClients(Client *sentClients, int count)}}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation1\+A\+::\+Send\+Clients (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{sent\+Clients, }
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_ac94ce808c353225b8c1ebc8d1119983b}{}\label{class_simulation1_a_ac94ce808c353225b8c1ebc8d1119983b}
+
+
+Sets the clients of this simulation. 
+
+Allows the user to change the clients used for the simulation
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Clients} & The address of the Clients array to be used\\
+\hline
+\mbox{\tt in}  & {\em count} & The amount of Clients in the array.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Simulation1A@{Simulation1A}!Simulate@{Simulate}}
+\index{Simulate@{Simulate}!Simulation1A@{Simulation1A}}
+\paragraph[{\texorpdfstring{Simulate()}{Simulate()}}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation1\+A\+::\+Simulate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_simulation1_a_a415550ac4cfb5782b43c565f62da3df3}{}\label{class_simulation1_a_a415550ac4cfb5782b43c565f62da3df3}
+
+
+Runs the simulation. 
+
+Runs the simulation using the current clients and count.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function couldn\textquotesingle{}t be fully implemented due to time constraints. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+P\+A05/\hyperlink{_simulation1_a_8h}{Simulation1\+A.\+h}\item 
+P\+A05/\hyperlink{_simulation1_a_8cpp}{Simulation1\+A.\+cpp}\end{DoxyCompactItemize}

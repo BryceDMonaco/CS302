@@ -1,3 +1,17 @@
+/**
+*	@file NodeBank.h
+*
+*	@brief This is the header of the NodeBank class
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header of the NodeBank class
+*
+*	@version 1.0
+*
+*	@note This is essentially an early prototype of a Client
+*/
+
 #include <iostream>
 
 using namespace std;

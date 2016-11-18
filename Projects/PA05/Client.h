@@ -1,3 +1,17 @@
+/**
+*	@file Client.h
+*
+*	@brief This is the header of the Client class
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header of the Client class
+*
+*	@version 1.0
+*
+*	@note None.
+*/
+
 #ifndef CLIENT_H
 #define CLIENT_H
 

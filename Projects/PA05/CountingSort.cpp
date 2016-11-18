@@ -9,7 +9,7 @@
 *
 *	@version 1.0
 *
-*	@note None.
+*	@note This is modified from PA04's counting sort to work with Clients. Sorts by arrival times.
 */
 
 #include "CountingSort.h"

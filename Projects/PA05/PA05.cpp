@@ -1,3 +1,17 @@
+/**
+*	@file PA05.cpp
+*
+*	@brief This is the main driver of PA05.
+*
+*	@author Bryce Monaco
+*
+*	@details This file is the main driver of PA05.
+*
+*	@version 1.0
+*
+*	@note Because the simulation is incomplete this file simply generates random clients, sorts them by arrival, and outputs them for debugging.
+*/
+
 #include <iostream>
 #include <fstream>
 
@@ -33,6 +47,24 @@ int main ()
 
 }
 
+/**
+*	@brief Reads in values from a file and stores them as clients
+*
+*	@details Reads in the randomly generated values from a file and stores them as Client objects in the array.
+*
+*	@par Algorithm None.
+*
+*	@param[in] sentClients The address of the client array
+*
+*	@param[in] amount The amount of clients to read in.
+*
+*	@param[out] The Client array is now populated.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 void ReadInLine (Client* sentClients, int amount)
 {
 	ifstream inputFile;
@@ -56,6 +88,24 @@ void ReadInLine (Client* sentClients, int amount)
 
 }
 
+/**
+*	@brief Prints the values of a client.
+*
+*	@details Runs through the array and prints the values of each clients.
+*
+*	@par Algorithm None.
+*
+*	@param[in] sentClients The address of the client array
+*
+*	@param[in] amount The amount of clients to output in.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 void OutputLine (Client* sentClients, int amount)
 {
 	ofstream outputFile;
@@ -90,14 +140,14 @@ void OutputLine (Client* sentClients, int amount)
 *
 *	@return None.
 *
-*	@note The pointer valuesStart is not used in the current implementation, so the argument can just be sent as NULL
+*	@note This function modified from PA04, this version generates two values separated by a space, the arrival time (0-100000) and the transaction time (0-100)
 *
 */
 void GenerateValues (int amount)
 {
 	srand(time(0));
 
-	for (int i = 0; i < 1; i++) //Run the loop ten times to generate ten files
+	for (int i = 0; i < 10; i++) //Run the loop ten times to generate ten files
 	{
 		
 		//valuesStart = new int[amount];

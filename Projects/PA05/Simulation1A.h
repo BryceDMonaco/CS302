@@ -1,3 +1,17 @@
+/**
+*	@file Simulation1A.h
+*
+*	@brief This is the header of the Simulation1A class
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header of the Simulation1A class
+*
+*	@version 1.0
+*
+*	@note The implementation of this class is incomplete.
+*/
+
 #include <iostream>
 
 #include "ArrayQueueBank.h"

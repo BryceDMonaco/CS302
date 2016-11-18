@@ -1,3 +1,17 @@
+/**
+*	@file ArrayQueue.h
+*
+*	@brief This is the header of the ArrayQueue class
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header of the ArrayQueue class
+*
+*	@version 1.0
+*
+*	@note This is a version only meant for integer values.
+*/
+
 #include <iostream>
 
 using namespace std;

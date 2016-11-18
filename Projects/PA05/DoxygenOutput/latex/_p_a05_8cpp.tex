@@ -1,0 +1,139 @@
+\hypertarget{_p_a05_8cpp}{}\subsection{P\+A05/\+P\+A05.cpp File Reference}
+\label{_p_a05_8cpp}\index{P\+A05/\+P\+A05.\+cpp@{P\+A05/\+P\+A05.\+cpp}}
+
+
+This is the main driver of P\+A05.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include \char`\"{}Link\+Queue\+Bank.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Array\+Queue\+Bank.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Counting\+Sort.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Client.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_p_a05_8cpp_aa2f1d11853d016dfd487e0fec878d879}{Read\+In\+Line} (\hyperlink{class_client}{Client} $\ast$sent\+Clients, int amount)
+\begin{DoxyCompactList}\small\item\em Reads in values from a file and stores them as clients. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a05_8cpp_a5770b9061783c4b88003f516a4a10a39}{Output\+Line} (\hyperlink{class_client}{Client} $\ast$sent\+Clients, int amount)
+\begin{DoxyCompactList}\small\item\em Prints the values of a client. \end{DoxyCompactList}\item 
+void \hyperlink{_p_a05_8cpp_afee5bf2e8a0a045c9da4a869cf7f2219}{Generate\+Values} (int amount)
+\begin{DoxyCompactList}\small\item\em Generates a certain amount of random values and stores them in a file. \end{DoxyCompactList}\item 
+int {\bfseries main} ()\hypertarget{_p_a05_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{_p_a05_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+This is the main driver of P\+A05. 
+
+\begin{DoxyAuthor}{Author}
+Bryce Monaco
+\end{DoxyAuthor}
+This file is the main driver of P\+A05.
+
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+\begin{DoxyNote}{Note}
+Because the simulation is incomplete this file simply generates random clients, sorts them by arrival, and outputs them for debugging. 
+\end{DoxyNote}
+
+
+\subsubsection{Function Documentation}
+\index{P\+A05.\+cpp@{P\+A05.\+cpp}!Generate\+Values@{Generate\+Values}}
+\index{Generate\+Values@{Generate\+Values}!P\+A05.\+cpp@{P\+A05.\+cpp}}
+\paragraph[{\texorpdfstring{Generate\+Values(int amount)}{GenerateValues(int amount)}}]{\setlength{\rightskip}{0pt plus 5cm}void Generate\+Values (
+\begin{DoxyParamCaption}
+\item[{int}]{amount}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a05_8cpp_afee5bf2e8a0a045c9da4a869cf7f2219}{}\label{_p_a05_8cpp_afee5bf2e8a0a045c9da4a869cf7f2219}
+
+
+Generates a certain amount of random values and stores them in a file. 
+
+This function generates a certain amount of random values and them dumps them into a file for easy reference later
+
+\begin{DoxyParagraph}{Algorithm Generates random values into an array, then traverses the array and outputs the values to a file.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em amount} & The amount of values to generate.\\
+\hline
+\mbox{\tt out}  & {\em Creates} & ten files each populated with a certain amount of random values.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function modified from P\+A04, this version generates two values separated by a space, the arrival time (0-\/100000) and the transaction time (0-\/100) 
+\end{DoxyNote}
+\index{P\+A05.\+cpp@{P\+A05.\+cpp}!Output\+Line@{Output\+Line}}
+\index{Output\+Line@{Output\+Line}!P\+A05.\+cpp@{P\+A05.\+cpp}}
+\paragraph[{\texorpdfstring{Output\+Line(\+Client $\ast$sent\+Clients, int amount)}{OutputLine(Client *sentClients, int amount)}}]{\setlength{\rightskip}{0pt plus 5cm}void Output\+Line (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{sent\+Clients, }
+\item[{int}]{amount}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a05_8cpp_a5770b9061783c4b88003f516a4a10a39}{}\label{_p_a05_8cpp_a5770b9061783c4b88003f516a4a10a39}
+
+
+Prints the values of a client. 
+
+Runs through the array and prints the values of each clients.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Clients} & The address of the client array\\
+\hline
+\mbox{\tt in}  & {\em amount} & The amount of clients to output in.\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{P\+A05.\+cpp@{P\+A05.\+cpp}!Read\+In\+Line@{Read\+In\+Line}}
+\index{Read\+In\+Line@{Read\+In\+Line}!P\+A05.\+cpp@{P\+A05.\+cpp}}
+\paragraph[{\texorpdfstring{Read\+In\+Line(\+Client $\ast$sent\+Clients, int amount)}{ReadInLine(Client *sentClients, int amount)}}]{\setlength{\rightskip}{0pt plus 5cm}void Read\+In\+Line (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{sent\+Clients, }
+\item[{int}]{amount}
+\end{DoxyParamCaption}
+)}\hypertarget{_p_a05_8cpp_aa2f1d11853d016dfd487e0fec878d879}{}\label{_p_a05_8cpp_aa2f1d11853d016dfd487e0fec878d879}
+
+
+Reads in values from a file and stores them as clients. 
+
+Reads in the randomly generated values from a file and stores them as \hyperlink{class_client}{Client} objects in the array.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sent\+Clients} & The address of the client array\\
+\hline
+\mbox{\tt in}  & {\em amount} & The amount of clients to read in.\\
+\hline
+\mbox{\tt out}  & {\em The} & \hyperlink{class_client}{Client} array is now populated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}

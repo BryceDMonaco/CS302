@@ -1,0 +1,275 @@
+\hypertarget{class_link_queue_bank}{}\subsection{Link\+Queue\+Bank Class Reference}
+\label{class_link_queue_bank}\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_link_queue_bank_ab78ce225e07df7fd11b5589afa74c80b}{Link\+Queue\+Bank} ()
+\begin{DoxyCompactList}\small\item\em The default constructor of a \hyperlink{class_link_queue_bank}{Link\+Queue\+Bank} object. \end{DoxyCompactList}\item 
+\hyperlink{class_link_queue_bank_a0374f8d3dced5a8d0bfb3b36b2bd0188}{$\sim$\+Link\+Queue\+Bank} ()
+\begin{DoxyCompactList}\small\item\em The destructor of a \hyperlink{class_link_queue_bank}{Link\+Queue\+Bank} object. \end{DoxyCompactList}\item 
+bool \hyperlink{class_link_queue_bank_ae994d7f8bbc21f291727e10d65cb4f86}{Is\+Empty} ()
+\begin{DoxyCompactList}\small\item\em Checks if the queue is empty. \end{DoxyCompactList}\item 
+bool \hyperlink{class_link_queue_bank_a6df8699093b303c708ff4cca4b57c4b4}{Enqueue} (int sent\+Arr, int sent\+Trans)
+\begin{DoxyCompactList}\small\item\em Adds an item to the queue. \end{DoxyCompactList}\item 
+bool \hyperlink{class_link_queue_bank_a2b883c55e0524816b9871a2b4059e498}{Dequeue} ()
+\begin{DoxyCompactList}\small\item\em Removes the item at the front of the queue. \end{DoxyCompactList}\item 
+int \hyperlink{class_link_queue_bank_aa22f4ad15b0a2fb8df62af483e79cd80}{Peek\+Arrival} ()
+\begin{DoxyCompactList}\small\item\em Gets the arrival time of the client at the front of the queue. \end{DoxyCompactList}\item 
+int \hyperlink{class_link_queue_bank_a452a9eefbd464c7ee6cc4bb70aabcd8e}{Peek\+Transaction} ()
+\begin{DoxyCompactList}\small\item\em Gets the transaction time of the client at the front of the queue. \end{DoxyCompactList}\item 
+void \hyperlink{class_link_queue_bank_ab8aa8019667ee058013a7b49114cce64}{Print} ()
+\begin{DoxyCompactList}\small\item\em Prints the contents of the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node_bank}{Node\+Bank} $\ast$ {\bfseries front}\hypertarget{class_link_queue_bank_aa0a3d2a1900a4fd3cc97f6436698da23}{}\label{class_link_queue_bank_aa0a3d2a1900a4fd3cc97f6436698da23}
+
+\item 
+\hyperlink{class_node_bank}{Node\+Bank} $\ast$ {\bfseries back}\hypertarget{class_link_queue_bank_afae37cbd73c2f61ebe3d0eefd107d861}{}\label{class_link_queue_bank_afae37cbd73c2f61ebe3d0eefd107d861}
+
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{Link\+Queue\+Bank()}{LinkQueueBank()}}]{\setlength{\rightskip}{0pt plus 5cm}Link\+Queue\+Bank\+::\+Link\+Queue\+Bank (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_ab78ce225e07df7fd11b5589afa74c80b}{}\label{class_link_queue_bank_ab78ce225e07df7fd11b5589afa74c80b}
+
+
+The default constructor of a \hyperlink{class_link_queue_bank}{Link\+Queue\+Bank} object. 
+
+This constructor initializes values of a \hyperlink{class_link_queue_bank}{Link\+Queue\+Bank} object to default values
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!````~Link\+Queue\+Bank@{$\sim$\+Link\+Queue\+Bank}}
+\index{````~Link\+Queue\+Bank@{$\sim$\+Link\+Queue\+Bank}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{$\sim$\+Link\+Queue\+Bank()}{~LinkQueueBank()}}]{\setlength{\rightskip}{0pt plus 5cm}Link\+Queue\+Bank\+::$\sim$\+Link\+Queue\+Bank (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_a0374f8d3dced5a8d0bfb3b36b2bd0188}{}\label{class_link_queue_bank_a0374f8d3dced5a8d0bfb3b36b2bd0188}
+
+
+The destructor of a \hyperlink{class_link_queue_bank}{Link\+Queue\+Bank} object. 
+
+This safely removes a \hyperlink{class_link_queue_bank}{Link\+Queue\+Bank} object from memory
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+\subsubsection{Member Function Documentation}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Dequeue@{Dequeue}}
+\index{Dequeue@{Dequeue}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{Dequeue()}{Dequeue()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Link\+Queue\+Bank\+::\+Dequeue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_a2b883c55e0524816b9871a2b4059e498}{}\label{class_link_queue_bank_a2b883c55e0524816b9871a2b4059e498}
+
+
+Removes the item at the front of the queue. 
+
+Removes the item at the front of the queue, the value is not returned.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if an item could be removed, false if it was already empty.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function can be modified to return the dequeued value. 
+\end{DoxyNote}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Enqueue@{Enqueue}}
+\index{Enqueue@{Enqueue}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{Enqueue(int sent\+Arr, int sent\+Trans)}{Enqueue(int sentArr, int sentTrans)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Link\+Queue\+Bank\+::\+Enqueue (
+\begin{DoxyParamCaption}
+\item[{int}]{sent\+Arr, }
+\item[{int}]{sent\+Trans}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_a6df8699093b303c708ff4cca4b57c4b4}{}\label{class_link_queue_bank_a6df8699093b303c708ff4cca4b57c4b4}
+
+
+Adds an item to the queue. 
+
+Adds an item to the back of the queue, this implementation uses nodes.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em entry} & The integer value to insert into the queue\\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if there is space for the new value, false if the queue is full. \hyperlink{class_node}{Node} based means that it will never be full.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Is\+Empty@{Is\+Empty}}
+\index{Is\+Empty@{Is\+Empty}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{Is\+Empty()}{IsEmpty()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Link\+Queue\+Bank\+::\+Is\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_ae994d7f8bbc21f291727e10d65cb4f86}{}\label{class_link_queue_bank_ae994d7f8bbc21f291727e10d65cb4f86}
+
+
+Checks if the queue is empty. 
+
+Checks if the front and back of the queue are equal to N\+U\+LL
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the queue is empty, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Peek\+Arrival@{Peek\+Arrival}}
+\index{Peek\+Arrival@{Peek\+Arrival}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{Peek\+Arrival()}{PeekArrival()}}]{\setlength{\rightskip}{0pt plus 5cm}int Link\+Queue\+Bank\+::\+Peek\+Arrival (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_aa22f4ad15b0a2fb8df62af483e79cd80}{}\label{class_link_queue_bank_aa22f4ad15b0a2fb8df62af483e79cd80}
+
+
+Gets the arrival time of the client at the front of the queue. 
+
+Checks the front of the queue and returns the arrival time of the client if there is one.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value if there is one, -\/1 if there isn\textquotesingle{}t (in this project the data used is only positive)
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Peek\+Transaction@{Peek\+Transaction}}
+\index{Peek\+Transaction@{Peek\+Transaction}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{Peek\+Transaction()}{PeekTransaction()}}]{\setlength{\rightskip}{0pt plus 5cm}int Link\+Queue\+Bank\+::\+Peek\+Transaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_a452a9eefbd464c7ee6cc4bb70aabcd8e}{}\label{class_link_queue_bank_a452a9eefbd464c7ee6cc4bb70aabcd8e}
+
+
+Gets the transaction time of the client at the front of the queue. 
+
+Checks the front of the queue and returns the transaction time of the client if there is one.
+
+\begin{DoxyParagraph}{Algorithm None.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value if there is one, -\/1 if there isn\textquotesingle{}t (in this project the data used is only positive)
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+\index{Link\+Queue\+Bank@{Link\+Queue\+Bank}!Print@{Print}}
+\index{Print@{Print}!Link\+Queue\+Bank@{Link\+Queue\+Bank}}
+\paragraph[{\texorpdfstring{Print()}{Print()}}]{\setlength{\rightskip}{0pt plus 5cm}void Link\+Queue\+Bank\+::\+Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_link_queue_bank_ab8aa8019667ee058013a7b49114cce64}{}\label{class_link_queue_bank_ab8aa8019667ee058013a7b49114cce64}
+
+
+Prints the contents of the queue. 
+
+Runs through the queue and prints the contents.
+
+\begin{DoxyParagraph}{Algorithm Prints each node in the queue.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em None.} & \\
+\hline
+\mbox{\tt out}  & {\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+None. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+P\+A05/\hyperlink{_link_queue_bank_8h}{Link\+Queue\+Bank.\+h}\item 
+P\+A05/\hyperlink{_link_queue_bank_8cpp}{Link\+Queue\+Bank.\+cpp}\end{DoxyCompactItemize}

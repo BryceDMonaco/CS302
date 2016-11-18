@@ -1,3 +1,17 @@
+/**
+*	@file LinkQueue.h
+*
+*	@brief This is the header of the LinkQueue class
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header of the LinkQueue class
+*
+*	@version 1.0
+*
+*	@note This is a version only meant for integer values.
+*/
+
 #include <iostream>
 #include "Node.h"
 #include <memory>
