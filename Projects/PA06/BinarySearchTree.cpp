@@ -15,7 +15,7 @@ class BinarySearchTree
 		bool IsEmpty ();
 
 		bool Add (itemType entry); //Itegrated SetRootData
-		//bool Remove (itemType target); //Remove the node with the target value
+		bool Remove (itemType target); //Remove the node with the target value
 
 		//int GetHeight ();
 		//int GetNodeCount ();
@@ -31,6 +31,10 @@ class BinarySearchTree
 
 		//Functions, Recursive
 		LeafNode<itemType>* PlaceNode (LeafNode<itemType>* subtreePtr, LeafNode<itemType>* newNode);
+		LeafNode<itemType>* RemoveValue (LeafNode<itemType>* subtreePtr, itemType target, bool &isSuccessful);
+		LeafNode<itemType>* RemoveNode (LeafNode<itemType>* nodePtr);
+		LeafNode<itemType>* RemoveLeftmostNode (LeafNode<itemType>* nodePtr, itemType &successorValue);
+
 		void DebugPrint (LeafNode<itemType>* subtreePtr); //A print function meant only for debug purposes
 
 };
@@ -90,6 +94,17 @@ bool BinarySearchTree<itemType>::Add (itemType entry)
 }
 
 template<class itemType>
+bool BinarySearchTree<itemType>::Remove (itemType target)
+{
+	bool isSuccessful = false;
+
+	rootPtr = RemoveValue(rootPtr, target, isSuccessful);
+
+	return isSuccessful;
+
+}
+
+template<class itemType>
 void BinarySearchTree<itemType>::Print ()
 {
 	DebugPrint(rootPtr);
@@ -130,6 +145,97 @@ LeafNode<itemType>* BinarySearchTree<itemType>::PlaceNode (LeafNode<itemType>* s
 
 	return subtreePtr;
 
+}
+
+template<class itemType>
+LeafNode<itemType>* BinarySearchTree<itemType>::RemoveValue (LeafNode<itemType>* subtreePtr, itemType target, bool &isSuccessful)
+{
+	if (subtreePtr == NULL) //End of this branch
+	{
+		isSuccessful = false;
+
+	} else if ((*subtreePtr).GetValue() == target) //Target found
+	{
+		subtreePtr = RemoveNode(subtreePtr);
+
+		isSuccessful = true;
+
+	} else if ((*subtreePtr).GetValue() > target) //The target could be to the left
+	{
+		LeafNode<itemType>* tempPtr = RemoveValue((*subtreePtr).GetLeftChild(), target, isSuccessful);
+		(*subtreePtr).SetLeftChild(tempPtr);
+
+	} else //The target could be to the right
+	{
+		LeafNode<itemType>* tempPtr = RemoveValue((*subtreePtr).GetRightChild(), target, isSuccessful);
+		(*subtreePtr).SetRightChild(tempPtr);
+
+	}
+
+	return subtreePtr;
+
+}
+
+template<class itemType>
+LeafNode<itemType>* BinarySearchTree<itemType>::RemoveNode (LeafNode<itemType>* nodePtr)
+{
+	if (!(*nodePtr).IsRootNode() && !(*nodePtr).HasChildren()) //Checks if the node is a leaf
+	{
+		delete nodePtr;
+		nodePtr = NULL;
+
+		return nodePtr;
+
+	} else if ((*nodePtr).GetLeftChild() != NULL && (*nodePtr).GetRightChild() == NULL) //Has left child but not right
+	{
+		LeafNode<itemType>* nodeToConnect = (*nodePtr).GetLeftChild();
+
+		delete nodePtr;
+		nodePtr = NULL;
+
+		return nodeToConnect;
+
+	} else if ((*nodePtr).GetLeftChild() == NULL && (*nodePtr).GetRightChild() != NULL) //Has right child but not left
+	{
+		LeafNode<itemType>* nodeToConnect = (*nodePtr).GetRightChild();
+
+		delete nodePtr;
+		nodePtr = NULL;
+
+		return nodeToConnect;
+
+	} else //Has two children 
+	{
+		itemType newValue;
+
+		LeafNode<itemType>* tempPtr = RemoveLeftmostNode ((*nodePtr).GetRightChild(), newValue);
+
+		(*nodePtr).SetRightChild(tempPtr);
+		(*nodePtr).SetValue(newValue);
+
+		return nodePtr;
+
+	}
+}
+
+template<class itemType>
+LeafNode<itemType>* BinarySearchTree<itemType>::RemoveLeftmostNode (LeafNode<itemType>* nodePtr, itemType &successorValue)
+{
+	if ((*nodePtr).GetLeftChild() == NULL) //Found leftmost node
+	{
+		successorValue = (*nodePtr).GetValue();
+
+		return RemoveNode(nodePtr);
+
+	} else
+	{
+		LeafNode<itemType>* tempPtr = RemoveLeftmostNode((*nodePtr).GetLeftChild(), successorValue);
+
+		(*nodePtr).SetLeftChild(tempPtr);
+
+		return nodePtr;
+
+	}
 }
 
 template<class itemType>

@@ -13,6 +13,7 @@ class LeafNode
 		bool IsLeftClear ();
 		bool IsRightClear ();
 		bool IsRootNode ();
+		bool HasChildren ();
 
 		void SetLeftChild (LeafNode* newChild);
 		void SetRightChild (LeafNode* newChild);
@@ -98,6 +99,20 @@ bool LeafNode<itemType>::IsRootNode ()
 {
 	return isRoot;
 
+}
+
+template<class itemType>
+bool LeafNode<itemType>::HasChildren ()
+{
+	if (leftChild != NULL || rightChild != NULL)
+	{
+		return true; //At least one child exists
+
+	} else
+	{
+		return false;
+
+	}
 }
 
 template<class itemType>

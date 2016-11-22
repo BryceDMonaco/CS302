@@ -31,8 +31,38 @@ int main ()
 
 	}
 
-	valueTrav = NULL;
+	intTree.Print();
 
+	cout << "Attempting to remove " << *(values + 3) << endl;
+
+	if (intTree.Remove(*(values + 3)))
+	{
+		//Should be successful
+		cout << "Value was removed." << endl;
+
+	} else
+	{
+		cout << "Removal failed." << endl;
+
+	}
+
+	cout << "After first removal tree is now: " << endl;
+	intTree.Print();
+
+	cout << "Attempting to remove 3 (static value)" << endl;
+
+	if (intTree.Remove(3))
+	{
+		//Should be successful
+		cout << "Value was removed." << endl;
+
+	} else
+	{
+		cout << "Removal failed." << endl;
+
+	}
+
+	cout << "After second removal tree is now: " << endl;
 	intTree.Print();
 
 	delete[] values;
