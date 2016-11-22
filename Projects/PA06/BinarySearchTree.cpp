@@ -15,13 +15,14 @@ class BinarySearchTree
 		bool IsEmpty ();
 
 		bool Add (itemType entry); //Itegrated SetRootData
-		bool Remove (itemType target); //Remove the node with the target value
+		//bool Remove (itemType target); //Remove the node with the target value
 
-		int GetHeight ();
-		int GetNodeCount ();
-		itemType GetRootData ();
+		//int GetHeight ();
+		//int GetNodeCount ();
+		//itemType GetRootData ();
 
-		void Clear ();
+		//void Clear ();
+		void Print ();
 
 	private:
 		//Values
@@ -30,6 +31,7 @@ class BinarySearchTree
 
 		//Functions, Recursive
 		LeafNode<itemType>* PlaceNode (LeafNode<itemType>* subtreePtr, LeafNode<itemType>* newNode);
+		void DebugPrint (LeafNode<itemType>* subtreePtr); //A print function meant only for debug purposes
 
 };
 
@@ -79,19 +81,34 @@ bool BinarySearchTree<itemType>::Add (itemType entry)
 
 	} else
 	{
+		LeafNode<itemType>* newLeaf = new LeafNode<itemType>(entry, false); //Tom Nook would be proud
 
+		PlaceNode(rootPtr, newLeaf);
 
 	}
 
 }
+
+template<class itemType>
+void BinarySearchTree<itemType>::Print ()
+{
+	DebugPrint(rootPtr);
+
+	cout << "Print job ended." << endl;
+
+	return;
+
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////
 ///////////// 				End Public Functions 					/////////////
 /////////////////////////////////////////////////////////////////////////////////
 
 //Adapted from pg 492-493 Pseudocode
+//Note that if the entry data type does not have a definition for '>' and '<' that the function will fail
 template<class itemType>
-LeafNode<itemType>* BinarySearchTree<itemType>::PlaceNode (LeafNode<itemType>* subtreePtr, LeafNode<itemType>* newNode);
+LeafNode<itemType>* BinarySearchTree<itemType>::PlaceNode (LeafNode<itemType>* subtreePtr, LeafNode<itemType>* newNode)
 {
 	if (subtreePtr == NULL)
 	{
@@ -99,18 +116,62 @@ LeafNode<itemType>* BinarySearchTree<itemType>::PlaceNode (LeafNode<itemType>* s
 
 	} else if ((*subtreePtr).GetValue() > (*newNode).GetValue()) //Go to the left branch
 	{
-		tempPtr = PlaceNode((*subtreePtr).GetLeftChild(), newNode);
+		LeafNode<itemType>* tempPtr = PlaceNode((*subtreePtr).GetLeftChild(), newNode);
 
 		(*subtreePtr).SetLeftChild(tempPtr);
 
 	} else if ((*subtreePtr).GetValue() < (*newNode).GetValue()) //Go to the right branch
 	{
-		tempPtr = PlaceNode((*subtreePtr).GetRightChild(), newNode);
+		LeafNode<itemType>* tempPtr = PlaceNode((*subtreePtr).GetRightChild(), newNode);
 
 		(*subtreePtr).SetRightChild(tempPtr);
 
 	}
 
 	return subtreePtr;
+
+}
+
+template<class itemType>
+void BinarySearchTree<itemType>::DebugPrint (LeafNode<itemType>* subtreePtr)
+{
+	if (subtreePtr == NULL)
+	{
+		//cout << "~NULL~";
+
+	} else
+	{
+		cout << (*subtreePtr).GetValue() << " has children: ";
+
+		if ((*subtreePtr).GetLeftChild() == NULL)
+		{
+			cout << "NULL";
+
+		} else
+		{
+			cout << (*((*subtreePtr).GetLeftChild())).GetValue();
+
+		}
+
+		cout << " and ";
+
+		if ((*subtreePtr).GetRightChild() == NULL)
+		{
+			cout << "NULL";
+
+		} else
+		{
+			cout << (*((*subtreePtr).GetRightChild())).GetValue();
+
+		}
+
+		cout << endl;
+
+		DebugPrint((*subtreePtr).GetLeftChild());
+		DebugPrint((*subtreePtr).GetRightChild());
+
+	}
+
+	return;
 
 }
