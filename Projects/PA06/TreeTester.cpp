@@ -7,31 +7,26 @@
 
 using namespace std;
 
+void GenerateUniqueValues (int* destination, int amount);
+
 int main ()
 {
 	BinarySearchTree<int> intTree;
 
 	int* values = new int[11];
 
-	int* valueTrav = values;
-
-	srand(time(0));
+	GenerateUniqueValues(values, 11);
 
 	for (int ii = 0; ii < 11; ii++)
 	{
-		*(valueTrav + ii) = rand() % 100;
+		intTree.Add(*(values + ii));
 
-	}
-
-	for (int ii = 0; ii < 11; ii++)
-	{
-		intTree.Add(*(valueTrav + ii));
-
-		cout << "Adding " << *(valueTrav + ii) << endl;
+		cout << "Adding " << *(values + ii) << endl;
 
 	}
 
 	intTree.Print();
+	cout << "Number of nodes: " << intTree.GetNodeCount() << endl;
 
 	cout << "Attempting to remove " << *(values + 3) << endl;
 
@@ -64,9 +59,54 @@ int main ()
 
 	cout << "After second removal tree is now: " << endl;
 	intTree.Print();
+	cout << "Number of nodes: " << intTree.GetNodeCount() << endl;
 
 	delete[] values;
 
 	return 0;
+
+}
+
+void GenerateUniqueValues (int* destination, int amount)
+{
+	srand(time(0));
+
+	bool unique = false;
+
+	while (!unique)
+	{
+		for (int i = 0; i < amount; i++)
+		{
+			*(destination + i) = rand() % 100;
+
+		}
+
+		unique = true;
+
+		for (int i = 0; i < amount; i++)
+		{
+			int currentValue = *(destination + i);
+			int occurance = 0;
+
+			for (int ii = 0; ii < amount; ii++)
+			{
+				if (*(destination + ii) == currentValue)
+				{
+					occurance++;
+
+				}
+			}
+
+			if (occurance > 1)
+			{
+				unique = false; //Regenerate
+				break;
+
+			}
+		}
+
+	}
+
+	return;
 
 }

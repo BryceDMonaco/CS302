@@ -18,7 +18,7 @@ class BinarySearchTree
 		bool Remove (itemType target); //Remove the node with the target value
 
 		//int GetHeight ();
-		//int GetNodeCount ();
+		int GetNodeCount ();
 		//itemType GetRootData ();
 
 		//void Clear ();
@@ -34,6 +34,8 @@ class BinarySearchTree
 		LeafNode<itemType>* RemoveValue (LeafNode<itemType>* subtreePtr, itemType target, bool &isSuccessful);
 		LeafNode<itemType>* RemoveNode (LeafNode<itemType>* nodePtr);
 		LeafNode<itemType>* RemoveLeftmostNode (LeafNode<itemType>* nodePtr, itemType &successorValue);
+
+		int CountChildren (LeafNode<itemType>* subtreePtr);
 
 		void DebugPrint (LeafNode<itemType>* subtreePtr); //A print function meant only for debug purposes
 
@@ -101,6 +103,15 @@ bool BinarySearchTree<itemType>::Remove (itemType target)
 	rootPtr = RemoveValue(rootPtr, target, isSuccessful);
 
 	return isSuccessful;
+
+}
+
+template<class itemType>
+int BinarySearchTree<itemType>::GetNodeCount ()
+{
+	int count = CountChildren(rootPtr);
+
+	return count;
 
 }
 
@@ -234,6 +245,33 @@ LeafNode<itemType>* BinarySearchTree<itemType>::RemoveLeftmostNode (LeafNode<ite
 		(*nodePtr).SetLeftChild(tempPtr);
 
 		return nodePtr;
+
+	}
+}
+
+template<class itemType>
+int BinarySearchTree<itemType>::CountChildren (LeafNode<itemType>* subtreePtr)
+{
+	if ((*subtreePtr).GetLeftChild() != NULL && (*subtreePtr).GetRightChild() == NULL) //Has left child but not right
+	{
+		return 1 + CountChildren((*subtreePtr).GetLeftChild());
+
+	} else if ((*subtreePtr).GetLeftChild() == NULL && (*subtreePtr).GetRightChild() != NULL) //Has right child but not left
+	{
+		return 1 + CountChildren((*subtreePtr).GetRightChild());		
+
+	} else if ( !(*subtreePtr).HasChildren()) //Has no children
+	{
+		return 1;
+
+	} else //Has two children 
+	{
+		int count = 0;
+
+		count += CountChildren((*subtreePtr).GetLeftChild());
+		count += CountChildren((*subtreePtr).GetRightChild());
+
+		return 1 + count; 
 
 	}
 }
