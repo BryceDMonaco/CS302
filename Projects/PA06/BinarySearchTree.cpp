@@ -109,9 +109,7 @@ bool BinarySearchTree<itemType>::Remove (itemType target)
 template<class itemType>
 int BinarySearchTree<itemType>::GetNodeCount ()
 {
-	int count = CountChildren(rootPtr);
-
-	return count;
+	return CountChildren(rootPtr);
 
 }
 
