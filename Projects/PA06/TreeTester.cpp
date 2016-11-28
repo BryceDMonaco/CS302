@@ -8,60 +8,61 @@
 using namespace std;
 
 void GenerateUniqueValues (int* destination, int amount);
+int GenerateUniqueOverlapValues (int* destination, int* mainData, int amountMain, int amountSecond, int overlaps);
+void DoTraversals (BinarySearchTree<int>* sentTree);
 
 int main ()
 {
-	BinarySearchTree<int> intTree;
+	BinarySearchTree<int> intTreeFirst;
+	BinarySearchTree<int> intTreeSecond;
 
-	int* values = new int[11];
+	int amount1 = 100;
+	int amount2 = 10;
+	int minimumOverlaps = 1;
+	int* valuesFirst = new int[amount1];
+	int* valuesSecond = new int[amount2];
 
-	GenerateUniqueValues(values, 11);
+	srand(time(0));
 
-	for (int ii = 0; ii < 11; ii++)
+	cout << "Beginning generation process, THIS WILL TAKE A WHILE...." << endl;
+
+	cout << "Generating unique values..." << endl;
+
+	GenerateUniqueValues(valuesFirst, amount1);
+
+	cout << "Generating overlap values... Generated ";
+
+	cout << GenerateUniqueOverlapValues(valuesSecond, valuesFirst, amount1, amount2, minimumOverlaps);
+
+	cout << " overlaps." << endl << "Generation complete." << endl;
+
+	cout << "Adding to the first tree: " << endl;
+
+	for (int ii = 0; ii < amount1; ii++)
 	{
-		intTree.Add(*(values + ii));
+		intTreeFirst.Add(*(valuesFirst + ii));
 
-		cout << "Adding " << *(values + ii) << endl;
+		cout << "\tAdding " << *(valuesFirst + ii) << endl;
 
 	}
 
-	intTree.Print();
-	cout << "Number of nodes: " << intTree.GetNodeCount() << endl;
+	cout << "Adding to the second tree: " << endl;
 
-	cout << "Attempting to remove " << *(values + 3) << endl;
-
-	if (intTree.Remove(*(values + 3)))
+	for (int ii = 0; ii < amount2; ii++)
 	{
-		//Should be successful
-		cout << "Value was removed." << endl;
+		intTreeSecond.Add(*(valuesSecond + ii));
 
-	} else
-	{
-		cout << "Removal failed." << endl;
+		cout << "\tAdding " << *(valuesSecond + ii) << endl;
 
 	}
 
-	cout << "After first removal tree is now: " << endl;
-	intTree.Print();
+	cout << "Traversals for the main tree: " << endl;
+	DoTraversals(&intTreeFirst);
+	cout << "Traversals for the overlap tree: " << endl;
+	DoTraversals(&intTreeSecond);
 
-	cout << "Attempting to remove 3 (static value)" << endl;
-
-	if (intTree.Remove(3))
-	{
-		//Should be successful
-		cout << "Value was removed." << endl;
-
-	} else
-	{
-		cout << "Removal failed." << endl;
-
-	}
-
-	cout << "After second removal tree is now: " << endl;
-	intTree.Print();
-	cout << "Number of nodes: " << intTree.GetNodeCount() << endl;
-
-	delete[] values;
+	delete[] valuesFirst;
+	delete[] valuesSecond;
 
 	return 0;
 
@@ -69,15 +70,14 @@ int main ()
 
 void GenerateUniqueValues (int* destination, int amount)
 {
-	srand(time(0));
-
 	bool unique = false;
 
 	while (!unique)
 	{
+		//cout << "Starting new unique attempt..." << endl;
 		for (int i = 0; i < amount; i++)
 		{
-			*(destination + i) = rand() % 100;
+			*(destination + i) = rand() % 200;
 
 		}
 
@@ -106,6 +106,65 @@ void GenerateUniqueValues (int* destination, int amount)
 		}
 
 	}
+
+	return;
+
+}
+
+int GenerateUniqueOverlapValues (int* destination, int* mainData, int amountMain, int amountSecond, int overlaps)
+{
+	int overlapCount = 0;
+
+	while (overlapCount < overlaps)
+	{
+		//cout << "Attempting new overlap run..." << endl;
+		GenerateUniqueValues(destination, amountSecond); //Get a new set of numbers
+
+		overlapCount = 0;
+
+		for (int i = 0; i < amountSecond; i++)
+		{
+			int currentValue = *(destination + i);
+
+			for (int ii = 0; ii < amountMain; ii++)
+			{
+				if (currentValue == *(mainData + ii))
+				{
+					overlapCount++;
+
+					break;
+
+				}
+			}
+		}
+
+	}
+
+	return overlapCount;
+
+}
+
+void DoTraversals (BinarySearchTree<int>* sentTree)
+{
+	cout << "Doing Preorder Traversal..." << endl;
+
+	(*sentTree).DoTraversal(0);
+
+	cout << endl << "Preorder Traversal done." << endl;
+
+	cout << "Doing Inorder Traversal..." << endl;
+
+	(*sentTree).DoTraversal(1);
+
+	cout << endl << "Inorder Traversal done." << endl;
+
+	cout << "Doing Postorder Traversal..." << endl;
+
+	(*sentTree).DoTraversal(2);
+
+	cout << endl << "Postorder Traversal done." << endl;
+
+	cout << "Tree height: " << (*sentTree).GetHeight() << endl;
 
 	return;
 

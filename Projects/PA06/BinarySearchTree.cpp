@@ -10,16 +10,18 @@ class BinarySearchTree
 	public:
 		BinarySearchTree ();
 		~BinarySearchTree ();
-		//No parameterized const. because I want the items to be pushed into the tree one at a time
+		//No parameterized constructor because I want the items to be pushed into the tree one at a time
 
 		bool IsEmpty ();
 
 		bool Add (itemType entry); //Itegrated SetRootData
 		bool Remove (itemType target); //Remove the node with the target value
 
-		//int GetHeight ();
+		int GetHeight ();
 		int GetNodeCount ();
 		//itemType GetRootData ();
+
+		void DoTraversal (int type); //0 = Pre, 1 = In, 2 = Post
 
 		//void Clear ();
 		void Print ();
@@ -35,7 +37,13 @@ class BinarySearchTree
 		LeafNode<itemType>* RemoveNode (LeafNode<itemType>* nodePtr);
 		LeafNode<itemType>* RemoveLeftmostNode (LeafNode<itemType>* nodePtr, itemType &successorValue);
 
+		//Traversal Functions
+		void PreorderTraverse (LeafNode<itemType>* subtreePtr);
+		void InorderTraverse (LeafNode<itemType>* subtreePtr);
+		void PostorderTraverse (LeafNode<itemType>* subtreePtr);
+
 		int CountChildren (LeafNode<itemType>* subtreePtr);
+		int CountHeight (LeafNode<itemType>* subtreePtr);
 
 		void DebugPrint (LeafNode<itemType>* subtreePtr); //A print function meant only for debug purposes
 
@@ -107,11 +115,44 @@ bool BinarySearchTree<itemType>::Remove (itemType target)
 }
 
 template<class itemType>
+int BinarySearchTree<itemType>::GetHeight ()
+{
+	return 1 + CountHeight(rootPtr);
+
+}
+
+template<class itemType>
 int BinarySearchTree<itemType>::GetNodeCount ()
 {
 	return CountChildren(rootPtr);
 
 }
+
+template<class itemType>
+void BinarySearchTree<itemType>::DoTraversal (int type)
+{
+	if (type == 0) //Pre
+	{
+		PreorderTraverse(rootPtr);
+
+	} else if (type == 1) //In
+	{
+		InorderTraverse(rootPtr);
+
+	} else if (type == 2) //Post
+	{
+		PostorderTraverse(rootPtr);
+
+	} else
+	{
+		cout << "Invalid traversal type requested. Traversal failed." << endl;
+
+	}
+
+	return;
+
+}
+
 
 template<class itemType>
 void BinarySearchTree<itemType>::Print ()
@@ -275,6 +316,35 @@ int BinarySearchTree<itemType>::CountChildren (LeafNode<itemType>* subtreePtr)
 }
 
 template<class itemType>
+int BinarySearchTree<itemType>::CountHeight (LeafNode<itemType>* subtreePtr)
+{
+	int leftHeight = 0;
+	int rightHeight = 0;
+
+	if ((*subtreePtr).GetLeftChild() != NULL)
+	{
+		leftHeight = 1 + CountHeight((*subtreePtr).GetLeftChild());
+
+	}
+
+	if ((*subtreePtr).GetRightChild() != NULL)
+	{
+		rightHeight = 1 + CountHeight((*subtreePtr).GetRightChild());
+	
+	}
+
+	if (leftHeight >= rightHeight)
+	{
+		return leftHeight;
+
+	} else
+	{
+		return rightHeight;
+
+	}
+}
+
+template<class itemType>
 void BinarySearchTree<itemType>::DebugPrint (LeafNode<itemType>* subtreePtr)
 {
 	if (subtreePtr == NULL)
@@ -311,6 +381,64 @@ void BinarySearchTree<itemType>::DebugPrint (LeafNode<itemType>* subtreePtr)
 
 		DebugPrint((*subtreePtr).GetLeftChild());
 		DebugPrint((*subtreePtr).GetRightChild());
+
+	}
+
+	return;
+
+}
+
+template<class itemType>
+void BinarySearchTree<itemType>::PreorderTraverse (LeafNode<itemType>* subtreePtr)
+{
+	if (subtreePtr == NULL)
+	{
+		//Tree is empty, end recursive calls
+
+	} else
+	{
+		cout << (*subtreePtr).GetValue() << ", ";
+
+		PreorderTraverse((*subtreePtr).GetLeftChild());
+		PreorderTraverse((*subtreePtr).GetRightChild());
+
+	}
+
+	return;
+
+}
+
+template<class itemType>
+void BinarySearchTree<itemType>::InorderTraverse (LeafNode<itemType>* subtreePtr)
+{
+	if (subtreePtr == NULL)
+	{
+		//Tree is empty, end recursive calls
+
+	} else
+	{
+		InorderTraverse((*subtreePtr).GetLeftChild());
+		cout << (*subtreePtr).GetValue() << ", ";
+		InorderTraverse((*subtreePtr).GetRightChild());
+
+	}
+
+	return;
+
+}
+
+template<class itemType>
+void BinarySearchTree<itemType>::PostorderTraverse (LeafNode<itemType>* subtreePtr)
+{
+	if (subtreePtr == NULL)
+	{
+		//Tree is empty, end recursive calls
+
+	} else
+	{
+		PostorderTraverse((*subtreePtr).GetLeftChild());
+		PostorderTraverse((*subtreePtr).GetRightChild());
+		cout << (*subtreePtr).GetValue() << ", ";
 
 	}
 
