@@ -23,7 +23,7 @@ class BinarySearchTree
 
 		void DoTraversal (int type); //0 = Pre, 1 = In, 2 = Post
 
-		//void Clear ();
+		void Clear ();
 		void Print ();
 
 	private:
@@ -153,6 +153,17 @@ void BinarySearchTree<itemType>::DoTraversal (int type)
 
 }
 
+template<class itemType>
+void BinarySearchTree<itemType>::Clear ()
+{
+	delete rootPtr;
+	rootPtr = NULL;
+
+	nodeCount = 0;
+
+	return;
+
+}
 
 template<class itemType>
 void BinarySearchTree<itemType>::Print ()

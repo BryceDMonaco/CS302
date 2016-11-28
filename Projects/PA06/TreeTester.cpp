@@ -24,42 +24,114 @@ int main ()
 
 	srand(time(0));
 
-	cout << "Beginning generation process, THIS WILL TAKE A WHILE...." << endl;
+	cout << "Beginning generation process, THIS COULD TAKE A WHILE...." << endl;
 
-	cout << "Generating unique values..." << endl;
+	cout << "\tGenerating unique values..." << endl;
 
 	GenerateUniqueValues(valuesFirst, amount1);
 
-	cout << "Generating overlap values... Generated ";
+	cout << "\tGenerating overlap values... Generated ";
 
 	cout << GenerateUniqueOverlapValues(valuesSecond, valuesFirst, amount1, amount2, minimumOverlaps);
 
 	cout << " overlaps." << endl << "Generation complete." << endl;
 
-	cout << "Adding to the first tree: " << endl;
+	//cout << endl << "Adding to the first tree: " << endl;
 
 	for (int ii = 0; ii < amount1; ii++)
 	{
 		intTreeFirst.Add(*(valuesFirst + ii));
 
-		cout << "\tAdding " << *(valuesFirst + ii) << endl;
+		//cout << "\tAdding " << *(valuesFirst + ii) << endl;
 
 	}
 
-	cout << "Adding to the second tree: " << endl;
+	//cout << endl << "Adding to the second tree: " << endl;
 
 	for (int ii = 0; ii < amount2; ii++)
 	{
 		intTreeSecond.Add(*(valuesSecond + ii));
 
-		cout << "\tAdding " << *(valuesSecond + ii) << endl;
+		//cout << "\tAdding " << *(valuesSecond + ii) << endl;
 
 	}
 
-	cout << "Traversals for the main tree: " << endl;
-	DoTraversals(&intTreeFirst);
-	cout << "Traversals for the overlap tree: " << endl;
+	cout << endl << "Inorder traversal for the main tree: " << endl;
+	intTreeFirst.DoTraversal(1);
+	cout << endl << endl << "Tree height: " << intTreeFirst.GetHeight();
+
+	cout << endl << endl << "Traversals for the overlap tree: " << endl;
 	DoTraversals(&intTreeSecond);
+
+	cout << endl << "Removing overlap values from the main tree..." << endl;
+
+	for (int i = 0; i < amount2; i++)
+	{
+		if (intTreeFirst.Remove(*(valuesSecond + i)))
+		{
+			cout << "\tRemoved " << *(valuesSecond + i) << endl;
+
+		}
+	}
+
+	cout << endl << "Inorder traversal for the main tree: " << endl;
+	intTreeFirst.DoTraversal(1);
+	cout << endl << endl << "Tree height: " << intTreeFirst.GetHeight();
+	cout << endl << "Number of nodes in main tree: " << intTreeFirst.GetNodeCount() << endl;
+
+	cout << endl << "Clearing Trees..." << endl;
+
+	cout << "Before calling Clear(), the main tree is ";
+
+	if (intTreeFirst.IsEmpty())
+	{
+		cout << "EMPTY." << endl;
+
+	} else
+	{
+		cout << "NOT EMPTY." << endl;
+
+	}
+
+	cout << "Before calling Clear(), the secondary tree is ";
+
+	if (intTreeSecond.IsEmpty())
+	{
+		cout << "EMPTY." << endl;
+
+	} else
+	{
+		cout << "NOT EMPTY." << endl;
+
+	}
+
+	intTreeFirst.Clear();
+	intTreeSecond.Clear();
+
+	cout << "After calling Clear(), the main tree is ";
+
+	if (intTreeFirst.IsEmpty())
+	{
+		cout << "EMPTY." << endl;
+
+	} else
+	{
+		cout << "NOT EMPTY." << endl;
+
+	}
+
+	cout << "After calling Clear(), the secondary tree is ";
+
+	if (intTreeSecond.IsEmpty())
+	{
+		cout << "EMPTY." << endl;
+
+	} else
+	{
+		cout << "NOT EMPTY." << endl;
+
+	}
+
 
 	delete[] valuesFirst;
 	delete[] valuesSecond;
@@ -152,23 +224,23 @@ int GenerateUniqueOverlapValues (int* destination, int* mainData, int amountMain
 
 void DoTraversals (BinarySearchTree<int>* sentTree)
 {
-	cout << "Doing Preorder Traversal..." << endl;
+	cout << "Preorder Traversal: " << endl;
 
 	(*sentTree).DoTraversal(0);
 
-	cout << endl << "Preorder Traversal done." << endl;
+	cout << endl << endl;
 
-	cout << "Doing Inorder Traversal..." << endl;
+	cout << "Inorder Traversal" << endl;
 
 	(*sentTree).DoTraversal(1);
 
-	cout << endl << "Inorder Traversal done." << endl;
+	cout << endl << endl;
 
-	cout << "Doing Postorder Traversal..." << endl;
+	cout << "Postorder Traversal" << endl;
 
 	(*sentTree).DoTraversal(2);
 
-	cout << endl << "Postorder Traversal done." << endl;
+	cout << endl << endl;
 
 	cout << "Tree height: " << (*sentTree).GetHeight() << endl;
 
