@@ -1,3 +1,17 @@
+/**
+*	@file BinarySearchTree.cpp
+*
+*	@brief This is the header and implmentation of BinarySearchTree
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header and implementation of BinarySearchTree
+*
+*	@version 1.0
+*
+*	@note Header and implementation are in one file to fix some templating issues.
+*/
+
 #include <iostream>
 
 #include "LeafNode.cpp"
@@ -53,6 +67,22 @@ class BinarySearchTree
 ///////////// 					End Header File 					/////////////
 /////////////////////////////////////////////////////////////////////////////////
 
+/**
+*	@brief The default constructor of a BinarySearchTree object
+*
+*	@details This constructor initializes values of a BinarySearchTree object to default values
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 BinarySearchTree<itemType>::BinarySearchTree ()
 {
@@ -62,6 +92,22 @@ BinarySearchTree<itemType>::BinarySearchTree ()
 
 }
 
+/**
+*	@brief The destructor of a BinarySearchTree object
+*
+*	@details This removes the BinarySearchTree from memory
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 BinarySearchTree<itemType>::~BinarySearchTree ()
 {
@@ -70,6 +116,22 @@ BinarySearchTree<itemType>::~BinarySearchTree ()
 
 }
 
+/**
+*	@brief Checks if the tree is empty
+*
+*	@details Checks if the tree is empty by checking the root pointer
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns a bool signifying whether or not the tree is empty
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool BinarySearchTree<itemType>::IsEmpty ()
 {
@@ -84,6 +146,22 @@ bool BinarySearchTree<itemType>::IsEmpty ()
 	}
 }
 
+/**
+*	@brief Adds a value to the tree
+*
+*	@details Adds the sent value to the tree
+*
+*	@par Algorithm Recursively finds the proper position for the new node 
+*
+*	@param[in] entry The value to store in the tree
+*
+*	@param[out] None.
+*
+*	@return Returns a bool signifying if the node could be added, always true
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool BinarySearchTree<itemType>::Add (itemType entry)
 {
@@ -103,6 +181,22 @@ bool BinarySearchTree<itemType>::Add (itemType entry)
 
 }
 
+/**
+*	@brief Removes the target value from the tree
+*
+*	@details Seaches for the target value and removes it if it is found
+*
+*	@par Algorithm Recursively finds the value and then removes it
+*
+*	@param[in] target The value to remove from the tree
+*
+*	@param[out] None.
+*
+*	@return Returns a bool signifying if the node could be removed, false if the value doesn't exist
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool BinarySearchTree<itemType>::Remove (itemType target)
 {
@@ -114,6 +208,22 @@ bool BinarySearchTree<itemType>::Remove (itemType target)
 
 }
 
+/**
+*	@brief Gets the height of the tree.
+*
+*	@details Gets the height of the tree by counting the longest branch.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns an int which is the height of the tree.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 int BinarySearchTree<itemType>::GetHeight ()
 {
@@ -121,6 +231,22 @@ int BinarySearchTree<itemType>::GetHeight ()
 
 }
 
+/**
+*	@brief Gets the node count of the tree.
+*
+*	@details Gets the node count of the tree by counting each node.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns an int which is the node count of the tree.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 int BinarySearchTree<itemType>::GetNodeCount ()
 {
@@ -128,6 +254,22 @@ int BinarySearchTree<itemType>::GetNodeCount ()
 
 }
 
+/**
+*	@brief Performs a specific traversal of the tree.
+*
+*	@details Expects a value 0-2 which picks the type of traversal to do.
+*
+*	@par Algorithm None.
+*
+*	@param[in] type An int which is the type of traversal to do. 0 = Pre, 1 = In, 2 = Post
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void BinarySearchTree<itemType>::DoTraversal (int type)
 {
@@ -153,6 +295,22 @@ void BinarySearchTree<itemType>::DoTraversal (int type)
 
 }
 
+/**
+*	@brief Empties the tree.
+*
+*	@details Clears the tree by deleting the root and then setting it to null.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void BinarySearchTree<itemType>::Clear ()
 {
@@ -165,6 +323,22 @@ void BinarySearchTree<itemType>::Clear ()
 
 }
 
+/**
+*	@brief A debug function to print the tree.
+*
+*	@details Prints the tree, used for debugging.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void BinarySearchTree<itemType>::Print ()
 {
@@ -181,8 +355,24 @@ void BinarySearchTree<itemType>::Print ()
 ///////////// 				End Public Functions 					/////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-//Adapted from pg 492-493 Pseudocode
-//Note that if the entry data type does not have a definition for '>' and '<' that the function will fail
+/**
+*	@brief Places a new node at the first available and proper position.
+*
+*	@details Goes down the tree until it finds a position where the node can be stored.
+*
+*	@par Algorithm Recursively traverses the tree to find a valid position for the new node.
+*
+*	@param[in] subTreePtr The pointer to the current subtree
+*
+*	@param[in] newNode The pointer to the new node to be placed
+*
+*	@param[out] None.
+*
+*	@return Returns a pointer to the newly placed node.
+*
+*	@note if the entry data type does not have a definition for '>' and '<' that the function will fail
+*
+*/
 template<class itemType>
 LeafNode<itemType>* BinarySearchTree<itemType>::PlaceNode (LeafNode<itemType>* subtreePtr, LeafNode<itemType>* newNode)
 {
@@ -208,6 +398,26 @@ LeafNode<itemType>* BinarySearchTree<itemType>::PlaceNode (LeafNode<itemType>* s
 
 }
 
+/**
+*	@brief removes the node with the value
+*
+*	@details Removes the node with the specific value and then fixes the leaves.
+*
+*	@par Algorithm none.
+*
+*	@param[in] subTreePtr The pointer to the current subtree
+*
+*	@param[in] target The value to remove
+*
+*	@param[in] isSuccessful The bool to signify if the node could be found and removed
+*
+*	@param[out] None.
+*
+*	@return Returns a pointer to the subtree
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>* BinarySearchTree<itemType>::RemoveValue (LeafNode<itemType>* subtreePtr, itemType target, bool &isSuccessful)
 {
@@ -237,6 +447,22 @@ LeafNode<itemType>* BinarySearchTree<itemType>::RemoveValue (LeafNode<itemType>*
 
 }
 
+/**
+*	@brief removes the sent node
+*
+*	@details Removes the sent node and fixes the children
+*
+*	@par Algorithm none.
+*
+*	@param[in] nodePtr The pointer to the node to remove
+*
+*	@param[out] None.
+*
+*	@return Returns a pointer to the subtree
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>* BinarySearchTree<itemType>::RemoveNode (LeafNode<itemType>* nodePtr)
 {
@@ -279,6 +505,24 @@ LeafNode<itemType>* BinarySearchTree<itemType>::RemoveNode (LeafNode<itemType>* 
 	}
 }
 
+/**
+*	@brief removes the leftmost node in a tree
+*
+*	@details Removes the leftmost node in the sent branch
+*
+*	@par Algorithm none.
+*
+*	@param[in] nodePtr The pointer to the node to remove
+*
+*	@param[in] successorValue The value of the previous node
+*
+*	@param[out] None.
+*
+*	@return Returns a pointer to the subtree
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>* BinarySearchTree<itemType>::RemoveLeftmostNode (LeafNode<itemType>* nodePtr, itemType &successorValue)
 {
@@ -299,6 +543,22 @@ LeafNode<itemType>* BinarySearchTree<itemType>::RemoveLeftmostNode (LeafNode<ite
 	}
 }
 
+/**
+*	@brief Counts the nodes in the tree
+*
+*	@details Runs through the tree and counts each node.
+*
+*	@par Algorithm none.
+*
+*	@param[in] subtreePtr The pointer to the tree to traverse
+*
+*	@param[out] None.
+*
+*	@return Returns the count of the nodes.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 int BinarySearchTree<itemType>::CountChildren (LeafNode<itemType>* subtreePtr)
 {
@@ -326,6 +586,22 @@ int BinarySearchTree<itemType>::CountChildren (LeafNode<itemType>* subtreePtr)
 	}
 }
 
+/**
+*	@brief Finds the longest branch of the tree
+*
+*	@details Runs through the tree and returns the height of the longest branch.
+*
+*	@par Algorithm none.
+*
+*	@param[in] subtreePtr The pointer to the tree to traverse
+*
+*	@param[out] None.
+*
+*	@return Returns the height of the tree.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 int BinarySearchTree<itemType>::CountHeight (LeafNode<itemType>* subtreePtr)
 {
@@ -355,6 +631,22 @@ int BinarySearchTree<itemType>::CountHeight (LeafNode<itemType>* subtreePtr)
 	}
 }
 
+/**
+*	@brief A debug function to print the tree.
+*
+*	@details Prints the tree, used for debugging.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void BinarySearchTree<itemType>::DebugPrint (LeafNode<itemType>* subtreePtr)
 {
@@ -399,6 +691,22 @@ void BinarySearchTree<itemType>::DebugPrint (LeafNode<itemType>* subtreePtr)
 
 }
 
+/**
+*	@brief Does a preorder traversal of the tree
+*
+*	@details Traverses the tree by printing the current root, then the left, and then the right child.
+*
+*	@par Algorithm None.
+*
+*	@param[in] subtreePtr Pointer to the current subtree.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void BinarySearchTree<itemType>::PreorderTraverse (LeafNode<itemType>* subtreePtr)
 {
@@ -419,6 +727,22 @@ void BinarySearchTree<itemType>::PreorderTraverse (LeafNode<itemType>* subtreePt
 
 }
 
+/**
+*	@brief Does an inorder traversal of the tree
+*
+*	@details Traverses the tree by printing the left, current root, and then the right child.
+*
+*	@par Algorithm None.
+*
+*	@param[in] subtreePtr Pointer to the current subtree.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void BinarySearchTree<itemType>::InorderTraverse (LeafNode<itemType>* subtreePtr)
 {
@@ -438,6 +762,22 @@ void BinarySearchTree<itemType>::InorderTraverse (LeafNode<itemType>* subtreePtr
 
 }
 
+/**
+*	@brief Does a postorder traversal of the tree
+*
+*	@details Traverses the tree by printing the left, the right child, and the current root.
+*
+*	@par Algorithm None.
+*
+*	@param[in] subtreePtr Pointer to the current subtree.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void BinarySearchTree<itemType>::PostorderTraverse (LeafNode<itemType>* subtreePtr)
 {

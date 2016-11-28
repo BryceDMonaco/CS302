@@ -1,3 +1,17 @@
+/**
+*	@file LeafNode.cpp
+*
+*	@brief This is the header and implmentation of LeafNode
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header and implementation of LeafNode
+*
+*	@version 1.0
+*
+*	@note Header and implementation are in one file to fix some templating issues.
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -37,6 +51,23 @@ class LeafNode
 ///////////// 					End Header File 					/////////////
 /////////////////////////////////////////////////////////////////////////////////
 
+
+/**
+*	@brief The default constructor of a LeafNode object
+*
+*	@details This constructor initializes values of a LeafNode object to default values
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>::LeafNode ()
 {
@@ -47,6 +78,24 @@ LeafNode<itemType>::LeafNode ()
 
 }
 
+/**
+*	@brief The parameterized constructor of a LeafNode object
+*
+*	@details This constructor initializes values of a LeafNode object to sent values
+*
+*	@par Algorithm None.
+*
+*	@param[in] newValue The value to store in the node
+*
+*	@param[in] setIsRoot Tells the node if it is the root node or not
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>::LeafNode (itemType newValue, bool setIsRoot)
 {
@@ -59,6 +108,22 @@ LeafNode<itemType>::LeafNode (itemType newValue, bool setIsRoot)
 
 }
 
+/**
+*	@brief The destructor of a LeafNode object
+*
+*	@details Removes a LeafNode from memory.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>::~LeafNode ()
 {
@@ -66,6 +131,22 @@ LeafNode<itemType>::~LeafNode ()
 
 }
 
+/**
+*	@brief Checks if this node has a left child.
+*
+*	@details Checks if this node has a left child by checking its pointer value.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool LeafNode<itemType>::IsLeftClear ()
 {
@@ -80,6 +161,22 @@ bool LeafNode<itemType>::IsLeftClear ()
 	}
 }
 
+/**
+*	@brief Checks if this node has a right child.
+*
+*	@details Checks if this node has a right child by checking its pointer value.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool LeafNode<itemType>::IsRightClear ()
 {
@@ -94,6 +191,22 @@ bool LeafNode<itemType>::IsRightClear ()
 	}
 }
 
+/**
+*	@brief Checks if this node is the root.
+*
+*	@details Checks if this node is the root node by checking the private boolean isRoot.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool LeafNode<itemType>::IsRootNode ()
 {
@@ -101,6 +214,22 @@ bool LeafNode<itemType>::IsRootNode ()
 
 }
 
+/**
+*	@brief Checks if this node has any children.
+*
+*	@details Checks if this node has a left or right child by checking its pointer value.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 bool LeafNode<itemType>::HasChildren ()
 {
@@ -115,6 +244,22 @@ bool LeafNode<itemType>::HasChildren ()
 	}
 }
 
+/**
+*	@brief Sets this node's left child to the sent node
+*
+*	@details Sets the leftChild pointer to the sent LeafNode pointer.
+*
+*	@par Algorithm None.
+*
+*	@param[in] newChild The LeafNode to assign as the left child.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void LeafNode<itemType>::SetLeftChild (LeafNode* newChild)
 {
@@ -124,6 +269,22 @@ void LeafNode<itemType>::SetLeftChild (LeafNode* newChild)
 
 }
 
+/**
+*	@brief Sets this node's right child to the sent node
+*
+*	@details Sets the rightChild pointer to the sent LeafNode pointer.
+*
+*	@par Algorithm None.
+*
+*	@param[in] newChild The LeafNode to assign as the right child.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void LeafNode<itemType>::SetRightChild (LeafNode* newChild)
 {
@@ -133,6 +294,22 @@ void LeafNode<itemType>::SetRightChild (LeafNode* newChild)
 
 }
 
+/**
+*	@brief Sets this node's stored value to the sent value
+*
+*	@details Sets the node's value to the value sent as an argument.
+*
+*	@par Algorithm None.
+*
+*	@param[in] newValue The new value to store in the node.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void LeafNode<itemType>::SetValue (itemType newValue)
 {
@@ -142,6 +319,22 @@ void LeafNode<itemType>::SetValue (itemType newValue)
 
 }
 
+/**
+*	@brief Gets the address of the left child
+*
+*	@details Returns the pointer stored in leftChild
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns a pointer to the left child node.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>* LeafNode<itemType>::GetLeftChild ()
 {
@@ -149,6 +342,22 @@ LeafNode<itemType>* LeafNode<itemType>::GetLeftChild ()
 
 }
 
+/**
+*	@brief Gets the address of the right child
+*
+*	@details Returns the pointer stored in rightChild
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns a pointer to the right child node.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 LeafNode<itemType>* LeafNode<itemType>::GetRightChild ()
 {
@@ -156,6 +365,22 @@ LeafNode<itemType>* LeafNode<itemType>::GetRightChild ()
 
 }
 
+/**
+*	@brief Gets this node's value
+*
+*	@details Gets the value stored in this node.
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns the value stored in this node.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 itemType LeafNode<itemType>::GetValue ()
 {

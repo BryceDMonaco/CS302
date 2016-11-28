@@ -1,3 +1,17 @@
+/**
+*	@file PA06.cpp
+*
+*	@brief This is the main file to run the trees.
+*
+*	@author Bryce Monaco
+*
+*	@details This file runs the trees and performs the required operations.
+*
+*	@version 1.0
+*
+*	@note None.
+*/
+
 #include <iostream>
 
 #include "BinarySearchTree.cpp"
@@ -140,6 +154,24 @@ int main ()
 
 }
 
+/**
+*	@brief Fills an array with unique values
+*
+*	@details Fills an array with unique random values.
+*
+*	@par Algorithm Checks if the value has already been generated and then stores it or regenerates it.
+*
+*	@param[in] destination The integer array to store the data in
+*
+*	@param[in] amount The number of values to generate, must be the size of the array
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 void GenerateUniqueValues (int* destination, int amount)
 {
 	bool* occurs = new bool[amount];
@@ -189,6 +221,30 @@ void GenerateUniqueValues (int* destination, int amount)
 
 }
 
+/**
+*	@brief Fills an array with unique values with some overlap of another array
+*
+*	@details Fills an array with unique random values with at least a certain amount of overlaps
+*
+*	@par Algorithm Checks if there are a certain amount of overlapping values, if there are it stores, if not it regenerates
+*
+*	@param[in] destination The integer array to store the data in
+*
+*	@param[in] mainData The integer array of the main data to check for overlaps
+*
+*	@param[in] amountMain The size of the main array
+*
+*	@param[in] amountSecond The size of the overlap array and the number of values to generate
+*
+*	@param[in] overlaps The minimum number of overlapping values to generate
+*
+*	@param[out] None.
+*
+*	@return Returns the number of overlaps generated, will be greater than or equal to the sent overlaps value
+*
+*	@note None.
+*
+*/
 int GenerateUniqueOverlapValues (int* destination, int* mainData, int amountMain, int amountSecond, int overlaps)
 {
 	int overlapCount = 0;
@@ -222,6 +278,22 @@ int GenerateUniqueOverlapValues (int* destination, int* mainData, int amountMain
 
 }
 
+/**
+*	@brief Does all three traversals with the sent tree
+*
+*	@details Does all three traversals wit hthe sent tree and formats the output
+*
+*	@par Algorithm None.
+*
+*	@param[in] sentTree The tree to do the traversals on.
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 void DoTraversals (BinarySearchTree<int>* sentTree)
 {
 	cout << "Preorder Traversal: " << endl;
