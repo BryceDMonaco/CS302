@@ -18,7 +18,7 @@ int main ()
 
 	int amount1 = 100;
 	int amount2 = 10;
-	int minimumOverlaps = 1;
+	int minimumOverlaps = 3;
 	int* valuesFirst = new int[amount1];
 	int* valuesSecond = new int[amount2];
 
@@ -70,41 +70,47 @@ int main ()
 
 void GenerateUniqueValues (int* destination, int amount)
 {
-	bool unique = false;
+	bool* occurs = new bool[amount];
 
-	while (!unique)
+	for (int i = 0; i < amount; i++)
 	{
-		//cout << "Starting new unique attempt..." << endl;
-		for (int i = 0; i < amount; i++)
+		*(occurs + i) = false;
+
+	}
+
+	for (int i = 0; i < amount; i++)
+	{
+		bool unique = false;
+
+		while (!unique)
 		{
-			*(destination + i) = rand() % 200;
+			int tempVal = rand() % 200;
 
-		}
+			//cout << "tempVal = " << tempVal << endl;
 
-		unique = true;
-
-		for (int i = 0; i < amount; i++)
-		{
-			int currentValue = *(destination + i);
-			int occurance = 0;
-
-			for (int ii = 0; ii < amount; ii++)
+			if (*(occurs + tempVal) == true) //The value has already been generated
 			{
-				if (*(destination + ii) == currentValue)
-				{
-					occurance++;
+				unique = false;
 
-				}
+				//cout << tempVal << " occurs. Regenerating." << endl;
+
+			} else
+			{
+				//cout << "The value will be stored..." << endl;
+
+				*(occurs + tempVal) = true;
+
+				//cout << "Storing at destination index " << i << endl;
+
+				*(destination + i) = tempVal;
+
+				unique = true;
+
+				//cout << "Stored " << *(destination + i) << endl;
+
 			}
 
-			if (occurance > 1)
-			{
-				unique = false; //Regenerate
-				break;
-
-			}
 		}
-
 	}
 
 	return;
