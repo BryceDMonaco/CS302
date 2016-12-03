@@ -14,6 +14,8 @@
 
 #include <iostream>
 
+#include "RedBlackNode.cpp"
+
 #include <cstdlib>
 #include <time.h>
 
