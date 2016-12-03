@@ -1,3 +1,18 @@
+/**
+*	@file RedBlackNode.cpp
+*
+*	@brief This is the header and implmentation of RedBlackNode
+*
+*	@author Bryce Monaco
+*
+*	@details This file contains the header and implementation of RedBlackNode
+*
+*	@version 1.0
+*
+*	@note 	Header and implementation are in one file to fix some templating issues.
+*			This code is mostly copied from PA06's LeafNode.cpp and adapted for RB Trees.			
+*/
+
 #include <iostream>
 
 using namespace std;
