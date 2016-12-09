@@ -46,16 +46,18 @@ class RedBlackTree
 		int nodeCount; //Doesn't get used
 
 		//Rotations
-		void RotateLeft (RedBlackNode* subtreePtr);
-		void RotateRight (RedBlackNode* subtreePtr);
+		void RotateLeft (RedBlackNode<itemType>* subtreePtr);
+		void RotateRight (RedBlackNode<itemType>* subtreePtr);
 
 		//Fix Functions
-		void InsertFix (RedBlackNode* subtreePtr, itemType value);
-		void LeftRotate (RedBlackNode* subtreePtr, RedBlackNode* targetNode)
+		void InsertFix (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode);
+		void RotateLeft (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode);
+		void RotateRight (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode);
 
-		void Insert (RedBlackNode* subtreePtr, itemType value);
+		void Insert (RedBlackNode<itemType>* subtreePtr, itemType value);
 
-		RedBlackNode<itemType>* GetNodeParent (RedBlackNode* targetNode);
+		RedBlackNode<itemType>* GetNodeParent (RedBlackNode<itemType>* targetNode);
+		char GetNodeColor (RedBlackNode<itemType>* targetNode);
 
 		//Functions, Recursive
 		//RedBlackNode<itemType>* PlaceNode (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* newNode);
@@ -65,7 +67,7 @@ class RedBlackTree
 
 		//Traversal Functions
 		//void PreorderTraverse (RedBlackNode<itemType>* subtreePtr);
-		void InorderTraverse (RedBlackNode<itemType>* subtreePtr);
+		int InorderTraverse (RedBlackNode<itemType>* subtreePtr);
 		//void PostorderTraverse (RedBlackNode<itemType>* subtreePtr);
 
 		int CountChildren (RedBlackNode<itemType>* subtreePtr);
@@ -177,19 +179,9 @@ bool RedBlackTree<itemType>::IsEmpty ()
 template<class itemType>
 bool RedBlackTree<itemType>::Add (itemType entry)
 {
-	if (IsEmpty())
-	{
-		rootPtr = new RedBlackNode<itemType>(entry, true, 'B');
+	Insert(rootPtr, entry);
 
-		return true;
-
-	} else
-	{
-		RedBlackNode<itemType>* newLeaf = new RedBlackNode<itemType>(entry, false, 'X'); //Tom Nook would be proud
-
-		PlaceNode(rootPtr, newLeaf);
-
-	}
+	return true;
 
 }
 
@@ -285,21 +277,15 @@ int RedBlackTree<itemType>::GetNodeCount ()
 template<class itemType>
 void RedBlackTree<itemType>::DoTraversal (int type)
 {
-	if (type == 0) //Pre
+	if (type == 1) //In
 	{
-		PreorderTraverse(rootPtr);
+		int total = InorderTraverse(rootPtr);
 
-	} else if (type == 1) //In
-	{
-		InorderTraverse(rootPtr);
-
-	} else if (type == 2) //Post
-	{
-		PostorderTraverse(rootPtr);
+		cout << "Sum of all values in the RB Tree: " << total << endl;
 
 	} else
 	{
-		cout << "Invalid traversal type requested. Traversal failed." << endl;
+		cout << "Invalid traversal type requested. Traversal failed. Must be 1." << endl;
 
 	}
 
@@ -356,7 +342,7 @@ void RedBlackTree<itemType>::Print ()
 {
 	DebugPrint(rootPtr);
 
-	cout << "Print job ended." << endl;
+	//cout << "Print job ended." << endl;
 
 	return;
 
@@ -368,47 +354,359 @@ void RedBlackTree<itemType>::Print ()
 /////////////////////////////////////////////////////////////////////////////////
 
 template<class itemType>
-void RedBlackTree<itemType>::InsertFix (RedBlackNode<itemType>* subtreePtr, itemType value)
+void RedBlackTree<itemType>::InsertFix (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode)
 {
-	//Eeeeewwwwwwwwwwwwwwwwwwwwwww, if this were a Pokemon it'd be called Ewwtwo
+	//cout << "Starting InsertFix...." << endl;
+
+	char parentColor = 'U';// GetNodeColor(GetNodeParent(targetNode)); //U is not used anywhere else
+
+	if (GetNodeParent(targetNode) == rootPtr)
+	{
+		parentColor = 'B';
+
+	} else
+	{
+		parentColor = GetNodeColor(GetNodeParent(targetNode)); //Get the color of the parent node
+
+	}
+
+	//cout << "Parent found." << endl;
+
+	RedBlackNode<itemType>* currentTargetNode = targetNode;
+
+	int count = 0;
+
+	while ((parentColor == 'R' || parentColor == 'U') && currentTargetNode != rootPtr && currentTargetNode != NULL && count < 3)
+	{
+		//cout << "Starting new while loop iteration in InsertFix..." << endl;
+		//cout << "In current iteration parentColor is " << parentColor << endl;
+
+		RedBlackNode<itemType>* parentTargetNode = GetNodeParent(currentTargetNode);
+
+		//cout << "Got parentTargetNode..." << endl;
+
+		RedBlackNode<itemType>* grandfatherNode = GetNodeParent(parentTargetNode);
+
+		//cout << "Got grandfatherNode..." << endl;
+
+		if (grandfatherNode == NULL)
+		{
+			//cout << "grandfatherNode is NULL!!!" << endl;
+
+		}
+
+		if (grandfatherNode != NULL && (*grandfatherNode).GetLeftChild() == parentTargetNode)
+		{
+			parentColor = (*grandfatherNode).GetLeftColor();
+
+		} else if (grandfatherNode != NULL) //It is the right child
+		{
+			parentColor = (*grandfatherNode).GetRightColor();
+
+		}
+
+		//cout << "Got new parentColor..." << endl;
+
+		if (grandfatherNode != NULL && (*grandfatherNode).GetLeftChild() == parentTargetNode)
+		{
+			//cout << "Parent is the left child of grandparent..." << endl;
+
+			RedBlackNode<itemType>* yNode = (*grandfatherNode).GetRightChild(); //y is the Uncle node
+
+			//cout << "yNode set..." << endl;
+
+			if (GetNodeColor(yNode) == 'R') //Case 1
+			{
+				//cout << "Detected Case 1 in top clause..." << endl;
+
+				(*grandfatherNode).SetLeftColor('B');
+				(*grandfatherNode).SetRightColor('B');
+
+				RedBlackNode<itemType>* greatGrandNode = GetNodeParent(grandfatherNode);
+
+				//cout << "Got greatGrandNode..." << endl;
+
+				if (greatGrandNode != NULL && (*greatGrandNode).GetLeftChild() == grandfatherNode)
+				{
+					(*greatGrandNode).SetLeftColor('R');
+
+				} else if (greatGrandNode != NULL)
+				{
+					(*greatGrandNode).SetRightColor('R');
+
+				}
+
+				currentTargetNode = grandfatherNode;
+
+				//cout << "currentTargetNode updated..." << endl;
+
+			} else if (currentTargetNode == (*parentTargetNode).GetRightChild())
+			{
+				//cout << "Detected Case 3->2 in top clause..." << endl;
+
+				//Case 3 then immediately followed by
+				//Case 2
+
+				//currentTargetNode = parentTargetNode;
+
+				RotateLeft(subtreePtr, parentTargetNode);
+
+				currentTargetNode = parentTargetNode;
+
+				parentTargetNode = GetNodeParent(currentTargetNode); //Should be the previous target node
+				grandfatherNode = GetNodeParent(parentTargetNode);
+
+				if ((*grandfatherNode).GetLeftChild() == parentTargetNode)
+				{
+					(*grandfatherNode).SetLeftColor('B');
+
+				} else if ((*grandfatherNode).GetRightChild() == parentTargetNode)
+				{
+					(*grandfatherNode).SetRightColor('B');
+
+				}
+
+				RedBlackNode<itemType>* greatGrandNode = GetNodeParent(grandfatherNode);
+
+				if (grandfatherNode == rootPtr)
+				{
+					//cout << "grandfatherNode is root so: " << endl;
+
+				}
+
+				if (greatGrandNode == NULL)
+				{
+					//cout << "WARNING: greatGrandNode is NULL!!!!" << endl;
+
+				} 
+
+				if (greatGrandNode != NULL && (*greatGrandNode).GetLeftChild() == grandfatherNode)
+				{
+					(*greatGrandNode).SetLeftColor('R');
+
+				} else if (greatGrandNode != NULL)
+				{
+					(*greatGrandNode).SetRightColor('R');
+
+				}
+
+				RotateRight(subtreePtr, grandfatherNode);
+
+			}
+		} else if (grandfatherNode != NULL && (*grandfatherNode).GetRightChild() == parentTargetNode)
+		{
+			//cout << "Parent is the right child of grandfatherNode..." << endl;
+
+			RedBlackNode<itemType>* yNode = (*grandfatherNode).GetLeftChild();
+
+			//cout << "Got yNode..." << endl;
+
+			if (GetNodeColor(yNode) == 'R') //Case 1
+			{
+				//cout << "Detected Case 1 in bottom clause..." << endl;
+
+				(*grandfatherNode).SetLeftColor('B');
+				(*grandfatherNode).SetRightColor('B');
+
+				//cout << "Colors set..." << endl;
+
+				RedBlackNode<itemType>* greatGrandNode = GetNodeParent(grandfatherNode);
+
+				//cout <<"greatGrandNode got..." << endl;
+
+				if (greatGrandNode == NULL)
+				{
+					//cout << "GGN is NULL!!!" << endl;
+
+				}
+
+				if (greatGrandNode != NULL && (*greatGrandNode).GetLeftChild() == grandfatherNode)
+				{
+					(*greatGrandNode).SetLeftColor('R');
+
+				} else if (greatGrandNode != NULL)
+				{
+					(*greatGrandNode).SetRightColor('R');
+
+				}
+
+				currentTargetNode = grandfatherNode;
+
+			} else if (currentTargetNode == (*parentTargetNode).GetRightChild())
+			{	
+				//cout << "Detected Case 3->2 in bottom clause..." << endl; 
+
+				//Case 3 then immediately followed by
+				//Case 2
+
+				//currentTargetNode = parentTargetNode;
+
+				RotateLeft(subtreePtr, parentTargetNode);
+
+				currentTargetNode = parentTargetNode;
+
+				//cout << "Set currentTargetNode..." << endl;
+
+				parentTargetNode = GetNodeParent(currentTargetNode); //Should be the previous target node
+				grandfatherNode = GetNodeParent(parentTargetNode);
+
+				//cout << "Elder nodes set..." << endl;
+
+				if ((*grandfatherNode).GetLeftChild() == parentTargetNode)
+				{
+					(*grandfatherNode).SetLeftColor('B');
+
+				} else if ((*grandfatherNode).GetRightChild() == parentTargetNode)
+				{
+					(*grandfatherNode).SetRightColor('B');
+
+				}
+
+				RedBlackNode<itemType>* greatGrandNode = GetNodeParent(grandfatherNode);
+
+				if (grandfatherNode == rootPtr)
+				{
+					//cout << "grandfatherNode is root so: " << endl;
+
+				}
+
+				if (greatGrandNode == NULL)
+				{
+					//cout << "WARNING: greatGrandNode is NULL!!!!" << endl;
+
+				} 
+
+				if (greatGrandNode != NULL && (*greatGrandNode).GetLeftChild() == grandfatherNode)
+				{
+					(*greatGrandNode).SetLeftColor('R');
+
+				} else if (greatGrandNode != NULL) //Should just be the right
+				{
+					(*greatGrandNode).SetRightColor('R');
+
+				}
+
+				RotateRight(subtreePtr, grandfatherNode);
+
+			}
+		}
+
+		//cout << "End left/right check..." << endl;
+
+		count++;
+	}
+
+	return;
 	
 }
 
 template<class itemType>
-void RedBlackTree<itemType>::LeftRotate (RedBlackNode* subtreePtr, RedBlackNode* targetNode)
+void RedBlackTree<itemType>::RotateLeft (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode)
 {
+	//cout << "\tRotate Left called." << endl;
+
 	RedBlackNode<itemType>* yNode = (*targetNode).GetRightChild(); //targetNode is x
 
-	(*targetNode).SetRightChild((*yNode).GetLeftChild()); //y’s left subtree becomes x’s right subtree
-
-	if ((*yNode).GetLeftChild() != NULL)
+	if (yNode == NULL)
 	{
-		//Set Y's left branch's parent as x, I think the nodes are supposed to have a parent field?
+		//cout << "\tyNode is NULL!!!" << endl;
+		//cout << "\tSkipping roataion...." << endl;
 
 	}
 
-	RedBlackNode<itemType>* parentTargetNode = GetNodeParent(targetNode);
-
-
-	//Set X's parent to now be Y's parent, X is still stored as targetNode
-	if (parentTargetNode != NULL && (*parentTargetNode).GetLeftChild() == targetNode) //If x is the left node of the parent
+	if (yNode != NULL)
 	{
-		(*parentTargetNode).SetLeftChild(yNode);
+		(*targetNode).SetRightChild((*yNode).GetLeftChild()); //y’s left subtree becomes x’s right subtree
 
-	} else if (parentTargetNode != NULL && (*parentTargetNode).GetRightChild() == targetNode)
-	{
-		(*parentTargetNode).SetRightChild(yNode);
+		if ((*yNode).GetLeftChild() != NULL)
+		{
+			//Set Y's left branch's parent as x, I think the nodes are supposed to have a parent field?
 
-	} else if (parentTargetNode == NULL) //X was the root
-	{
-		rootPtr = yNode;
+		}
+
+		RedBlackNode<itemType>* parentTargetNode = GetNodeParent(targetNode);
+
+
+		//Set X's parent to now be Y's parent, X is still stored as targetNode
+		//Note: Checking if the parent is NULL might need to be its own if statement
+		if (parentTargetNode != NULL && (*parentTargetNode).GetLeftChild() == targetNode) //If x is the left node of the parent
+		{
+			(*parentTargetNode).SetLeftChild(yNode);
+
+		} else if (parentTargetNode != NULL && (*parentTargetNode).GetRightChild() == targetNode)
+		{
+			(*parentTargetNode).SetRightChild(yNode);
+
+		} else if (parentTargetNode == NULL) //X was the root
+		{
+			rootPtr = yNode;
+
+		}
+
+		(*yNode).SetLeftChild(targetNode);
+
+		//cout << "\tRotate Left done." << endl;
 
 	}
 
-	(*yNode).SetLeftChild(targetNode);
+	
 
 	return;
 	
+}
+
+template<class itemType>
+void RedBlackTree<itemType>::RotateRight (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode)
+{
+	//cout << "\tRotate Right called." << endl;
+
+	if (targetNode == NULL)
+	{
+		//cout << "\t(In RotateRight) targetNode is NULL!!!!" << endl;
+
+	}
+
+	RedBlackNode<itemType>* xNode = (*targetNode).GetLeftChild(); //targetNode is y
+
+	if (xNode == NULL)
+	{
+		//cout << "\t(In RotateRight) xNode is NULL!!!!" << endl;
+		//cout << "\tSkipping rotation..." << endl;
+
+	}
+
+	if (xNode != NULL)
+	{
+		(*targetNode).SetLeftChild((*xNode).GetRightChild()); //x's right subtree becomes y's left
+
+		RedBlackNode<itemType>* parentTargetNode = GetNodeParent(targetNode);
+
+		//cout << "\tparentTargetNode got..." << endl;
+
+		//Set X's parent to now be Y's parent, X is still stored as targetNode
+		//Note: Checking if the parent is NULL might need to be its own if statement
+		if (parentTargetNode != NULL && (*parentTargetNode).GetLeftChild() == targetNode) //If x is the left node of the parent
+		{
+			(*parentTargetNode).SetLeftChild(xNode);
+
+		} else if (parentTargetNode != NULL && (*parentTargetNode).GetRightChild() == targetNode)
+		{
+			(*parentTargetNode).SetRightChild(xNode);
+
+		} else if (parentTargetNode == NULL) //X was the root
+		{
+			rootPtr = xNode;
+
+		}
+
+		(*xNode).SetRightChild(targetNode);
+
+		//cout << "\tRotate Right done." << endl;
+
+	}
+
+	return;
+
 }
 
 template<class itemType>
@@ -436,42 +734,75 @@ void RedBlackTree<itemType>::Insert (RedBlackNode<itemType>* subtreePtr, itemTyp
 
 	if (parent == NULL) //Tree was empty
 	{
-		subtreePtr= new RedBlackNode<itemType>(value, true, 'B');
+		rootPtr = new RedBlackNode<itemType>(value, true, 'B');
 
 	} else
 	{
-		RedBlackNode* newNode = new RedBlackNode<itemType>(value, false, 'R'); //Fix will determine right color
+		RedBlackNode<itemType>* newNode = new RedBlackNode<itemType>(value, false, 'R'); //Fix will determine right color
 
 		if (value < (*parent).GetValue()) //Become left child
 		{
 			(*parent).SetLeftChild(newNode);
+			(*parent).SetLeftColor('R');
 
 		} else //Become right child
 		{
 			(*parent).SetRightChild(newNode);
+			(*parent).SetRightColor('R');
 
 		}
 
 		//newNode = NULL;
 
-	}
+		//cout << "Insert Done. Calling Fix." << endl;
 
-	InsertFix(subtreePtr, value);
+		InsertFix(subtreePtr, newNode);
+
+	}
 
 	return;
 	
 }
 
 template<class itemType>
-RedBlackNode<itemType>* RedBlackTree<itemType>::GetNodeParent (RedBlackNode* targetNode)
+RedBlackNode<itemType>* RedBlackTree<itemType>::GetNodeParent (RedBlackNode<itemType>* targetNode)
 {
 	RedBlackNode<itemType>* parent = NULL;
 	RedBlackNode<itemType>* treeTrav = rootPtr;
 
-	itemType targetValue = (*targetNode).GetValue();
+	//cout << "\t(In GetNodeParent) Pointers set, getting value..." << endl;
 
-	while ((*treeTrav).GetValue() != targetValue)
+	itemType targetValue;
+
+	if (targetNode == NULL)
 	{
+		//cout << "\t(In GetNodeParent) NULL targetNode..." << endl;
+
+	} else
+	{
+		targetValue = (*targetNode).GetValue();
+
+	}
+
+	//cout << "\t(In GetNodeParent) Value got..." << endl;
+
+	if (targetNode == rootPtr)
+	{
+		//cout << "\t(In GetNodeParent) WARNING: This node has no parent, it is the root." << endl;
+		////cout << "The program will probably crash in just a second..." << endl;
+
+	}
+
+	//cout << "\t(In GetNodeParent) starting loop..." << endl;
+
+	while ((*treeTrav).GetValue() != targetValue && targetNode != NULL)
+	{
+		if (treeTrav == NULL)
+		{
+			//cout << "\t(In GetNodeParent) Heads up, treeTrav is NULL..." << endl;
+
+		}
+
 		parent = treeTrav;
 
 		if (targetValue < (*treeTrav).GetValue()) //Go left
@@ -485,7 +816,40 @@ RedBlackNode<itemType>* RedBlackTree<itemType>::GetNodeParent (RedBlackNode* tar
 		}
 	}
 
+	//cout << "\tGNP Done." << endl;
+
 	return parent;
+	
+}
+
+template<class itemType>
+char RedBlackTree<itemType>::GetNodeColor (RedBlackNode<itemType>* targetNode)
+{
+	//cout << "\t(Inside of GetNodeColor) Getting parent..." << endl;
+
+	RedBlackNode<itemType>* parentNode = GetNodeParent(targetNode);
+
+	//cout << "\tParent got..." << endl;
+
+	char color = 'X';
+
+	if (targetNode == NULL)
+	{
+		color = 'B';
+
+	}else if ((*parentNode).GetLeftChild() == targetNode)
+	{
+		color = (*parentNode).GetLeftColor();
+
+	} else if ((*parentNode).GetRightChild() == targetNode)
+	{
+		color = (*parentNode).GetRightColor();
+
+	}
+
+	//cout << "Got that node color was " << color << endl;
+
+	return color;
 	
 }
 
@@ -598,74 +962,38 @@ void RedBlackTree<itemType>::DebugPrint (RedBlackNode<itemType>* subtreePtr)
 {
 	if (subtreePtr == NULL)
 	{
-		//cout << "~NULL~";
+		////cout << "~NULL~";
 
 	} else
 	{
-		cout << (*subtreePtr).GetValue() << " has children: ";
+		//cout << (*subtreePtr).GetValue() << " has children: ";
 
 		if ((*subtreePtr).GetLeftChild() == NULL)
 		{
-			cout << "NULL";
+			//cout << "NULL";
 
 		} else
 		{
-			cout << (*((*subtreePtr).GetLeftChild())).GetValue();
+			//cout << (*((*subtreePtr).GetLeftChild())).GetValue();
 
 		}
 
-		cout << " and ";
+		//cout << " and ";
 
 		if ((*subtreePtr).GetRightChild() == NULL)
 		{
-			cout << "NULL";
+			//cout << "NULL";
 
 		} else
 		{
-			cout << (*((*subtreePtr).GetRightChild())).GetValue();
+			//cout << (*((*subtreePtr).GetRightChild())).GetValue();
 
 		}
 
-		cout << endl;
+		//cout << endl;
 
 		DebugPrint((*subtreePtr).GetLeftChild());
 		DebugPrint((*subtreePtr).GetRightChild());
-
-	}
-
-	return;
-
-}
-
-/**
-*	@brief Does a preorder traversal of the tree
-*
-*	@details Traverses the tree by printing the current root, then the left, and then the right child.
-*
-*	@par Algorithm None.
-*
-*	@param[in] subtreePtr Pointer to the current subtree.
-*
-*	@param[out] None.
-*
-*	@return None.
-*
-*	@note None.
-*
-*/
-template<class itemType>
-void RedBlackTree<itemType>::PreorderTraverse (RedBlackNode<itemType>* subtreePtr)
-{
-	if (subtreePtr == NULL)
-	{
-		//Tree is empty, end recursive calls
-
-	} else
-	{
-		cout << (*subtreePtr).GetValue() << ", ";
-
-		PreorderTraverse((*subtreePtr).GetLeftChild());
-		PreorderTraverse((*subtreePtr).GetRightChild());
 
 	}
 
@@ -690,55 +1018,28 @@ void RedBlackTree<itemType>::PreorderTraverse (RedBlackNode<itemType>* subtreePt
 *
 */
 template<class itemType>
-void RedBlackTree<itemType>::InorderTraverse (RedBlackNode<itemType>* subtreePtr)
+int RedBlackTree<itemType>::InorderTraverse (RedBlackNode<itemType>* subtreePtr)
 {
+	int sum = 0;
+
 	if (subtreePtr == NULL)
 	{
 		//Tree is empty, end recursive calls
 
-	} else
-	{
-		InorderTraverse((*subtreePtr).GetLeftChild());
-		cout << (*subtreePtr).GetValue() << ", ";
-		InorderTraverse((*subtreePtr).GetRightChild());
+		//cout << "Hit end of a branch." << endl;
 
-	}
-
-	return;
-
-}
-
-/**
-*	@brief Does a postorder traversal of the tree
-*
-*	@details Traverses the tree by printing the left, the right child, and the current root.
-*
-*	@par Algorithm None.
-*
-*	@param[in] subtreePtr Pointer to the current subtree.
-*
-*	@param[out] None.
-*
-*	@return None.
-*
-*	@note None.
-*
-*/
-template<class itemType>
-void RedBlackTree<itemType>::PostorderTraverse (RedBlackNode<itemType>* subtreePtr)
-{
-	if (subtreePtr == NULL)
-	{
-		//Tree is empty, end recursive calls
+		return 0;
 
 	} else
 	{
-		PostorderTraverse((*subtreePtr).GetLeftChild());
-		PostorderTraverse((*subtreePtr).GetRightChild());
-		cout << (*subtreePtr).GetValue() << ", ";
+		//cout << "Found node with value: " << (*subtreePtr).GetValue();
+
+		sum += InorderTraverse((*subtreePtr).GetLeftChild());
+		sum += (*subtreePtr).GetValue();
+		sum += InorderTraverse((*subtreePtr).GetRightChild());
 
 	}
 
-	return;
+	return sum;
 
 }

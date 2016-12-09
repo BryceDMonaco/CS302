@@ -77,8 +77,8 @@ RedBlackNode<itemType>::RedBlackNode ()
 	leftChild = NULL;
 	rightChild = NULL;
 
-	leftColor = 'X'; //I will use X as the default, R is red, B is black
-	rightColor = 'X';
+	leftColor = 'B'; //I will use X as the default, R is red, B is black
+	rightColor = 'B';
 
 }
 
@@ -460,5 +460,51 @@ template<class itemType>
 itemType RedBlackNode<itemType>::GetValue ()
 {
 	return value;
+
+}
+
+/**
+*	@brief Gets the color of the left child
+*
+*	@details Returns the color of leftChild
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns the color of the child as a char
+*
+*	@note None.
+*
+*/
+template<class itemType>
+char RedBlackNode<itemType>::GetLeftColor ()
+{
+	return leftColor;
+
+}
+
+/**
+*	@brief Gets the color of the right child
+*
+*	@details Returns the color of rightChild
+*
+*	@par Algorithm None.
+*
+*	@param[in] None.
+*
+*	@param[out] None.
+*
+*	@return Returns the color of the child as a char
+*
+*	@note None.
+*
+*/
+template<class itemType>
+char RedBlackNode<itemType>::GetRightColor ()
+{
+	return rightColor;
 
 }

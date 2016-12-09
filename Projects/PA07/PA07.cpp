@@ -14,7 +14,7 @@
 
 #include <iostream>
 
-#include "RedBlackNode.cpp"
+#include "RedBlackTree.cpp"
 
 #include <cstdlib>
 #include <time.h>
@@ -25,6 +25,9 @@ void GenerateUniqueValues (int* destination, int amount);
 
 int main ()
 {
+	RedBlackTree<int> intTree;
+
+	
 	int* values = new int[1000];
 
 	srand(time(0));
@@ -35,11 +38,23 @@ int main ()
 
 	for (int i = 0; i < 1000; i++)
 	{
+		cout << "MAIN: Adding " << *(values + i) << endl;
+
+		intTree.Add(*(values + i));
+
+	}
+
+	intTree.DoTraversal(1);
+
+	for (int i = 0; i < 1000; i++)
+	{
 		sum += *(values + i);
 
 	}
 
-	cout << "Sum of 1000 unique values: " << sum << endl;
+	cout << "Expected Sum: " << sum << endl;
+
+	cout << "RB Tree Height (this is not the black height!!!!): " << intTree.GetHeight() << endl;
 
 	delete[] values;
 
