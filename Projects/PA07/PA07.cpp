@@ -38,7 +38,7 @@ int main ()
 
 	for (int i = 0; i < 1000; i++)
 	{
-		cout << "MAIN: Adding " << *(values + i) << endl;
+		//cout << "MAIN: Adding " << *(values + i) << endl;
 
 		intTree.Add(*(values + i));
 
@@ -46,6 +46,7 @@ int main ()
 
 	intTree.DoTraversal(1);
 
+/*
 	for (int i = 0; i < 1000; i++)
 	{
 		sum += *(values + i);
@@ -53,8 +54,35 @@ int main ()
 	}
 
 	cout << "Expected Sum: " << sum << endl;
+*/
 
-	cout << "RB Tree Height (this is not the black height!!!!): " << intTree.GetHeight() << endl;
+	cout << "RB Tree Height: " << intTree.GetHeight() << endl;
+
+	cout << "Before clearing, the RB tree is ";
+
+	if (!intTree.IsEmpty())
+	{
+		cout << "not empty." << endl;
+
+	} else
+	{
+		cout << "empty." << endl;
+
+	}
+
+	intTree.Clear();
+
+	cout << "After clearing, the RB tree is ";
+
+	if (!intTree.IsEmpty())
+	{
+		cout << "not empty." << endl;
+
+	} else
+	{
+		cout << "empty." << endl;
+
+	}
 
 	delete[] values;
 
@@ -96,7 +124,7 @@ void GenerateUniqueValues (int* destination, int amount)
 
 		while (!unique)
 		{
-			int tempVal = rand() % 10000;
+			int tempVal = rand() % 10001;
 
 			//cout << "tempVal = " << tempVal << endl;
 

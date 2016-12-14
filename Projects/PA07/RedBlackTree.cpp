@@ -59,16 +59,8 @@ class RedBlackTree
 		RedBlackNode<itemType>* GetNodeParent (RedBlackNode<itemType>* targetNode);
 		char GetNodeColor (RedBlackNode<itemType>* targetNode);
 
-		//Functions, Recursive
-		//RedBlackNode<itemType>* PlaceNode (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* newNode);
-		//RedBlackNode<itemType>* RemoveValue (RedBlackNode<itemType>* subtreePtr, itemType target, bool &isSuccessful);
-		//RedBlackNode<itemType>* RemoveNode (RedBlackNode<itemType>* nodePtr);
-		//RedBlackNode<itemType>* RemoveLeftmostNode (RedBlackNode<itemType>* nodePtr, itemType &successorValue);
-
 		//Traversal Functions
-		//void PreorderTraverse (RedBlackNode<itemType>* subtreePtr);
 		int InorderTraverse (RedBlackNode<itemType>* subtreePtr);
-		//void PostorderTraverse (RedBlackNode<itemType>* subtreePtr);
 
 		int CountChildren (RedBlackNode<itemType>* subtreePtr);
 		int CountHeight (RedBlackNode<itemType>* subtreePtr);
@@ -281,7 +273,7 @@ void RedBlackTree<itemType>::DoTraversal (int type)
 	{
 		int total = InorderTraverse(rootPtr);
 
-		cout << "Sum of all values in the RB Tree: " << total << endl;
+		cout << "Sum of all 1000 nodes in the RB Tree (Inorder Traversal): " << total << endl;
 
 	} else
 	{
@@ -353,6 +345,24 @@ void RedBlackTree<itemType>::Print ()
 ///////////// 				End Public Functions 					/////////////
 /////////////////////////////////////////////////////////////////////////////////
 
+/**
+*	@brief A function which corrects the tree
+*
+*	@details Called after an insertion is made, this function automatically corrects the tree
+*
+*	@par Algorithm None.
+*
+*	@param[in] subtreePtr Pointer to the tree
+*
+*	@param[in] targetNode Pointer to the new node to start corrections at
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void RedBlackTree<itemType>::InsertFix (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode)
 {
@@ -600,6 +610,24 @@ void RedBlackTree<itemType>::InsertFix (RedBlackNode<itemType>* subtreePtr, RedB
 	
 }
 
+/**
+*	@brief Does a left rotation of a selection of nodes
+*
+*	@details Called by insertFix(), this function performs a left rotation of some nodes
+*
+*	@par Algorithm None.
+*
+*	@param[in] subtreePtr Pointer to the tree
+*
+*	@param[in] targetNode Pointer to the node to do the rotation from
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void RedBlackTree<itemType>::RotateLeft (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode)
 {
@@ -655,6 +683,24 @@ void RedBlackTree<itemType>::RotateLeft (RedBlackNode<itemType>* subtreePtr, Red
 	
 }
 
+/**
+*	@brief Does a right rotation of a selection of nodes
+*
+*	@details Called by insertFix(), this function performs a right rotation of some nodes
+*
+*	@par Algorithm None.
+*
+*	@param[in] subtreePtr Pointer to the tree
+*
+*	@param[in] targetNode Pointer to the node to do the rotation from
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void RedBlackTree<itemType>::RotateRight (RedBlackNode<itemType>* subtreePtr, RedBlackNode<itemType>* targetNode)
 {
@@ -709,6 +755,24 @@ void RedBlackTree<itemType>::RotateRight (RedBlackNode<itemType>* subtreePtr, Re
 
 }
 
+/**
+*	@brief Inserts the value into the tree
+*
+*	@details Creates a new node with the sent value and adds it to the tree, calls InsertFix after
+*
+*	@par Algorithm None.
+*
+*	@param[in] subtreePtr Pointer to the tree
+*
+*	@param[in] value The value to be added to the tree
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note None.
+*
+*/
 template<class itemType>
 void RedBlackTree<itemType>::Insert (RedBlackNode<itemType>* subtreePtr, itemType value)
 {
@@ -764,6 +828,22 @@ void RedBlackTree<itemType>::Insert (RedBlackNode<itemType>* subtreePtr, itemTyp
 	
 }
 
+/**
+*	@brief Gets the parent of the sent node
+*
+*	@details Traverses the tree to find the parent of the sent node
+*
+*	@par Algorithm None.
+*
+*	@param[in] targetNode Pointer to the node to find the parent of
+*
+*	@param[out] None.
+*
+*	@return Returns a pointer to the parent node
+*
+*	@note None.
+*
+*/
 template<class itemType>
 RedBlackNode<itemType>* RedBlackTree<itemType>::GetNodeParent (RedBlackNode<itemType>* targetNode)
 {
@@ -822,6 +902,22 @@ RedBlackNode<itemType>* RedBlackTree<itemType>::GetNodeParent (RedBlackNode<item
 	
 }
 
+/**
+*	@brief Gets the color of the sent node
+*
+*	@details Gets the color of the sent node by checking the parent
+*
+*	@par Algorithm None.
+*
+*	@param[in] targetNode Pointer to the node to get the color of
+*
+*	@param[out] None.
+*
+*	@return None.
+*
+*	@note Color is stored in the parent, an individual node does not know its own color
+*
+*/
 template<class itemType>
 char RedBlackTree<itemType>::GetNodeColor (RedBlackNode<itemType>* targetNode)
 {

@@ -1,0 +1,4 @@
+Sum of all 1000 nodes in the RB Tree (Inorder Traversal): 5036470
+RB Tree Height: 22
+Before clearing, the RB tree is not empty.
+After clearing, the RB tree is empty.
